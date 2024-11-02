@@ -1,4 +1,5 @@
 import os
+import shutil
 import csv
 import concurrent.futures
 from multiprocessing import Manager, freeze_support
@@ -11,21 +12,25 @@ NUM_INSTANCES = 4
 
 aspen_Path = os.path.abspath(SIMULATION_FILE)
 
-def start_aspen(log_message):
-    """Starts Aspen and returns the Application object."""
+def start_aspen(instance_id, log_message):
+    """Starts Aspen using the instance-specific copy of the simulation file and returns the Application object."""
+    instance_file = f'{aspen_Path}_copy_{instance_id}.bkp'
+    if not os.path.exists(instance_file):
+        shutil.copyfile(aspen_Path, instance_file)  # Create a copy for the instance
+
     try:
         Application = win32.Dispatch('Apwn.Document')
-        Application.InitFromArchive2(aspen_Path)
+        Application.InitFromArchive2(instance_file)
         Application.visible = 0
-        log_message("Aspen started successfully.")
+        log_message(f"Aspen started successfully for instance {instance_id}.")
         return Application
     except Exception as e:
-        log_message(f"Failed to start Aspen: {e}")
+        log_message(f"Failed to start Aspen for instance {instance_id}: {e}")
         return None
 
-def simulate(x, Application, log_message, lock, result_file):
+def simulate(x, Application, log_message, lock, result_file, input_file):
     feedNH3, feedH2S, feedH20, QN1, QN2, QC, SF = x
-    
+
     if not Application:
         Application = start_aspen(log_message)
         if not Application:
@@ -108,14 +113,14 @@ def run_parallel_simulations(batch_id, input_file, lock):
     log_file_path = f'{os.path.splitext(__file__)[0]}_batch_{batch_id}.log'
     result_file = RESULT_FILE_TEMPLATE.format(batch_id)
     log_message = log_message_factory(log_file_path)
-    Application = start_aspen(log_message)
+    Application = start_aspen(batch_id, log_message)
     results = []
 
     # Load points from the specific input file
     points = load_points_from_csv(input_file)
 
     for point in points:
-        result = simulate(point, Application, log_message, lock, result_file)
+        result = simulate(point, Application, log_message, lock, result_file, input_file)
         if result:
             results.append(result)
 
