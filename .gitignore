@@ -1,0 +1,10 @@
+.venv/*
+UTAA*/
+lixo/*
+*.log
+*.csv
+UTAA*
+*.dmp
+_*.*
+*.bk$
+*.xml
