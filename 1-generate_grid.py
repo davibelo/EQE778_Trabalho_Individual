@@ -7,11 +7,15 @@ NUM_PARTS = 4
 TEST = 0
 
 def generate_points(ranges):
-    feedNH3_range = np.arange(ranges['feedNH3'][0], ranges['feedNH3'][1] + ranges['feedNH3'][2], ranges['feedNH3'][2])
-    feedH2S_range = np.arange(ranges['feedH2S'][0], ranges['feedH2S'][1] + ranges['feedH2S'][2], ranges['feedH2S'][2])
-    QN1_range = np.arange(ranges['QN1'][0], ranges['QN1'][1] + ranges['QN1'][2], ranges['QN1'][2])
-    QN2_range = np.arange(ranges['QN2'][0], ranges['QN2'][1] + ranges['QN2'][2], ranges['QN2'][2])
-    SF_range = np.arange(ranges['SF'][0], ranges['SF'][1] + ranges['SF'][2], ranges['SF'][2])
+    def generate_range(start, stop, step):
+        num_points = int((stop - start) / step) + 1
+        return np.linspace(start, stop, num=num_points, endpoint=(stop - start) % step == 0)
+
+    feedNH3_range = generate_range(ranges['feedNH3'][0], ranges['feedNH3'][1], ranges['feedNH3'][2])
+    feedH2S_range = generate_range(ranges['feedH2S'][0], ranges['feedH2S'][1], ranges['feedH2S'][2])
+    QN1_range = generate_range(ranges['QN1'][0], ranges['QN1'][1], ranges['QN1'][2])
+    QN2_range = generate_range(ranges['QN2'][0], ranges['QN2'][1], ranges['QN2'][2])
+    SF_range = generate_range(ranges['SF'][0], ranges['SF'][1], ranges['SF'][2])
 
     feedNH3, feedH2S, QN1, QN2, SF = np.meshgrid(feedNH3_range, feedH2S_range, QN1_range, QN2_range, SF_range, indexing='ij')
     feedNH3, feedH2S, QN1, QN2, SF = map(np.ravel, (feedNH3, feedH2S, QN1, QN2, SF))
