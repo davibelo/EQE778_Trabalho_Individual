@@ -35,7 +35,11 @@ def save_points_to_csv(points, filename):
             writer.writerow(point)
 
 def save_points_in_parts(points, num_parts):
-    points_per_part = len(points) // num_parts
+    total_points = len(points)
+    points_per_part = total_points // num_parts
+    print(f'Total number of points: {total_points}')
+    print(f'Number of points per file: {points_per_part}')
+
     for i in range(num_parts):
         start_index = i * points_per_part
         end_index = (i + 1) * points_per_part if i < num_parts - 1 else len(points)
@@ -49,20 +53,20 @@ if __name__ == '__main__':
     if TEST == 1:
         # Testing ranges
         ranges = {
-            'feedNH3': [0.001, 0.05, 0.01],
-            'feedH2S': [0.001, 0.05, 0.01],
+            'feedNH3': [0.001, 0.01, 0.001],
+            'feedH2S': [0.001, 0.01, 0.001],
             'QN1':     [500000, 600000, 100000],
-            'QN2':     [800000, 909000, 100000],
+            'QN2':     [800000, 900000, 100000],
             'SF':      [0.5, 0.6, 0.1]
         }
     else:
         # Production ranges
         ranges = {
-            'feedNH3': [0.0000001, 0.10, 0.005],
-            'feedH2S': [0.0000001, 0.10, 0.005],
+            'feedNH3': [0.001, 0.01, 0.001],
+            'feedH2S': [0.001, 0.01, 0.001],
             'QN1':     [450000,  600000, 10000],
             'QN2':     [700000, 1200000, 10000],
-            'SF':      [0.0000001, 1, 0.05]
+            'SF':      [0.0, 1, 0.1]
         }
 
     # Generate and save points
