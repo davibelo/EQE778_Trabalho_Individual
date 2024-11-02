@@ -8,7 +8,7 @@ import win32com.client as win32
 INPUT_FILE_TEMPLATE = 'simulation_points_part_{}.csv'
 RESULT_FILE_TEMPLATE = 'simulation_results_part_{}.csv'
 SIMULATION_FILE = r'UTAA_run\UTAA_revK.bkp'
-NUM_INSTANCES = 8
+NUM_INSTANCES = 4
 
 aspen_Path = os.path.abspath(SIMULATION_FILE)
 
