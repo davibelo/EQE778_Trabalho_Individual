@@ -2,7 +2,7 @@ import os
 import csv
 import numpy as np
 
-POINTS_FILE_TEMPLATE = 'simulation_points_part_{}.csv'
+POINTS_FILE_TEMPLATE = 'simulation_points_part_{}_initial.csv'
 NUM_PARTS = 4
 TEST = 0
 
