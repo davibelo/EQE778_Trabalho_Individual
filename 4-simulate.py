@@ -14,7 +14,7 @@ NUM_INSTANCES = 4
 aspen_Path = os.path.abspath(SIMULATION_FILE)
 
 def log_worker(log_queue, log_file_path):
-    """Worker that listens to log_queue and writes messages to the log file."""
+    """Worker that listens to log_queue and writes error messages to the log file."""
     buffer = []
     flush_interval = 1  # seconds
     last_flush_time = time.time()
@@ -41,9 +41,12 @@ def log_worker(log_queue, log_file_path):
                     last_flush_time = current_time
 
 def log_message_factory(log_queue):
-    """Creates a logging function that adds messages to the log queue."""
-    def log_message(message):
-        log_queue.put(message)
+    """Creates a logging function that adds only error messages to the log queue."""
+    def log_message(message, is_error=False):
+        if is_error:
+            log_queue.put(message)
+        else:
+            print(message)  # Print successful runs to the console only
     return log_message
 
 def load_points_from_csv(filename):
@@ -60,7 +63,7 @@ def save_result_to_csv(result, result_file):
     """Appends a single result row to the specified results CSV file."""
     with open(result_file, mode='a', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        if os.path.getsize(result_file) == 0:  # Write header only if file is empty
+        if os.path.getsize(result_file) == 0:
             writer.writerow(['feedNH3', 'feedH2S', 'feedH20', 'QN1', 'QN2', 'QC', 'SF', 'H2S_ppm', 'NH3_ppm'])
         writer.writerow(result)
 
@@ -68,7 +71,7 @@ def start_aspen(instance_id, log_message):
     """Starts Aspen using the instance-specific copy of the simulation file and returns the Application object."""
     instance_file = f'{aspen_Path}_copy_{instance_id}.bkp'
     if not os.path.exists(instance_file):
-        shutil.copyfile(aspen_Path, instance_file)  # Create a copy for the instance
+        shutil.copyfile(aspen_Path, instance_file)
 
     try:
         Application = win32.Dispatch('Apwn.Document')
@@ -77,7 +80,7 @@ def start_aspen(instance_id, log_message):
         log_message(f"Aspen started successfully for instance {instance_id}.")
         return Application
     except Exception as e:
-        log_message(f"Failed to start Aspen for instance {instance_id}: {e}")
+        log_message(f"Failed to start Aspen for instance {instance_id}: {e}", is_error=True)
         return None
 
 def simulate(x, Application, log_message, lock, result_file):
@@ -86,7 +89,7 @@ def simulate(x, Application, log_message, lock, result_file):
     if not Application:
         Application = start_aspen(log_message)
         if not Application:
-            log_message(f"Failed to initialize Aspen for inputs {x}. Skipping simulation.")
+            log_message(f"Failed to initialize Aspen for inputs {x}. Skipping simulation.", is_error=True)
             return None
 
     try:
@@ -117,7 +120,7 @@ def simulate(x, Application, log_message, lock, result_file):
         return x + y
 
     except Exception as e:
-        log_message(f"Error simulating {x}: {e}")
+        log_message(f"Error simulating {x}: {e}", is_error=True)
         return None
 
 def run_parallel_simulations(batch_id, input_file, log_queue, lock):
