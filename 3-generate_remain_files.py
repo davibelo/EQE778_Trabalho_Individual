@@ -31,6 +31,9 @@ for i, (initial_file, results_file) in enumerate(zip(initial_files, results_file
     # Filter out rows that are already simulated (present in results)
     remaining_df = merged_df[merged_df['_merge'] == 'left_only'].drop(columns=['_merge'])
 
+    # Shuffle the rows of the remaining dataframe
+    remaining_df = remaining_df.sample(frac=1).reset_index(drop=True)
+
     # Define the output file path
     output_file = f"remain_sim_points_part_{i}.csv"
     
@@ -39,6 +42,6 @@ for i, (initial_file, results_file) in enumerate(zip(initial_files, results_file
         os.remove(output_file)
         print(f"Existing file {output_file} deleted.")
 
-    # Save remaining points to a new CSV file
+    # Save shuffled remaining points to a new CSV file
     remaining_df.to_csv(output_file, index=False)
     print(f"Remaining points saved to {output_file}")
