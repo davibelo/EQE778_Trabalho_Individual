@@ -1,22 +1,29 @@
 import subprocess
 import time
-import os
-import signal
+import psutil
 
 def run_script(script_name):
     return subprocess.Popen(["python", script_name])
 
-def terminate_process(process):
-    if process.poll() is None:  # Check if process is still running
-        process.terminate()
-        try:
-            process.wait(timeout=5)  # Give it a few seconds to terminate gracefully
-        except subprocess.TimeoutExpired:
-            process.kill()  # Force kill if not terminated
+def terminate_process_and_children(process):
+    try:
+        parent = psutil.Process(process.pid)
+        # Attempt to terminate all child processes
+        for child in parent.children(recursive=True):
+            child.terminate()
+        parent.terminate()
+        parent.wait(timeout=5)
+    except (psutil.NoSuchProcess, subprocess.TimeoutExpired):
+        # Force kill if termination fails
+        for child in parent.children(recursive=True):
+            child.kill()
+        parent.kill()
 
 while True:
     print("Running 2-terminate_aspen.py")
     run_script("2-terminate_aspen.py").wait()
+    
+    time.sleep(5)  # Brief pause to ensure processes are fully terminated
     
     print("Running 3-generate_remain_files.py")
     run_script("3-generate_remain_files.py").wait()
@@ -24,10 +31,11 @@ while True:
     print("Running 4-simulate.py")
     simulate_process = run_script("4-simulate.py")
     
-    # Wait for 1 minute
-    time.sleep(60)
+    # Let 4-simulate.py run for 1 minute
+    time.sleep(20)
     
-    print("Stopping 4-simulate.py")
-    terminate_process(simulate_process)
+    print("Stopping 4-simulate.py and its subprocesses")
+    terminate_process_and_children(simulate_process)
     
     print("Restarting sequence...\n")
+    time.sleep(5)
