@@ -8,6 +8,7 @@ import time
 
 INPUT_FILE_TEMPLATE = 'remain_sim_points_part_{}.csv'
 RESULT_FILE_TEMPLATE = 'simulation_results_part_{}.csv'
+ERROR_FILE_TEMPLATE = 'error_sim_points_part_{}.csv'  # Error file template
 SIMULATION_FILE = r'UTAA_run\UTAA_revK.bkp'
 NUM_INSTANCES = 4
 
@@ -67,6 +68,14 @@ def save_result_to_csv(result, result_file):
             writer.writerow(['feedNH3', 'feedH2S', 'feedH20', 'QN1', 'QN2', 'QC', 'SF', 'H2S_ppm', 'NH3_ppm'])
         writer.writerow(result)
 
+def save_error_to_csv(point, error_file):
+    """Logs an error point to the specified error CSV file."""
+    with open(error_file, mode='a', newline='', encoding='utf-8') as csv_file:
+        writer = csv.writer(csv_file)
+        if os.path.getsize(error_file) == 0:
+            writer.writerow(['feedNH3', 'feedH2S', 'feedH20', 'QN1', 'QN2', 'QC', 'SF'])
+        writer.writerow(point)
+
 def start_aspen(instance_id, log_message):
     """Starts Aspen using the instance-specific copy of the simulation file and returns the Application object."""
     instance_file = f'{aspen_Path}_copy_{instance_id}.bkp'
@@ -83,7 +92,7 @@ def start_aspen(instance_id, log_message):
         log_message(f"Failed to start Aspen for instance {instance_id}: {e}", is_error=True)
         return None
 
-def simulate(x, Application, log_message, lock, result_file):
+def simulate(x, Application, log_message, lock, result_file, error_file):
     feedNH3, feedH2S, feedH20, QN1, QN2, QC, SF = x
 
     if not Application:
@@ -120,12 +129,16 @@ def simulate(x, Application, log_message, lock, result_file):
         return x + y
 
     except Exception as e:
-        log_message(f"Error simulating {x}: {e}", is_error=True)
+        error_message = str(e)
+        log_message(f"Error simulating {x}: {error_message}", is_error=True)        
+        if 'NoneType' in error_message:
+            save_error_to_csv(x, error_file)
         return None
 
 def run_parallel_simulations(batch_id, input_file, log_queue, lock):
     log_message = log_message_factory(log_queue)
     result_file = RESULT_FILE_TEMPLATE.format(batch_id)
+    error_file = ERROR_FILE_TEMPLATE.format(batch_id)
     Application = start_aspen(batch_id, log_message)
     results = []
 
@@ -133,7 +146,7 @@ def run_parallel_simulations(batch_id, input_file, log_queue, lock):
     points = load_points_from_csv(input_file)
 
     for point in points:
-        result = simulate(point, Application, log_message, lock, result_file)
+        result = simulate(point, Application, log_message, lock, result_file, error_file)
         if result:
             results.append(result)
 
