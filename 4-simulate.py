@@ -19,7 +19,7 @@ def log_worker(log_queue, log_file_path):
     flush_interval = 1  # seconds
     last_flush_time = time.time()
 
-    with open(log_file_path, 'a') as log_file:
+    with open(log_file_path, 'a', encoding='utf-8') as log_file:
         while True:
             try:
                 # Timeout allows us to periodically flush the buffer
@@ -61,7 +61,7 @@ def load_points_from_csv(filename):
 
 def save_result_to_csv(result, result_file):
     """Appends a single result row to the specified results CSV file."""
-    with open(result_file, mode='a', newline='') as csv_file:
+    with open(result_file, mode='a', newline='', encoding='utf-8') as csv_file:
         writer = csv.writer(csv_file)
         if os.path.getsize(result_file) == 0:
             writer.writerow(['feedNH3', 'feedH2S', 'feedH20', 'QN1', 'QN2', 'QC', 'SF', 'H2S_ppm', 'NH3_ppm'])
@@ -143,14 +143,20 @@ def run_parallel_simulations(batch_id, input_file, log_queue, lock):
 
 if __name__ == '__main__':
     freeze_support()
-    
+
+    # Define the path to the log file
+    log_file_path = f"{os.path.splitext(__file__)[0]}_log.log"
+
+    # Delete the log file if it exists
+    if os.path.exists(log_file_path):
+        os.remove(log_file_path)
+
     # Create a manager and lock for synchronizing file access
     manager = Manager()
     lock = manager.Lock()
 
     # Set up a global logging queue and process
     log_queue = manager.Queue()
-    log_file_path = f"{os.path.splitext(__file__)[0]}_log.log"
     log_process = Process(target=log_worker, args=(log_queue, log_file_path))
     log_process.start()
 
