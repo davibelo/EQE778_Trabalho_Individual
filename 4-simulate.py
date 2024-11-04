@@ -145,7 +145,7 @@ if __name__ == '__main__':
     freeze_support()
 
     # Define the path to the log file
-    log_file_path = f"{os.path.splitext(__file__)[0]}_log.log"
+    log_file_path = f"{os.path.splitext(__file__)[0]}.log"
 
     # Delete the log file if it exists
     if os.path.exists(log_file_path):
