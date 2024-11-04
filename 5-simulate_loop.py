@@ -31,7 +31,7 @@ while True:
     print("Running 4-simulate.py")
     simulate_process = run_script("4-simulate.py")
         
-    time.sleep(3600)
+    time.sleep(900)
     
     print("Stopping 4-simulate.py and its subprocesses")
     terminate_process_and_children(simulate_process)
