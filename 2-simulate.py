@@ -2,8 +2,9 @@ import os
 import shutil
 import csv
 import concurrent.futures
-from multiprocessing import Manager, freeze_support
+from multiprocessing import Manager, freeze_support, Process
 import win32com.client as win32
+import time
 
 INPUT_FILE_TEMPLATE = 'remain_sim_points_part_{}.csv'
 RESULT_FILE_TEMPLATE = 'simulation_results_part_{}.csv'
@@ -12,11 +13,37 @@ NUM_INSTANCES = 4
 
 aspen_Path = os.path.abspath(SIMULATION_FILE)
 
-def log_message_factory(log_file_path):
+def log_worker(log_queue, log_file_path):
+    """Worker that listens to log_queue and writes messages to the log file."""
+    buffer = []
+    flush_interval = 1  # seconds
+    last_flush_time = time.time()
+
+    with open(log_file_path, 'a') as log_file:
+        while True:
+            try:
+                # Timeout allows us to periodically flush the buffer
+                message = log_queue.get(timeout=flush_interval)
+                if message == "STOP":
+                    break
+                buffer.append(message)
+                print(message)  # Limited console output for monitoring
+            except:
+                pass  # Timeout reached; proceed to flush buffer
+
+            # Periodic buffer flush
+            current_time = time.time()
+            if current_time - last_flush_time >= flush_interval or len(buffer) > 100:
+                if buffer:
+                    log_file.write('\n'.join(buffer) + '\n')
+                    log_file.flush()
+                    buffer.clear()
+                    last_flush_time = current_time
+
+def log_message_factory(log_queue):
+    """Creates a logging function that adds messages to the log queue."""
     def log_message(message):
-        with open(log_file_path, 'a') as log_file:
-            log_file.write(message + '\n')
-            print(message)
+        log_queue.put(message)
     return log_message
 
 def load_points_from_csv(filename):
@@ -53,7 +80,7 @@ def start_aspen(instance_id, log_message):
         log_message(f"Failed to start Aspen for instance {instance_id}: {e}")
         return None
 
-def simulate(x, Application, log_message, lock, result_file, input_file):
+def simulate(x, Application, log_message, lock, result_file):
     feedNH3, feedH2S, feedH20, QN1, QN2, QC, SF = x
 
     if not Application:
@@ -93,10 +120,9 @@ def simulate(x, Application, log_message, lock, result_file, input_file):
         log_message(f"Error simulating {x}: {e}")
         return None
 
-def run_parallel_simulations(batch_id, input_file, lock):
-    log_file_path = f'{os.path.splitext(__file__)[0]}_batch_{batch_id}.log'
+def run_parallel_simulations(batch_id, input_file, log_queue, lock):
+    log_message = log_message_factory(log_queue)
     result_file = RESULT_FILE_TEMPLATE.format(batch_id)
-    log_message = log_message_factory(log_file_path)
     Application = start_aspen(batch_id, log_message)
     results = []
 
@@ -104,7 +130,7 @@ def run_parallel_simulations(batch_id, input_file, lock):
     points = load_points_from_csv(input_file)
 
     for point in points:
-        result = simulate(point, Application, log_message, lock, result_file, input_file)
+        result = simulate(point, Application, log_message, lock, result_file)
         if result:
             results.append(result)
 
@@ -113,20 +139,29 @@ def run_parallel_simulations(batch_id, input_file, lock):
     return results
 
 if __name__ == '__main__':
-    # Required for Windows to handle multiprocessing correctly
     freeze_support()
     
     # Create a manager and lock for synchronizing file access
     manager = Manager()
     lock = manager.Lock()
 
+    # Set up a global logging queue and process
+    log_queue = manager.Queue()
+    log_file_path = f"{os.path.splitext(__file__)[0]}_log.log"
+    log_process = Process(target=log_worker, args=(log_queue, log_file_path))
+    log_process.start()
+
     # Run simulations in parallel for each input file
     with concurrent.futures.ProcessPoolExecutor(max_workers=NUM_INSTANCES) as executor:
         futures = [
-            executor.submit(run_parallel_simulations, i + 1, INPUT_FILE_TEMPLATE.format(i + 1), lock)
+            executor.submit(run_parallel_simulations, i + 1, INPUT_FILE_TEMPLATE.format(i + 1), log_queue, lock)
             for i in range(NUM_INSTANCES)
         ]
         for future in concurrent.futures.as_completed(futures):
             future.result()  # Ensure exceptions in workers are raised
+
+    # Stop the logging process
+    log_queue.put("STOP")
+    log_process.join()
 
     print('Simulation results saved in multiple result files.')
