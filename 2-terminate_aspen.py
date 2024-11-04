@@ -11,8 +11,9 @@ def terminate_aspen_processes():
                 try:
                     process.terminate()  # Attempt to terminate the process
                     process.wait(timeout=5)  # Wait briefly for termination
+                    print(f"Terminated process {process.info['name']} (PID: {process.info['pid']})")
                 except (psutil.NoSuchProcess, psutil.AccessDenied):
-                    pass  # Ignore if the process does not exist or access is denied
+                    print(f"Failed to terminate process {process.info['name']} (PID: {process.info['pid']})")
 
 # Run the termination function
 if __name__ == "__main__":
