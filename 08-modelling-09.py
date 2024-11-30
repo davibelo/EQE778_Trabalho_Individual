@@ -24,7 +24,7 @@ logging.basicConfig(
 )
 
 # Model identification
-MODEL_ID = '10'
+MODEL_ID = '09'
 
 # Specify data and output folders
 INPUT_FOLDER = 'input_files'
