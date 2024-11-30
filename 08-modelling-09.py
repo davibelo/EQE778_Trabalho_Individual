@@ -41,7 +41,7 @@ logging.info(f"x scaled shape: {x_scaled.shape}")
 logging.info(f"y scaled shape: {y_scaled.shape}")
 
 # Split data into training and remaining (validation + test) sets
-x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.9, random_state=42)
+x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.7, random_state=42)
 
 # Split the remaining data into validation and test sets
 x_val_scaled, x_test_scaled, y_val_scaled, y_test_scaled = train_test_split(x_rem_scaled, y_rem_scaled, test_size=1/3, random_state=42)
@@ -56,10 +56,10 @@ logging.info(f"y_test shape: {y_test_scaled.shape}")
 # Optuna objective function
 def objective(trial):
     # Suggest hyperparameters
-    n_estimators = trial.suggest_int("n_estimators", 50, 300, step=50)
+    n_estimators = trial.suggest_int("n_estimators", 100, 300, step=10)
     max_depth = trial.suggest_int("max_depth", 10, 50, step=10)
     min_samples_split = trial.suggest_int("min_samples_split", 2, 10)
-    min_samples_leaf = trial.suggest_int("min_samples_leaf", 1, 5)
+    min_samples_leaf = trial.suggest_int("min_samples_leaf", 1, 10)
     
     # Define the Random Forest model
     rf_base_model = RandomForestClassifier(
@@ -95,7 +95,7 @@ def objective(trial):
 
 # Run Optuna optimization
 study = optuna.create_study(direction="maximize")
-study.optimize(objective, n_trials=20)  # Adjust `n_trials` for more extensive optimization
+study.optimize(objective, n_trials=50)  # Adjust `n_trials` for more extensive optimization
 
 # Log the best parameters and value
 logging.info(f"Best parameters: {study.best_params}")
