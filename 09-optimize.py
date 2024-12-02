@@ -188,27 +188,3 @@ logging.info(f'Number of function evaluations: {num_function_evals}')
 logging.info(f'Optimization success: {success}')
 logging.info(f'Message: {message}')
 logging.info(f'Maximum constraint violation (maxcv): {maxcv}')
-
-    
-    
-    
-
-
-
-
-
-    
-    example_input_data = np.array(
-        [[0.003, 0.007, 500000.0, 800000.0, 0.1]])    
-    try:
-        results = predict(example_input_data)
-        
-        # Print the results
-        print("Predicted Probabilities:")
-        print(results["predicted_probabilities"])
-        
-        print("\nPredicted Classes:")
-        print(results["predicted_classes"])
-        
-    except Exception as e:
-        print(f"An error occurred: {e}")
