@@ -1,16 +1,12 @@
-'''
-MODELLING - RANDOM FOREST WITH OPTIMIZED PARAMETERS
-BINARY LABELS
-'''
 import os
 import logging
 import joblib
 import numpy as np
 import optuna
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.multioutput import MultiOutputClassifier
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.multioutput import MultiOutputRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 # Dynamically generate the log file name based on the script name
 LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
@@ -19,7 +15,7 @@ LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
 logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
-        format='%(asctime)s - %(levelname)s - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s',
     filemode='w'
 )
 
@@ -62,7 +58,7 @@ def objective(trial):
     min_samples_leaf = trial.suggest_int("min_samples_leaf", 1, 10)
     
     # Define the Random Forest model
-    rf_base_model = RandomForestClassifier(
+    rf_base_model = RandomForestRegressor(
         n_estimators=n_estimators,
         max_depth=max_depth,
         min_samples_split=min_samples_split,
@@ -71,40 +67,38 @@ def objective(trial):
         n_jobs=-1
     )
     
-    multi_rf_model = MultiOutputClassifier(rf_base_model)
+    multi_rf_model = MultiOutputRegressor(rf_base_model)
     
     # Train the model
     multi_rf_model.fit(x_train_scaled, y_train_scaled)
     
     # Evaluate the model on the validation set
-    y_val_pred_proba = np.column_stack([estimator.predict_proba(x_val_scaled)[:, 1] for estimator in multi_rf_model.estimators_])
-    
-    # Calculate ROC AUC for each output and average them
-    roc_aucs = [roc_auc_score(y_val_scaled[:, i], y_val_pred_proba[:, i]) for i in range(y_val_scaled.shape[1])]
-    avg_roc_auc = np.mean(roc_aucs)
+    y_val_pred = multi_rf_model.predict(x_val_scaled)
+    mse = mean_squared_error(y_val_scaled, y_val_pred, multioutput='raw_values')
+    avg_mse = np.mean(mse)
     
     # Log the trial details
     logging.info(
         f"Trial {trial.number}: "
         f"n_estimators={n_estimators}, max_depth={max_depth}, "
         f"min_samples_split={min_samples_split}, min_samples_leaf={min_samples_leaf}, "
-        f"Avg ROC AUC={avg_roc_auc:.4f}"
+        f"Avg MSE={avg_mse:.4f}"
     )
     
-    return avg_roc_auc
+    return avg_mse
 
 # Run Optuna optimization
-study = optuna.create_study(direction="maximize")
+study = optuna.create_study(direction="minimize")
 study.optimize(objective, n_trials=50)  # Adjust `n_trials` for more extensive optimization
 
 # Log the best parameters and value
 logging.info(f"Best parameters: {study.best_params}")
-logging.info(f"Best validation ROC AUC: {study.best_value}")
+logging.info(f"Best validation MSE: {study.best_value}")
 
 # Train the final model using the best parameters
 best_params = study.best_params
 
-rf_base_model = RandomForestClassifier(
+rf_base_model = RandomForestRegressor(
     n_estimators=best_params["n_estimators"],
     max_depth=best_params["max_depth"],
     min_samples_split=best_params["min_samples_split"],
@@ -113,22 +107,24 @@ rf_base_model = RandomForestClassifier(
     n_jobs=-1
 )
 
-multi_rf_model = MultiOutputClassifier(rf_base_model)
+multi_rf_model = MultiOutputRegressor(rf_base_model)
 multi_rf_model.fit(x_train_scaled, y_train_scaled)
-logging.info("Final Multi-output Random Forest model training completed.")
+logging.info("Final Multi-output Random Forest Regressor training completed.")
 
 # Evaluate the model on the test set
-y_test_pred_proba = np.column_stack([estimator.predict_proba(x_test_scaled)[:, 1] for estimator in multi_rf_model.estimators_])
-y_test_pred_class = multi_rf_model.predict(x_test_scaled)
+y_test_pred = multi_rf_model.predict(x_test_scaled)
 
-test_accuracies = [accuracy_score(y_test_scaled[:, i], y_test_pred_class[:, i]) for i in range(y_test_scaled.shape[1])]
-test_roc_aucs = [roc_auc_score(y_test_scaled[:, i], y_test_pred_proba[:, i]) for i in range(y_test_scaled.shape[1])]
+# Calculate metrics for each output
+test_mse = mean_squared_error(y_test_scaled, y_test_pred, multioutput='raw_values')
+test_mae = mean_absolute_error(y_test_scaled, y_test_pred, multioutput='raw_values')
+test_r2 = [r2_score(y_test_scaled[:, i], y_test_pred[:, i]) for i in range(y_test_scaled.shape[1])]
 
-for i, (acc, roc) in enumerate(zip(test_accuracies, test_roc_aucs)):
-    logging.info(f"Test Accuracy (output {i}): {acc}")
-    logging.info(f"Test ROC AUC (output {i}): {roc}")
-    logging.info(f"Classification Report (output {i}):\n{classification_report(y_test_scaled[:, i], y_test_pred_class[:, i])}")
+for i, (mse, mae, r2) in enumerate(zip(test_mse, test_mae, test_r2)):
+    logging.info(f"Test MSE (output {i}): {mse}")
+    logging.info(f"Test MAE (output {i}): {mae}")
+    logging.info(f"Test R2 (output {i}): {r2}")
 
 # Save the optimized model
 joblib.dump(multi_rf_model, os.path.join(OUTPUT_FOLDER, f'optimized_multi_model-{MODEL_ID}.joblib'))
-logging.info(f"Optimized Multi-output Random Forest model saved as optimized_multi_model-{MODEL_ID}.joblib.")
+logging.info(f"Optimized Multi-output Random Forest Regressor model saved as optimized_multi_model-{MODEL_ID}.joblib.")
+
