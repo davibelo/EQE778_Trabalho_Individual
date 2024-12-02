@@ -1,8 +1,9 @@
 import os
 import logging
 import joblib
-import numpy as np
 import optuna
+import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.model_selection import train_test_split
@@ -20,11 +21,12 @@ logging.basicConfig(
 )
 
 # Model identification
-MODEL_ID = '03b'
+MODEL_ID = '03a'
 
 # Specify data and output folders
 INPUT_FOLDER = 'input_files'
 OUTPUT_FOLDER = 'output_files'
+FIGURES_FOLDER = 'figures'
 
 # Import x and y dataframes
 df_scaled_x = joblib.load(os.path.join(INPUT_FOLDER, 'df_scaled_x.joblib'))
@@ -90,7 +92,7 @@ def objective(trial):
 
 # Run Optuna optimization
 study = optuna.create_study(direction="maximize")
-study.optimize(objective, n_trials=10)  # Adjust `n_trials` for more extensive optimization
+study.optimize(objective, n_trials=1)  # Adjust `n_trials` for more extensive optimization
 
 # Log the best parameters and value
 logging.info(f"Best parameters: {study.best_params}")
@@ -128,28 +130,3 @@ for i, (mse, mae, r2) in enumerate(zip(test_mse, test_mae, test_r2)):
 # Save the optimized model
 joblib.dump(multi_rf_model, os.path.join(OUTPUT_FOLDER, f'optimized_multi_model-{MODEL_ID}.joblib'))
 logging.info(f"Optimized Multi-output Random Forest Regressor model saved as optimized_multi_model-{MODEL_ID}.joblib.")
-
-# Plot the True vs. Predicted values for the test set
-plt.figure()
-reta = np.random.uniform(low=-8.5, high=5, size=(50,))
-plt.plot(reta,reta, color='black', label='x = y') #plot reta x = y
-plt.scatter(y_test_scaled, y_test_pred, color='blue', marker='x')
-plt.legend(fontsize=15, loc='best')
-plt.xlabel('True Values', fontsize=15)
-plt.ylabel('Predicted Values', fontsize=15)
-plt.title('Prediction - RF - Test', fontsize=15)
-plt.tight_layout()
-plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_testpredictions_eng.png')
-plt.close()
-
-# Gráfico Resíduos ingles - teste
-residue = y_test_scaled.ravel() - y_test_pred.ravel()
-plt.figure()
-plt.grid(axis='y')
-plt.hist(x=residue, bins='auto', ec='black')
-plt.ylabel('Frequency', fontsize=15)
-plt.xlabel('Residue', fontsize=15)
-plt.title('Residue - RF - Test', fontsize=15)
-plt.tight_layout()
-plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_testresidue_eng.png')
-plt.close()
