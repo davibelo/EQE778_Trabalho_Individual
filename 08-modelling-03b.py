@@ -39,7 +39,7 @@ logging.info(f"x scaled shape: {x_scaled.shape}")
 logging.info(f"y scaled shape: {y_scaled.shape}")
 
 # Split data into training and remaining (validation + test) sets
-x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.9, random_state=42)
+x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.7, random_state=42)
 
 # Split the remaining data into validation and test sets
 x_val_scaled, x_test_scaled, y_val_scaled, y_test_scaled = train_test_split(x_rem_scaled, y_rem_scaled, test_size=1/3, random_state=42)
@@ -98,7 +98,7 @@ for i in range(y_train_scaled.shape[1]):
 
     # Log the best parameters and their value
     logging.info(f"Output {i + 1} - Best parameters: {study.best_params}")
-    logging.info(f"Output {i + 1} - Best validation R2: {study.best_value}")
+    logging.info(f"Output {i + 1} - Best validation: {study.best_value}")
 
     # Train the final model using the best parameters for the current output
     best_params = study.best_params

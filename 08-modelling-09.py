@@ -64,6 +64,7 @@ def objective(trial):
     # Define the Random Forest model
     rf_base_model = RandomForestClassifier(
         n_estimators=n_estimators,
+        n_estimators=n_estimators,
         max_depth=max_depth,
         min_samples_split=min_samples_split,
         min_samples_leaf=min_samples_leaf,
