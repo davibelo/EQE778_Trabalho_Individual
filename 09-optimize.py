@@ -2,6 +2,11 @@ import os
 import joblib
 import numpy as np
 import logging
+import win32com.client as win32
+from scipy.optimize import minimize
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from scipy.interpolate import griddata
 
 # Dynamically generate the log file name based on the script name
 LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
@@ -10,7 +15,7 @@ LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
 logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
-    format='%(asctime)s - %(message)s',
+    format='%(asctime)s - %(levelname)s - %(message)s',
     filemode='w'
 )
 
@@ -41,8 +46,19 @@ except FileNotFoundError as e:
     logging.error(f"Scaler file not found: {SCALER_PATH}")
     raise e
 
+aspen_file = r"UTAA_revK.bkp"
+aspen_path = os.path.abspath(aspen_file)
+
+print('Connecting to the Aspen Plus... Please wait ')
+Application = win32.Dispatch('Apwn.Document')  # Registered name of Aspen Plus
+print('Connected!')
+
+Application.InitFromArchive2(aspen_Path)
+Application.visible = 0
+
+
 # Function to preprocess input data and make predictions
-def predict_with_model(input_data):
+def predict(input_data):
     """
     Preprocess the input data using the scaler and predict the binary labels
     using the loaded model.
@@ -80,11 +96,18 @@ def predict_with_model(input_data):
 # Example usage
 if __name__ == "__main__":
     # feedNH3 feedH2S QN1 QN2 SF
+    
+    
+
+
+
+
+
+    
     example_input_data = np.array(
-        [[0.003, 0.007, 500000.0, 800000.0, 0.1]])
-    print(example_input_data)
+        [[0.003, 0.007, 500000.0, 800000.0, 0.1]])    
     try:
-        results = predict_with_model(example_input_data)
+        results = predict(example_input_data)
         
         # Print the results
         print("Predicted Probabilities:")

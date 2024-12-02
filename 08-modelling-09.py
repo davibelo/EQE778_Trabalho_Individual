@@ -19,7 +19,7 @@ LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
 logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
-    format='%(asctime)s - %(message)s',
+        format='%(asctime)s - %(levelname)s - %(message)s',
     filemode='w'
 )
 
