@@ -79,12 +79,10 @@ def predict_with_model(input_data):
 
 # Example usage
 if __name__ == "__main__":
-    # feedNH3 feedH2S QN1 QN2 QC SF
-    example_input_data = np.array([        
-        [0.003, 0.007, 500000.0, 800000.0, 3.0, 0.1]   # Example raw data point 1
-        [0.005, 0.004, 600000.0, 900000.0, 3.0, 0.5]   # Example raw data point 1
-    ])
-    
+    # feedNH3 feedH2S QN1 QN2 SF
+    example_input_data = np.array(
+        [[0.003, 0.007, 500000.0, 800000.0, 0.1]])
+    print(example_input_data)
     try:
         results = predict_with_model(example_input_data)
         
