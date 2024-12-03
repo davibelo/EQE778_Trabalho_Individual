@@ -54,7 +54,6 @@ logging.info(f"x_test shape: {x_test_scaled.shape}")
 logging.info(f"y_test shape: {y_test_scaled.shape}")
 
 # Train and optimize separate models for each output
-final_models = {}
 for i in range(y_scaled.shape[1]):
     logging.info(f"Starting optimization for output {i}")
     
@@ -131,6 +130,5 @@ for i in range(y_scaled.shape[1]):
     logging.info(f"Classification Report (output {i}):\n{classification_report(y_test, y_test_pred_class)}")
     
     # Save the model and its metrics
-    final_models[f"output_{i}"] = rf_model
-    joblib.dump(rf_model, os.path.join(OUTPUT_FOLDER, f'optimized_model_output_{i}-{MODEL_ID}.joblib'))
-    logging.info(f"Optimized Random Forest model for output {i} saved as optimized_model_output_{i}-{MODEL_ID}.joblib.")
+    joblib.dump(rf_model, os.path.join(OUTPUT_FOLDER, f'opt_model-{MODEL_ID}-output{i}.joblib'))
+    logging.info(f"Optimized Random Forest model for output {i} saved as opt_model-{MODEL_ID}-output{i}.joblib.")
