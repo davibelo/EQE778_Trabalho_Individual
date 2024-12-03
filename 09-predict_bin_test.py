@@ -16,14 +16,14 @@ logging.basicConfig(
 )
 
 # Model and scaler identification
-MODEL_ID = '09'
+MODEL_ID = '10'
 
 # Specify the input and output folders
 INPUT_FOLDER = 'input_files'
 OUTPUT_FOLDER = 'output_files'
 
 # Paths to the optimized model and scaler files
-MODEL_PATH = os.path.join(OUTPUT_FOLDER, f'optimized_multi_model-{MODEL_ID}.joblib')
+MODEL_LIST_PATH = [os.path.join(OUTPUT_FOLDER, f'opt_model-{MODEL_ID}-output.joblib') for i in range(2)]
 SCALER_PATH = os.path.join(INPUT_FOLDER, 'scaler2_x.joblib')
 
 # Load the optimized model
