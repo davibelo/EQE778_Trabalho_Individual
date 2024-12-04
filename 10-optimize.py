@@ -47,7 +47,6 @@ logging.info("Optimized Models loaded successfully.")
 input_scaler = joblib.load(os.path.join(INPUT_FOLDER, SCALER_FILE))
 logging.info("Input scaler loaded successfully.")
 
-
 # Load columns names
 columns_x = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_X_FILE))
 columns_y = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_Y_FILE))
@@ -62,9 +61,8 @@ print('Connecting to the Aspen Plus... Please wait ')
 Application = win32.Dispatch('Apwn.Document')  # Registered name of Aspen Plus
 print('Connected!')
 
-Application.InitFromArchive2(aspen_Path)
+Application.InitFromArchive2(aspen_path)
 Application.visible = 0
-
 
 # Function to preprocess input data and make predictions
 def predict(input_data, input_scaler, models):
@@ -104,42 +102,6 @@ def predict(input_data, input_scaler, models):
         logging.error(f"Error during prediction: {e}")
         raise e
 
-# Initial guess
-x0 = [0.005, 0.004, 560000, 950000, 0.5] # feedNH3 feedH2S QN1 QN2 SF
-
-# Scaling factors
-scale_factors = [0.01, 0.01, 1e5, 1e5, 0.1]
-
-# Lists to store non-scaled x values and corresponding objective function values
-x_values = []
-objective_values = []
-
-# Function to preprocess input data and make predictions
-def predict(input_data):
-    try:
-        # Scale the input data
-        scaled_input_data = input_scaler.transform(input_data)
-        
-        # Predict probabilities
-        predicted_probabilities = np.column_stack(
-            [estimator.predict_proba(scaled_input_data)[:, 1] for estimator in multi_rf_model.estimators_]
-        )
-        
-        # Predict binary classes
-        predicted_classes = multi_rf_model.predict(scaled_input_data)
-        
-        # Log and return results
-        logging.info(f"Input data shape: {input_data.shape}")
-        logging.info("Prediction completed successfully.")
-        
-        return {
-            "predicted_probabilities": predicted_probabilities,
-            "predicted_classes": predicted_classes
-        }
-    except Exception as e:
-        logging.error(f"Error during prediction: {e}")
-        raise e
- 
 # Objective function to minimize (with scaling)
 def cost(x_scaled):
     x = [x_scaled[0] * scale_factors[0], 
@@ -195,6 +157,16 @@ def bound_SF_lower(x_scaled):
 def bound_SF_upper(x_scaled):
     SF_upper = 1
     return (SF_upper / scale_factors[4]) - x_scaled[4]
+
+# Initial guess
+x0 = [0.005, 0.004, 560000, 950000, 0.5] # feedNH3 feedH2S QN1 QN2 SF
+
+# Scaling factors
+scale_factors = [0.01, 0.01, 1e5, 1e5, 0.1]
+
+# Lists to store non-scaled x values and corresponding objective function values
+x_values = []
+objective_values = []
 
 # Initial guess (with scaling)
 x0_scaled = [x0[i] / scale_factors[i] for i in range(4)]
