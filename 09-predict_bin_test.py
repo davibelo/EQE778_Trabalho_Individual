@@ -32,47 +32,50 @@ models = [
     for i in range(2)
 ]
 
-multi_rf_model = [joblib.load(model) for model in models]
+rf_models = [joblib.load(model) for model in models]
 logging.info("Optimized Models loaded successfully.")
 
 input_scaler = joblib.load(os.path.join(INPUT_FOLDER, SCALER_FILE))
 logging.info("Input scaler loaded successfully.")
 
-# # Function to preprocess input data and make predictions
-# def predict_with_model(input_data):
-#     """
-#     Preprocess the input data using the scaler and predict the binary labels
-#     using the loaded model.
-    
-#     Args:
-#         input_data (np.ndarray): A NumPy array containing the raw input data. Each row is a data point.
-    
-#     Returns:
-#         dict: A dictionary containing probabilities and predicted classes.
-#     """
-#     try:
-#         # Scale the input data
-#         scaled_input_data = input_scaler.transform(input_data)
-        
-#         # Predict probabilities
-#         predicted_probabilities = np.column_stack(
-#             [estimator.predict_proba(scaled_input_data)[:, 1] for estimator in multi_rf_model.estimators_]
-#         )
-        
-#         # Predict binary classes
-#         predicted_classes = multi_rf_model.predict(scaled_input_data)
-        
-#         # Log and return results
-#         logging.info(f"Input data shape: {input_data.shape}")
-#         logging.info("Prediction completed successfully.")
-        
-#         return {
-#             "predicted_probabilities": predicted_probabilities,
-#             "predicted_classes": predicted_classes
-#         }
-#     except Exception as e:
-#         logging.error(f"Error during prediction: {e}")
-#         raise e
+# Function to preprocess input data and make predictions
+def predict(input_data, input_scaler, models):
+    try:
+        # Scale the input data
+        scaled_input_data = input_scaler.transform(input_data)
+
+        # Initialize lists to store results
+        predicted_probabilities = []
+        predicted_classes = []
+
+        # Loop through each model and make predictions
+        for model in models:
+            # Predict probabilities for the positive class (index 1)
+            probabilities = model.predict_proba(scaled_input_data)[:, 1]
+            predicted_probabilities.append(probabilities)
+
+            # Predict binary classes
+            classes = model.predict(scaled_input_data)
+            predicted_classes.append(classes)
+
+        # Convert results to numpy arrays
+        predicted_probabilities = np.column_stack(predicted_probabilities)
+        predicted_classes = np.column_stack(predicted_classes)
+
+        # Log and return results
+        logging.info(f"Input data shape: {input_data.shape}")
+        logging.info(f"Predicted probabilities shape: {predicted_probabilities.shape}")
+        logging.info(f"Predicted classes shape: {predicted_classes.shape}")
+        logging.info("Prediction completed successfully.")
+
+        return {
+            "predicted_probabilities": predicted_probabilities,
+            "predicted_classes": predicted_classes
+        }
+    except Exception as e:
+        logging.error(f"Error during prediction: {e}")
+        raise e
+
 
 # # Example usage
 # if __name__ == "__main__":
