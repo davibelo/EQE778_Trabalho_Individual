@@ -76,7 +76,7 @@ def predict(input_data, input_scaler, models):
         logging.error(f"Error during prediction: {e}")
         raise e
 
-
+        
 # Example usage
 if __name__ == "__main__":
     # Define the column names
@@ -89,8 +89,10 @@ if __name__ == "__main__":
 
     # Convert the NumPy array to a pandas DataFrame with column names
     example_input_df = pd.DataFrame(example_input_data, columns=column_names)
+
     try:
-        results = predict_with_model(example_input_df)
+        # Call the predict function with the example data
+        results = predict(example_input_df, input_scaler, rf_models)
         
         # Print the results
         print("Predicted Probabilities:")
