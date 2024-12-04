@@ -43,6 +43,9 @@ logging.info("Input scaler loaded successfully.")
 
 columns_x = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_X_FILE))
 columns_y = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_Y_FILE))
+print("Column x: ", columns_x)
+print("Column y: ", columns_y)
+
 
 # Function to preprocess input data and make predictions
 def predict(input_data, input_scaler, models):
@@ -83,29 +86,23 @@ def predict(input_data, input_scaler, models):
         raise e
 
 
-# Example usage
-if __name__ == "__main__":
-    # Define the column names
-    column_names = columns_x
+# Example input data as a NumPy array
+example_input_data = np.array(
+    [[0.004, 0.005, 600000.0, 1000000.0, 0.5]]
+)
 
-    # Example input data as a NumPy array
-    example_input_data = np.array(
-        [[0.004, 0.005, 600000.0, 700000.0, 1]]
-    )
-
-    # Convert the NumPy array to a pandas DataFrame with column names
-    example_input_df = pd.DataFrame(example_input_data, columns=column_names)
-
-    try:
-        # Call the predict function with the example data
-        results = predict(example_input_df, input_scaler, models)
-        
-        # Print the results
-        print("Predicted Probabilities:")
-        print(results["predicted_probabilities"])
-        
-        print("\nPredicted Classes:")
-        print(results["predicted_classes"])
-        
-    except Exception as e:
-        print(f"An error occurred: {e}")
+# Convert the NumPy array to a pandas DataFrame with column names
+example_input_df = pd.DataFrame(example_input_data, columns=columns_x)
+try:
+    # Call the predict function with the example data
+    results = predict(example_input_df, input_scaler, models)
+    
+    # Print the results
+    print("Predicted Probabilities:")
+    print(results["predicted_probabilities"])
+    
+    print("\nPredicted Classes:")
+    print(results["predicted_classes"])
+    
+except Exception as e:
+    print(f"An error occurred: {e}")
