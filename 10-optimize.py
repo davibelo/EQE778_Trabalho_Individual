@@ -3,11 +3,7 @@ import joblib
 import logging
 import win32com.client as win32
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 from scipy.optimize import minimize
-from mpl_toolkits.mplot3d import Axes3D
-from scipy.interpolate import griddata
 
 # Dynamically generate the log file name based on the script name
 LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
@@ -50,8 +46,6 @@ logging.info("Input scaler loaded successfully.")
 # Load columns names
 columns_x = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_X_FILE))
 columns_y = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_Y_FILE))
-print("Column x: ", columns_x)
-print("Column y: ", columns_y)
 
 # Aspen Plus connection
 aspen_file = r"UTAA_revK.bkp"
@@ -68,7 +62,7 @@ Application.visible = 0
 def predict(input_data, input_scaler, models):
     try:
         # Scale the input data
-        scaled_input_data = input_scaler.transform(input_data)
+        scaled_input_data = input_scaler.transform([input_data])
 
         # Initialize lists to store results
         predicted_probabilities = []
@@ -76,22 +70,18 @@ def predict(input_data, input_scaler, models):
 
         # Loop through each model and make predictions
         for model in models:
-            # Predict probabilities for the positive class (index 1)
+            # Predict probabilities for the positive class
             probabilities = model.predict_proba(scaled_input_data)[:, 1]
             predicted_probabilities.append(probabilities)
 
-            # Predict binary classes
+            # Predict binary class
             classes = model.predict(scaled_input_data)
             predicted_classes.append(classes)
 
-        # Convert results to numpy arrays
-        predicted_probabilities = np.column_stack(predicted_probabilities)
-        predicted_classes = np.column_stack(predicted_classes)
-
         # Log and return results
-        logging.info(f"Input data shape: {input_data.shape}")
-        logging.info(f"Predicted probabilities shape: {predicted_probabilities.shape}")
-        logging.info(f"Predicted classes shape: {predicted_classes.shape}")
+        logging.info(f"Input data shape: {np.array(input_data).shape}")
+        logging.info(f"Predicted probabilities: {predicted_probabilities}")
+        logging.info(f"Predicted classes: {predicted_classes}")
         logging.info("Prediction completed successfully.")
 
         return {
@@ -102,15 +92,10 @@ def predict(input_data, input_scaler, models):
         logging.error(f"Error during prediction: {e}")
         raise e
 
-# Objective function to minimize (with scaling)
+# Objective function to minimize
 def cost(x_scaled):
-    x = [x_scaled[0] * scale_factors[0], 
-         x_scaled[1] * scale_factors[1], 
-         x_scaled[2] * scale_factors[2], 
-         x_scaled[3] * scale_factors[3],
-         x_scaled[4] * scale_factors[4]]
+    x = input_scaler.inverse_transform([x_scaled])[0]
     total_cost = x[2] + x[3]
-    # Store the non-scaled x values and total cost
     x_values.append(x)  # Store non-scaled x
     objective_values.append(total_cost)  # Store objective function value
     logging.info(f"Total Cost: {total_cost}")
@@ -118,58 +103,40 @@ def cost(x_scaled):
 
 # Constraint 1 (H2S PPM >= 0.2)
 def constraint1(x_scaled):
-    results = predict(x_scaled)
+    x = input_scaler.inverse_transform([x_scaled])[0]
+    results = predict(x, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
-    return 0.6 - cH2S_prob  # >=0.6
+    return cH2S_prob - 0.6
 
 # Constraint 2 (NH3 PPM >= 15)
 def constraint2(x_scaled):
-    results = predict(x_scaled)
+    x = input_scaler.inverse_transform([x_scaled])[0]
+    results = predict(x, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
-    return 0.6 - cNH3_prob  # >=0.6
+    return cNH3_prob - 0.6
 
-# Lower bound constraint for QN1
+# Bound constraints (already in scaled space)
 def bound_QN1_lower(x_scaled):
-    QN1_lower = 450000
-    return x_scaled[2] - QN1_lower
+    return x_scaled[2] - input_scaler.transform([[0, 0, 450000, 0, 0]])[0, 2]
 
-# Upper bound constraint for QN1
 def bound_QN1_upper(x_scaled):
-    QN1_upper = 600000
-    return (QN1_upper - x_scaled[2]
+    return input_scaler.transform([[0, 0, 600000, 0, 0]])[0, 2] - x_scaled[2]
 
-# Lower bound constraint for QN2
 def bound_QN2_lower(x_scaled):
-    QN2_lower = 700000
-    return x_scaled[3] - QN2_lower
+    return x_scaled[3] - input_scaler.transform([[0, 0, 0, 700000, 0]])[0, 3]
 
-# Upper bound constraint for QN2
 def bound_QN2_upper(x_scaled):
-    QN2_upper = 1200000
-    return QN2_upper - x_scaled[3]
+    return input_scaler.transform([[0, 0, 0, 1200000, 0]])[0, 3] - x_scaled[3]
 
-# Lower bound constraint for SF
 def bound_SF_lower(x_scaled):
-    SF_lower = 0
-    return x_scaled[4] - SF_lower
+    return x_scaled[4] - input_scaler.transform([[0, 0, 0, 0, 0]])[0, 4]
 
-# Upper bound constraint for SF
 def bound_SF_upper(x_scaled):
-    SF_upper = 1
-    return SF_upper - x_scaled[4]
+    return input_scaler.transform([[0, 0, 0, 0, 1]])[0, 4] - x_scaled[4]
 
 # Initial guess
-x0 = [0.005, 0.004, 560000, 950000, 0.5] # feedNH3 feedH2S QN1 QN2 SF
-
-# # Scaling factors
-# scale_factors = [0.01, 0.01, 1e5, 1e5, 0.1]
-
-# Lists to store non-scaled x values and corresponding objective function values
-x_values = []
-objective_values = []
-
-# Initial guess (with scaling)
-x0_scaled = [x0[i] / scale_factors[i] for i in range(4)]
+x0 = [0.005, 0.004, 560000, 950000, 0.5]  # feedNH3, feedH2S, QN1, QN2, SF
+x0_scaled = input_scaler.transform([x0])[0]
 
 # Define constraints as a list of dictionaries
 constraints = [
@@ -178,7 +145,7 @@ constraints = [
     {'type': 'ineq', 'fun': bound_QN1_lower},  # QN1 lower bound
     {'type': 'ineq', 'fun': bound_QN1_upper},  # QN1 upper bound
     {'type': 'ineq', 'fun': bound_QN2_lower},  # QN2 lower bound
-    {'type': 'ineq', 'fun': bound_QN2_upper},  # QN2 upper bound    
+    {'type': 'ineq', 'fun': bound_QN2_upper},  # QN2 upper bound
     {'type': 'ineq', 'fun': bound_SF_lower},   # SF lower bound
     {'type': 'ineq', 'fun': bound_SF_upper}    # SF upper bound
 ]
@@ -188,14 +155,18 @@ options = {
     'tol': 1e-2
 }
 
-# Solving the optimization problem with COBYLA
+# Lists to store results
+x_values = []
+objective_values = []
+
+# Solving the optimization problem
 result = minimize(cost, x0_scaled, method='COBYLA', constraints=constraints, options=options)
 
 # Rescale the results
 opt_scaled = result.x
-opt = [opt_scaled[i] * scale_factors[i] for i in range(len(opt_scaled))]
+opt = input_scaler.inverse_transform([opt_scaled])[0]
 
-# Output results and check maxcv (maximum constraint violation)
+# Output results
 cost_min = result.fun
 num_function_evals = result.nfev
 success = result.success
