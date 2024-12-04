@@ -131,38 +131,38 @@ def constraint2(x_scaled):
 # Lower bound constraint for QN1
 def bound_QN1_lower(x_scaled):
     QN1_lower = 450000
-    return x_scaled[2] - (QN1_lower / scale_factors[0])
+    return x_scaled[2] - QN1_lower
 
 # Upper bound constraint for QN1
 def bound_QN1_upper(x_scaled):
     QN1_upper = 600000
-    return (QN1_upper / scale_factors[2]) - x_scaled[2]
+    return (QN1_upper - x_scaled[2]
 
 # Lower bound constraint for QN2
 def bound_QN2_lower(x_scaled):
     QN2_lower = 700000
-    return x_scaled[3] - (QN2_lower / scale_factors[3])
+    return x_scaled[3] - QN2_lower
 
 # Upper bound constraint for QN2
 def bound_QN2_upper(x_scaled):
     QN2_upper = 1200000
-    return (QN2_upper / scale_factors[3]) - x_scaled[3]
+    return QN2_upper - x_scaled[3]
 
 # Lower bound constraint for SF
 def bound_SF_lower(x_scaled):
     SF_lower = 0
-    return x_scaled[4] - (SF_lower / scale_factors[4])
+    return x_scaled[4] - SF_lower
 
 # Upper bound constraint for SF
 def bound_SF_upper(x_scaled):
     SF_upper = 1
-    return (SF_upper / scale_factors[4]) - x_scaled[4]
+    return SF_upper - x_scaled[4]
 
 # Initial guess
 x0 = [0.005, 0.004, 560000, 950000, 0.5] # feedNH3 feedH2S QN1 QN2 SF
 
-# Scaling factors
-scale_factors = [0.01, 0.01, 1e5, 1e5, 0.1]
+# # Scaling factors
+# scale_factors = [0.01, 0.01, 1e5, 1e5, 0.1]
 
 # Lists to store non-scaled x values and corresponding objective function values
 x_values = []
