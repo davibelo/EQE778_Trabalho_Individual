@@ -23,20 +23,26 @@ INPUT_FOLDER = 'input_files'
 OUTPUT_FOLDER = 'output_files'
 
 # Paths to the optimized model and scaler files
-# Paths to the optimized model and scaler files
 SCALER_FILE = 'scaler2_x.joblib'
 MODELS_FILE = 'opt_model-{model_id}-output-{output_number}.joblib'
 
-models = [
+# Paths to columns names
+COLUMNS_X_FILE = 'df2_scaled_x_columns.joblib'
+COLUMNS_Y_FILE = 'df2_bin_y_columns.joblib'
+
+models_paths = [
     os.path.join(OUTPUT_FOLDER, MODELS_FILE.format(model_id=MODEL_ID, output_number=i))
     for i in range(2)
 ]
 
-rf_models = [joblib.load(model) for model in models]
+models = [joblib.load(model) for model in models_paths]
 logging.info("Optimized Models loaded successfully.")
 
 input_scaler = joblib.load(os.path.join(INPUT_FOLDER, SCALER_FILE))
 logging.info("Input scaler loaded successfully.")
+
+columns_x = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_X_FILE))
+columns_y = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_Y_FILE))
 
 # Function to preprocess input data and make predictions
 def predict(input_data, input_scaler, models):
@@ -76,11 +82,11 @@ def predict(input_data, input_scaler, models):
         logging.error(f"Error during prediction: {e}")
         raise e
 
-        
+
 # Example usage
 if __name__ == "__main__":
     # Define the column names
-    column_names = ["feedNH3", "feedH2S", "QN1", "QN2", "SF"]
+    column_names = columns_x
 
     # Example input data as a NumPy array
     example_input_data = np.array(
@@ -92,7 +98,7 @@ if __name__ == "__main__":
 
     try:
         # Call the predict function with the example data
-        results = predict(example_input_df, input_scaler, rf_models)
+        results = predict(example_input_df, input_scaler, models)
         
         # Print the results
         print("Predicted Probabilities:")
