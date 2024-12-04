@@ -77,27 +77,27 @@ def predict(input_data, input_scaler, models):
         raise e
 
 
-# # Example usage
-# if __name__ == "__main__":
-#     # Define the column names
-#     column_names = ["feedNH3", "feedH2S", "QN1", "QN2", "SF"]
+# Example usage
+if __name__ == "__main__":
+    # Define the column names
+    column_names = ["feedNH3", "feedH2S", "QN1", "QN2", "SF"]
 
-#     # Example input data as a NumPy array
-#     example_input_data = np.array(
-#         [[0.004, 0.005, 600000.0, 700000.0, 1]]
-#     )
+    # Example input data as a NumPy array
+    example_input_data = np.array(
+        [[0.004, 0.005, 600000.0, 700000.0, 1]]
+    )
 
-#     # Convert the NumPy array to a pandas DataFrame with column names
-#     example_input_df = pd.DataFrame(example_input_data, columns=column_names)
-#     try:
-#         results = predict_with_model(example_input_df)
+    # Convert the NumPy array to a pandas DataFrame with column names
+    example_input_df = pd.DataFrame(example_input_data, columns=column_names)
+    try:
+        results = predict_with_model(example_input_df)
         
-#         # Print the results
-#         print("Predicted Probabilities:")
-#         print(results["predicted_probabilities"])
+        # Print the results
+        print("Predicted Probabilities:")
+        print(results["predicted_probabilities"])
         
-#         print("\nPredicted Classes:")
-#         print(results["predicted_classes"])
+        print("\nPredicted Classes:")
+        print(results["predicted_classes"])
         
-#     except Exception as e:
-#         print(f"An error occurred: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
