@@ -130,5 +130,5 @@ for i in range(y_scaled.shape[1]):
     logging.info(f"Classification Report (output {i}):\n{classification_report(y_test, y_test_pred_class)}")
     
     # Save the model and its metrics
-    joblib.dump(rf_model, os.path.join(OUTPUT_FOLDER, f'opt_model-{MODEL_ID}-output{i}.joblib'))
-    logging.info(f"Optimized Random Forest model for output {i} saved as opt_model-{MODEL_ID}-output{i}.joblib.")
+    joblib.dump(rf_model, os.path.join(OUTPUT_FOLDER, f'opt_model-{MODEL_ID}-output-{i}.joblib'))
+    logging.info(f"Optimized Random Forest model for output {i} saved as opt_model-{MODEL_ID}-output-{i}.joblib.")
