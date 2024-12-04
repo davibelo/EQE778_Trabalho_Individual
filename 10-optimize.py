@@ -48,8 +48,12 @@ columns_x = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_X_FILE))
 columns_y = joblib.load(os.path.join(INPUT_FOLDER, COLUMNS_Y_FILE))
 
 # Aspen Plus connection
-aspen_file = r"UTAA_revK.bkp"
-aspen_path = os.path.abspath(aspen_file)
+ASPEN_FILE_FOLDER = 'UTAA_run'  # Specify the folder where the Aspen Plus file is located
+ASPEN_FILE = 'UTAA_revK.bkp'  # File name
+aspen_path = os.path.abspath(os.path.join(ASPEN_FILE_FOLDER, ASPEN_FILE))  # Build the full path
+
+# Print the full path for verification (optional)
+print(f"Full Aspen file path: {aspen_path}")
 
 print('Connecting to the Aspen Plus... Please wait ')
 Application = win32.Dispatch('Apwn.Document')  # Registered name of Aspen Plus
