@@ -65,8 +65,12 @@ Application.visible = 0
 # Function to preprocess input data and make predictions
 def predict(fixed_inputs, optimization_inputs, input_scaler, models):
     try:
+        # Ensure both inputs are arrays for compatibility
+        fixed_inputs = np.array(fixed_inputs)
+        optimization_inputs = np.array(optimization_inputs)
+
         # Combine fixed inputs and optimization inputs
-        full_input = fixed_inputs + list(optimization_inputs)
+        full_input = np.concatenate((fixed_inputs, optimization_inputs))
 
         # Scale the input data
         scaled_input_data = input_scaler.transform([full_input])
@@ -101,7 +105,10 @@ def predict(fixed_inputs, optimization_inputs, input_scaler, models):
 
 # Objective function to minimize
 def cost(opt_inputs_scaled, fixed_inputs, input_scaler):
-    full_input_scaled = fixed_inputs + list(opt_inputs_scaled)
+    fixed_inputs = np.array(fixed_inputs)
+    opt_inputs_scaled = np.array(opt_inputs_scaled)
+
+    full_input_scaled = np.concatenate((fixed_inputs, opt_inputs_scaled))
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     total_cost = full_input[2] + full_input[3]
     x_values.append(full_input)  # Store non-scaled full input
@@ -111,12 +118,22 @@ def cost(opt_inputs_scaled, fixed_inputs, input_scaler):
 
 # Constraint 1 (H2S PPM >= 0.2)
 def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
+    fixed_inputs = np.array(fixed_inputs)
+    opt_inputs_scaled = np.array(opt_inputs_scaled)
+
+    full_input_scaled = np.concatenate((fixed_inputs, opt_inputs_scaled))
+    full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
     return cH2S_prob - 0.6
 
 # Constraint 2 (NH3 PPM >= 15)
 def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
+    fixed_inputs = np.array(fixed_inputs)
+    opt_inputs_scaled = np.array(opt_inputs_scaled)
+
+    full_input_scaled = np.concatenate((fixed_inputs, opt_inputs_scaled))
+    full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
     return cNH3_prob - 0.6
@@ -141,11 +158,11 @@ def bound_SF_upper(opt_inputs_scaled):
     return input_scaler.transform([[0, 0, 0, 0, 1]])[0, 4] - opt_inputs_scaled[2]
 
 # Fixed inputs
-fixed_inputs = [0.005, 0.004]  # feedNH3, feedH2S
+fixed_inputs = input_scaler.transform([[0.005, 0.004, 0, 0, 0]])[0][:2]  # feedNH3, feedH2S (scaled)
 
-# Initial guess for optimization variables
+# Initial guess for optimization variables (scaled)
 x0 = [560000, 950000, 0.5]  # QN1, QN2, SF
-x0_scaled = input_scaler.transform([fixed_inputs + x0])[0][2:]
+x0_scaled = input_scaler.transform([[0.005, 0.004] + x0])[0][2:]
 
 # Define constraints as a list of dictionaries
 constraints = [
@@ -169,11 +186,18 @@ x_values = []
 objective_values = []
 
 # Solving the optimization problem
-result = minimize(cost, x0_scaled, method='COBYLA', constraints=constraints, options=options, args=(fixed_inputs, input_scaler))
+result = minimize(
+    cost,
+    x0_scaled,
+    method='COBYLA',
+    constraints=constraints,
+    options=options,
+    args=(fixed_inputs, input_scaler)
+)
 
 # Rescale the results
 opt_scaled = result.x
-opt_full_scaled = fixed_inputs + list(opt_scaled)
+opt_full_scaled = np.concatenate((fixed_inputs, opt_scaled))
 opt = input_scaler.inverse_transform([opt_full_scaled])[0]
 
 # Output results
