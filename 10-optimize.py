@@ -117,7 +117,6 @@ def cost(opt_inputs_scaled, fixed_inputs, input_scaler):
 def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     fixed_inputs = np.array(fixed_inputs)
     opt_inputs_scaled = np.array(opt_inputs_scaled)
-
     full_input_scaled = np.concatenate((fixed_inputs, opt_inputs_scaled))
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
@@ -128,7 +127,6 @@ def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
 def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     fixed_inputs = np.array(fixed_inputs)
     opt_inputs_scaled = np.array(opt_inputs_scaled)
-
     full_input_scaled = np.concatenate((fixed_inputs, opt_inputs_scaled))
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
