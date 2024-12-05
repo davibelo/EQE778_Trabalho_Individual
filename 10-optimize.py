@@ -160,6 +160,7 @@ fixed_inputs = input_scaler.transform([[0.005, 0.004, 0, 0, 0]])[0][:2]  # feedN
 # Initial guess for optimization variables (scaled)
 x0 = [560000, 950000, 0.5]  # QN1, QN2, SF
 x0_scaled = input_scaler.transform([[0.005, 0.004] + x0])[0][2:]
+logging.info(f"Initial guess (scaled): {x0_scaled}")
 
 # Define constraints as a list of dictionaries
 constraints = [
