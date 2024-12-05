@@ -63,23 +63,23 @@ aspen_path = os.path.abspath(os.path.join(ASPEN_FILE_FOLDER, ASPEN_FILE))  # Bui
 # Function to preprocess input data and make predictions
 def predict(input_data, input_scaler, models):
     try:
-        # Scale the input data
+        # Scale the input data        
         scaled_input_data = input_scaler.transform([input_data])
 
         # Initialize lists to store results
         predicted_probabilities = []
         predicted_classes = []
 
-        scaled_input_data_df = pd.DataFrame(scaled_input_data, columns=columns_x)
+        
 
         # Loop through each model and make predictions
         for model in models:
             # Predict probabilities for the positive class (index 1)
-            probabilities = model.predict_proba(scaled_input_data_df)[:, 1]
+            probabilities = model.predict_proba(scaled_input_data)[:, 1]
             predicted_probabilities.append(probabilities)
 
             # Predict binary class
-            classes = model.predict(scaled_input_data_df)
+            classes = model.predict(scaled_input_data)
             predicted_classes.append(classes)
 
         # Log and return results
@@ -111,7 +111,8 @@ def constraint1(x_opt_scaled):
     inputs = np.array([feedNH3, feedH2S, x[0], x[1], x[2]])
     results = predict(inputs, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
-    return 0.6 - cH2S_prob
+    # Return the constraint value (positive if satisfied, negative if violated)
+    return 0.5 - cH2S_prob
 
 # Constraint 2 (NH3 PPM <= 15)
 def constraint2(x_opt_scaled):
@@ -119,7 +120,8 @@ def constraint2(x_opt_scaled):
     inputs = np.array([feedNH3, feedH2S, x[0], x[1], x[2]])    
     results = predict(inputs, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
-    return 0.6 - cNH3_prob
+    # Return the constraint value (positive if satisfied, negative if violated)
+    return 0.5 - cNH3_prob
 
 # Lower bound constraint for QN1
 def bound_QN1_lower(x_opt_scaled):
@@ -190,13 +192,10 @@ result = minimize(cost, x0_opt_scaled, method='COBYLA', constraints=constraints,
 
 # Rescale the results
 opt_scaled = result.x
-
-# Combine feedNH3, feedH2S with opt_scaled
-opt_inputs = np.concatenate(([feedNH3, feedH2S], opt_scaled))
-opt = input_scaler.inverse_transform([opt_inputs])[0]
+opt = [opt_scaled[i] * opt_scale_factors[i] for i in range(len(opt_scaled))]
 
 # Format the output values
-formatted_opt = f"[{opt[0]:.4f}, {opt[1]:.4f}, {opt[2]:.0f}, {opt[3]:.0f}, {opt[4]:.2f}]"
+formatted_opt = f"[{opt[0]:.0f}, {opt[1]:.0f}, {opt[2]:.2f}]"
 
 # Output results
 cost_min = result.fun
