@@ -178,7 +178,7 @@ constraints = [
 
 options = {
     'maxiter': 10000,
-    'tol': 1e-2
+    'tol': 1e-8
 }
 
 # Lists to store results
