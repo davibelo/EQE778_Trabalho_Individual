@@ -52,15 +52,12 @@ ASPEN_FILE_FOLDER = 'UTAA_run'  # Specify the folder where the Aspen Plus file i
 ASPEN_FILE = 'UTAA_revK.bkp'  # File name
 aspen_path = os.path.abspath(os.path.join(ASPEN_FILE_FOLDER, ASPEN_FILE))  # Build the full path
 
-# Print the full path for verification (optional)
-print(f"Full Aspen file path: {aspen_path}")
+# print('Connecting to the Aspen Plus... Please wait ')
+# Application = win32.Dispatch('Apwn.Document')  # Registered name of Aspen Plus
+# print('Connected!')
 
-print('Connecting to the Aspen Plus... Please wait ')
-Application = win32.Dispatch('Apwn.Document')  # Registered name of Aspen Plus
-print('Connected!')
-
-Application.InitFromArchive2(aspen_path)
-Application.visible = 0
+# Application.InitFromArchive2(aspen_path)
+# Application.visible = 0
 
 # Function to preprocess input data and make predictions
 def predict(fixed_inputs, optimization_inputs, input_scaler, models):
@@ -125,7 +122,7 @@ def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
-    return cH2S_prob - 0.6
+    return 0.2 - cH2S_prob
 
 # Constraint 2 (NH3 PPM >= 15)
 def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
@@ -136,7 +133,7 @@ def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
-    return cNH3_prob - 0.6
+    return 0.2 - cNH3_prob
 
 # Bound constraints (already in scaled space)
 def bound_QN1_lower(opt_inputs_scaled):
