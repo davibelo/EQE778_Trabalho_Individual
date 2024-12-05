@@ -94,50 +94,82 @@ def predict(input_data, input_scaler, models):
         raise e
 
 # Objective function to minimize
-def cost(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    total_cost = x[2] + x[3]
+def cost(x_opt_scaled):
+    x = [opt_x_scaled[i] * scale_factors[i] for i in range(len(opt_x_scaled))]
+    total_cost = x[0] + x[1]
     x_values.append(x)  # Store non-scaled x
     objective_values.append(total_cost)  # Store objective function value
     logging.info(f"Total Cost: {total_cost}")
     return total_cost
 
-# Constraint 1 (H2S PPM >= 0.2)
-def constraint1(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    results = predict(x, input_scaler, models)
+# Constraint 1 (H2S PPM <= 0.2)
+def constraint1(x_opt_scaled):
+    x = [opt_x_scaled[i] * scale_factors[i] for i in range(len(opt_x_scaled))]
+    inputs = np.array([feedNH3, feedH2S, x[0], x[1], x[2]])    
+    results = predict(inputs, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
     return cH2S_prob - 0.6
 
-# Constraint 2 (NH3 PPM >= 15)
-def constraint2(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    results = predict(x, input_scaler, models)
+# Constraint 2 (NH3 PPM <= 15)
+def constraint2(x_opt_scaled):
+    x = [opt_x_scaled[i] * scale_factors[i] for i in range(len(opt_x_scaled))]
+    inputs = np.array([feedNH3, feedH2S, x[0], x[1], x[2]])    
+    results = predict(inputs, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
     return cNH3_prob - 0.6
 
-# Bound constraints (already in scaled space)
-def bound_QN1_lower(x_scaled):
-    return x_scaled[2] - input_scaler.transform([[0, 0, 450000, 0, 0]])[0, 2]
+# Lower bound constraint for QN1
+def bound_QN1_lower(x_opt_scaled):
+    QN1_lower = 450000
+    return x_opt_scaled[0] - (QN1_lower / scale_factors[0])
 
-def bound_QN1_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 600000, 0, 0]])[0, 2] - x_scaled[2]
+# Upper bound constraint for QN1
+def bound_QN1_upper(x_opt_scaled):
+    QN1_upper = 600000
+    return (QN1_upper / scale_factors[0]) - x_opt_scaled[0]
 
-def bound_QN2_lower(x_scaled):
-    return x_scaled[3] - input_scaler.transform([[0, 0, 0, 700000, 0]])[0, 3]
+# Lower bound constraint for QN2
+def bound_QN2_lower(x_opt_scaled):
+    QN2_lower = 700000
+    return x_opt_scaled[1] - (QN2_lower / scale_factors[1])
 
-def bound_QN2_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 0, 1200000, 0]])[0, 3] - x_scaled[3]
+# Upper bound constraint for QN2
+def bound_QN2_upper(x_opt_scaled):
+    QN2_upper = 1200000
+    return (QN2_upper / scale_factors[1]) - x_opt_scaled[1]
 
-def bound_SF_lower(x_scaled):
-    return x_scaled[4] - input_scaler.transform([[0, 0, 0, 0, 0]])[0, 4]
+# Lower bound constraint for QC
+def bound_QC_lower(x_opt_scaled):
+    QC_lower = 1
+    return x_opt_scaled[2] - (QC_lower / scale_factors[2])
 
-def bound_SF_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 0, 0, 1]])[0, 4] - x_scaled[4]
+# Upper bound constraint for QC
+def bound_QC_upper(x_opt_scaled):
+    QC_upper = 5
+    return (QC_upper / scale_factors[2]) - x_opt_scaled[2]
+
+# Lower bound constraint for SF
+def bound_SF_lower(x_opt_scaled):
+    SF_lower = 0
+    return x_opt_scaled[3] - (SF_lower / scale_factors[3])
+
+# Upper bound constraint for SF
+def bound_SF_upper(x_opt_scaled):
+    SF_upper = 1
+    return (SF_upper / scale_factors[3]) - x_opt_scaled[3]
+
+# Fixed feed quality
+feedNH3 = 0.005
+feedH2S = 0.004
 
 # Initial guess
-x0 = [0.005, 0.004, 560000, 950000, 0.5]  # feedNH3, feedH2S, QN1, QN2, SF
-x0_scaled = input_scaler.transform([x0])[0]
+x0 = [560000, 950000, 0.5]  # QN1, QN2, SF
+
+# Scaling factors for optimization
+opt_scale_factors = [1e5, 1e5, 0.1]  # Scaling for QN1, QN2, SF
+
+# Initial guess (with optimization scaling)
+x0_opt_scaled = [x0[i] / opt_scale_factors[i] for i in range(len(x0))]
 
 # Define constraints as a list of dictionaries
 constraints = [
@@ -161,7 +193,7 @@ x_values = []
 objective_values = []
 
 # Solving the optimization problem
-result = minimize(cost, x0_scaled, method='COBYLA', constraints=constraints, options=options)
+result = minimize(cost, x0_opt_scaled, method='COBYLA', constraints=constraints, options=options)
 
 # Rescale the results
 opt_scaled = result.x
