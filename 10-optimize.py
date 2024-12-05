@@ -3,6 +3,7 @@ import joblib
 import logging
 import win32com.client as win32
 import numpy as np
+import pandas as pd
 from scipy.optimize import minimize
 
 # Dynamically generate the log file name based on the script name
@@ -69,14 +70,16 @@ def predict(input_data, input_scaler, models):
         predicted_probabilities = []
         predicted_classes = []
 
+        scaled_input_data_df = pd.DataFrame(scaled_input_data, columns=columns_x)
+
         # Loop through each model and make predictions
         for model in models:
-            # Predict probabilities for the positive class
-            probabilities = model.predict_proba(scaled_input_data)[:, 1]
+            # Predict probabilities for the positive class (index 1)
+            probabilities = model.predict_proba(scaled_input_data_df)[:, 1]
             predicted_probabilities.append(probabilities)
 
             # Predict binary class
-            classes = model.predict(scaled_input_data)
+            classes = model.predict(scaled_input_data_df)
             predicted_classes.append(classes)
 
         # Log and return results
