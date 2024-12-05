@@ -200,13 +200,16 @@ opt_scaled = result.x
 opt_full_scaled = np.concatenate((fixed_inputs, opt_scaled))
 opt = input_scaler.inverse_transform([opt_full_scaled])[0]
 
+# Format the output values
+formatted_opt = f"[{opt[0]:.4f}, {opt[1]:.4f}, {opt[2]:.0f}, {opt[3]:.0f}, {opt[4]:.2f}]"
+
 # Output results
 cost_min = result.fun
 num_function_evals = result.nfev
 success = result.success
 message = result.message
 
-logging.info(f'Optimal values: {opt}')
+logging.info(f'Optimal values: {formatted_opt}')
 logging.info(f'Minimum cost: {cost_min}')
 logging.info(f'Number of function evaluations: {num_function_evals}')
 logging.info(f'Optimization success: {success}')
