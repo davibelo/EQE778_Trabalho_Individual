@@ -113,7 +113,7 @@ def cost(opt_inputs_scaled, fixed_inputs, input_scaler):
     logging.info(f"Total Cost: {total_cost}")
     return total_cost
 
-# Constraint 1 (H2S PPM >= 0.2)
+# Constraint 1 (H2S PPM <= 0.2. bin prob <= 0.5)
 def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     fixed_inputs = np.array(fixed_inputs)
     opt_inputs_scaled = np.array(opt_inputs_scaled)
@@ -122,9 +122,9 @@ def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
-    return 0.2 - cH2S_prob
+    return 0.5 - cH2S_prob
 
-# Constraint 2 (NH3 PPM >= 15)
+# Constraint 2 (NH3 PPM <= 15, bin prob <= 0.5)
 def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     fixed_inputs = np.array(fixed_inputs)
     opt_inputs_scaled = np.array(opt_inputs_scaled)
@@ -133,7 +133,7 @@ def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
     full_input = input_scaler.inverse_transform([full_input_scaled])[0]
     results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
-    return 0.2 - cNH3_prob
+    return 0.5 - cNH3_prob
 
 # Bound constraints (already in scaled space)
 def bound_QN1_lower(opt_inputs_scaled):
