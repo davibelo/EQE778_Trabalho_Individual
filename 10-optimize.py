@@ -63,10 +63,13 @@ Application.InitFromArchive2(aspen_path)
 Application.visible = 0
 
 # Function to preprocess input data and make predictions
-def predict(input_data, input_scaler, models):
+def predict(fixed_inputs, optimization_inputs, input_scaler, models):
     try:
+        # Combine fixed inputs and optimization inputs
+        full_input = fixed_inputs + list(optimization_inputs)
+
         # Scale the input data
-        scaled_input_data = input_scaler.transform([input_data])
+        scaled_input_data = input_scaler.transform([full_input])
 
         # Initialize lists to store results
         predicted_probabilities = []
@@ -83,7 +86,7 @@ def predict(input_data, input_scaler, models):
             predicted_classes.append(classes)
 
         # Log and return results
-        logging.info(f"Input data shape: {np.array(input_data).shape}")
+        logging.info(f"Input data shape: {np.array(full_input).shape}")
         logging.info(f"Predicted probabilities: {predicted_probabilities}")
         logging.info(f"Predicted classes: {predicted_classes}")
         logging.info("Prediction completed successfully.")
@@ -97,61 +100,63 @@ def predict(input_data, input_scaler, models):
         raise e
 
 # Objective function to minimize
-def cost(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    total_cost = x[2] + x[3]
-    x_values.append(x)  # Store non-scaled x
+def cost(opt_inputs_scaled, fixed_inputs, input_scaler):
+    full_input_scaled = fixed_inputs + list(opt_inputs_scaled)
+    full_input = input_scaler.inverse_transform([full_input_scaled])[0]
+    total_cost = full_input[2] + full_input[3]
+    x_values.append(full_input)  # Store non-scaled full input
     objective_values.append(total_cost)  # Store objective function value
     logging.info(f"Total Cost: {total_cost}")
     return total_cost
 
 # Constraint 1 (H2S PPM >= 0.2)
-def constraint1(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    results = predict(x, input_scaler, models)
+def constraint1(opt_inputs_scaled, fixed_inputs, input_scaler, models):
+    results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cH2S_prob = results["predicted_probabilities"][0]
     return cH2S_prob - 0.6
 
 # Constraint 2 (NH3 PPM >= 15)
-def constraint2(x_scaled):
-    x = input_scaler.inverse_transform([x_scaled])[0]
-    results = predict(x, input_scaler, models)
+def constraint2(opt_inputs_scaled, fixed_inputs, input_scaler, models):
+    results = predict(fixed_inputs, opt_inputs_scaled, input_scaler, models)
     cNH3_prob = results["predicted_probabilities"][1]
     return cNH3_prob - 0.6
 
 # Bound constraints (already in scaled space)
-def bound_QN1_lower(x_scaled):
-    return x_scaled[2] - input_scaler.transform([[0, 0, 450000, 0, 0]])[0, 2]
+def bound_QN1_lower(opt_inputs_scaled):
+    return opt_inputs_scaled[0] - input_scaler.transform([[0, 0, 450000, 0, 0]])[0, 2]
 
-def bound_QN1_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 600000, 0, 0]])[0, 2] - x_scaled[2]
+def bound_QN1_upper(opt_inputs_scaled):
+    return input_scaler.transform([[0, 0, 600000, 0, 0]])[0, 2] - opt_inputs_scaled[0]
 
-def bound_QN2_lower(x_scaled):
-    return x_scaled[3] - input_scaler.transform([[0, 0, 0, 700000, 0]])[0, 3]
+def bound_QN2_lower(opt_inputs_scaled):
+    return opt_inputs_scaled[1] - input_scaler.transform([[0, 0, 0, 700000, 0]])[0, 3]
 
-def bound_QN2_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 0, 1200000, 0]])[0, 3] - x_scaled[3]
+def bound_QN2_upper(opt_inputs_scaled):
+    return input_scaler.transform([[0, 0, 0, 1200000, 0]])[0, 3] - opt_inputs_scaled[1]
 
-def bound_SF_lower(x_scaled):
-    return x_scaled[4] - input_scaler.transform([[0, 0, 0, 0, 0]])[0, 4]
+def bound_SF_lower(opt_inputs_scaled):
+    return opt_inputs_scaled[2] - input_scaler.transform([[0, 0, 0, 0, 0]])[0, 4]
 
-def bound_SF_upper(x_scaled):
-    return input_scaler.transform([[0, 0, 0, 0, 1]])[0, 4] - x_scaled[4]
+def bound_SF_upper(opt_inputs_scaled):
+    return input_scaler.transform([[0, 0, 0, 0, 1]])[0, 4] - opt_inputs_scaled[2]
 
-# Initial guess
-x0 = [0.005, 0.004, 560000, 950000, 0.5]  # feedNH3, feedH2S, QN1, QN2, SF
-x0_scaled = input_scaler.transform([x0])[0]
+# Fixed inputs
+fixed_inputs = [0.005, 0.004]  # feedNH3, feedH2S
+
+# Initial guess for optimization variables
+x0 = [560000, 950000, 0.5]  # QN1, QN2, SF
+x0_scaled = input_scaler.transform([fixed_inputs + x0])[0][2:]
 
 # Define constraints as a list of dictionaries
 constraints = [
-    {'type': 'ineq', 'fun': constraint1},      # H2S constraint
-    {'type': 'ineq', 'fun': constraint2},      # NH3 constraint
-    {'type': 'ineq', 'fun': bound_QN1_lower},  # QN1 lower bound
-    {'type': 'ineq', 'fun': bound_QN1_upper},  # QN1 upper bound
-    {'type': 'ineq', 'fun': bound_QN2_lower},  # QN2 lower bound
-    {'type': 'ineq', 'fun': bound_QN2_upper},  # QN2 upper bound
-    {'type': 'ineq', 'fun': bound_SF_lower},   # SF lower bound
-    {'type': 'ineq', 'fun': bound_SF_upper}    # SF upper bound
+    {'type': 'ineq', 'fun': lambda x: constraint1(x, fixed_inputs, input_scaler, models)},
+    {'type': 'ineq', 'fun': lambda x: constraint2(x, fixed_inputs, input_scaler, models)},
+    {'type': 'ineq', 'fun': lambda x: bound_QN1_lower(x)},
+    {'type': 'ineq', 'fun': lambda x: bound_QN1_upper(x)},
+    {'type': 'ineq', 'fun': lambda x: bound_QN2_lower(x)},
+    {'type': 'ineq', 'fun': lambda x: bound_QN2_upper(x)},
+    {'type': 'ineq', 'fun': lambda x: bound_SF_lower(x)},
+    {'type': 'ineq', 'fun': lambda x: bound_SF_upper(x)}
 ]
 
 options = {
@@ -164,22 +169,21 @@ x_values = []
 objective_values = []
 
 # Solving the optimization problem
-result = minimize(cost, x0_scaled, method='COBYLA', constraints=constraints, options=options)
+result = minimize(cost, x0_scaled, method='COBYLA', constraints=constraints, options=options, args=(fixed_inputs, input_scaler))
 
 # Rescale the results
 opt_scaled = result.x
-opt = input_scaler.inverse_transform([opt_scaled])[0]
+opt_full_scaled = fixed_inputs + list(opt_scaled)
+opt = input_scaler.inverse_transform([opt_full_scaled])[0]
 
 # Output results
 cost_min = result.fun
 num_function_evals = result.nfev
 success = result.success
 message = result.message
-maxcv = result.maxcv  # Magnitude of constraint violation
 
 logging.info(f'Optimal values: {opt}')
 logging.info(f'Minimum cost: {cost_min}')
 logging.info(f'Number of function evaluations: {num_function_evals}')
 logging.info(f'Optimization success: {success}')
 logging.info(f'Message: {message}')
-logging.info(f'Maximum constraint violation (maxcv): {maxcv}')
