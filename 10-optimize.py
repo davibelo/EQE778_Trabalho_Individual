@@ -68,19 +68,17 @@ def predict(input_data, input_scaler, models):
 
         # Initialize lists to store results
         predicted_probabilities = []
-        predicted_classes = []
-
-        
+        predicted_classes = []       
 
         # Loop through each model and make predictions
         for model in models:
             # Predict probabilities for the positive class (index 1)
-            probabilities = model.predict_proba(scaled_input_data)[:, 1]
-            predicted_probabilities.append(probabilities)
+            probability = model.predict_proba(scaled_input_data)[:, 1]
+            predicted_probabilities.append(probability)
 
             # Predict binary class
-            classes = model.predict(scaled_input_data)
-            predicted_classes.append(classes)
+            classification = model.predict(scaled_input_data)
+            predicted_classes.append(classification)
 
         # Log and return results
         logging.info(f"Input data shape: {np.array(input_data).shape}")
@@ -154,8 +152,8 @@ def bound_SF_upper(x_opt_scaled):
     return (SF_upper / opt_scale_factors[2]) - x_opt_scaled[2]
 
 # Fixed feed quality
-feedNH3 = 0.005
-feedH2S = 0.004
+feedNH3 = 0.004
+feedH2S = 0.005
 
 # Initial guess
 x0 = [560000, 950000, 0.5]  # QN1, QN2, SF

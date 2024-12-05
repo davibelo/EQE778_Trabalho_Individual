@@ -60,12 +60,12 @@ def predict(input_data, input_scaler, models):
         # Loop through each model and make predictions
         for model in models:
             # Predict probabilities for the positive class (index 1)
-            probabilities = model.predict_proba(scaled_input_data)[:, 1]
-            predicted_probabilities.append(probabilities)
+            probability = model.predict_proba(scaled_input_data)[:, 1]
+            predicted_probabilities.append(probability)
 
-            # Predict binary classes
-            classes = model.predict(scaled_input_data)
-            predicted_classes.append(classes)
+            # Predict binary class
+            classification = model.predict(scaled_input_data)
+            predicted_classes.append(classification)
 
         # Convert results to numpy arrays
         predicted_probabilities = np.column_stack(predicted_probabilities)
@@ -88,7 +88,7 @@ def predict(input_data, input_scaler, models):
 
 # Example input data as a NumPy array
 example_input_data = np.array(
-    [[0.004, 0.005, 600000.0, 1000000.0, 0.5]]
+    [[0.004, 0.005, 560000, 950000, 0.5]]
 )
 
 # Convert the NumPy array to a pandas DataFrame with column names
