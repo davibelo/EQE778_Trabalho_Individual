@@ -13,10 +13,8 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras import layers, regularizers
 from tensorflow.keras.utils import plot_model
-from sklearn.preprocessing import PowerTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
-import optuna
 import optuna
 
 # General Configuration
@@ -61,12 +59,11 @@ def neurons(num_features, ratio, multiple):
     neuron_count = int(num_features * ratio)
     return max(multiple, round(neuron_count / multiple) * multiple)
 
-# Objective function for Optuna with added logging
+# Objective function for Optuna
 def objective(trial):
     try:
-        # Log trial start
         logging.info(f"Starting trial {trial.number}")
-        
+
         # Hyperparameter suggestions
         neurons_ratio = trial.suggest_int('neurons_ratio', 10, 50, step=5)
         dropout_rate_layer1 = trial.suggest_float('dropout_rate_layer1', 0.1, 0.5, step=0.05)
@@ -76,7 +73,6 @@ def objective(trial):
         regularizer = trial.suggest_float('regularizer', 1e-6, 1e-2, log=True)
         batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
 
-        # Log hyperparameters
         logging.info(f"Trial {trial.number} Hyperparameters: "
                      f"neurons_ratio={neurons_ratio}, "
                      f"dropout_rate_layer1={dropout_rate_layer1}, "
@@ -110,20 +106,20 @@ def objective(trial):
             layers.Dense(num_outputs, activation='sigmoid')
         ])
 
-        # Compile Model
+        # Compile Model with additional metrics
         opt = tf.keras.optimizers.RMSprop(learning_rate=learning_rate)
         model.compile(
             loss='binary_crossentropy',
             optimizer=opt,
             metrics=[
-                'accuracy', 
-                tf.keras.metrics.AUC(name='auc'), 
-                tf.keras.metrics.Precision(name='precision'), 
+                'accuracy',
+                tf.keras.metrics.AUC(name='auc'),
+                tf.keras.metrics.Precision(name='precision'),
                 tf.keras.metrics.Recall(name='recall')
             ]
         )
 
-        # Callbacks
+        # Train Model
         callbacks = [
             tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
             tf.keras.callbacks.ModelCheckpoint(
@@ -133,7 +129,6 @@ def objective(trial):
             )
         ]
 
-        # Train Model
         history = model.fit(
             x_train_scaled,
             y_train_scaled,
@@ -144,21 +139,24 @@ def objective(trial):
             verbose=0
         )
 
-        # Evaluate Model
-        val_accuracy = max(history.history['val_accuracy'])
+        # Evaluate on Validation Set - NEW LOGGING SECTION
+        evaluation_results = model.evaluate(x_val_scaled, y_val_scaled, verbose=0)
+        val_loss, val_accuracy, val_auc, val_precision, val_recall = evaluation_results
 
-        # Log trial result
-        logging.info(f"Trial {trial.number} completed with Validation Accuracy: {val_accuracy:.4f}")
+        # Log trial metrics
+        logging.info(f"Trial {trial.number} Metrics - Validation Loss: {val_loss:.4f}, "
+                     f"Accuracy: {val_accuracy:.4f}, AUC: {val_auc:.4f}, "
+                     f"Precision: {val_precision:.4f}, Recall: {val_recall:.4f}")
 
-        return 1 - val_accuracy  # Optuna minimizes the objective
+        return 1 - val_auc  # Optimize for AUC
 
     except Exception as e:
         logging.error(f"Error in trial {trial.number}: {str(e)}")
         raise
 
 # Run Optuna Study with logging during optimization
-study = optuna.create_study()
 logging.info("Starting Optuna study optimization...")
+study = optuna.create_study()
 study.optimize(objective, n_trials=50)
 logging.info("Optuna study optimization completed.")
 
@@ -171,11 +169,14 @@ with open(os.path.join(GENERAL_CONFIG['output_folder'], 'best_params.json'), 'w'
     json.dump(best_params, f)
 
 # Load the Best Model
-best_model = tf.keras.models.load_model(os.path.join(GENERAL_CONFIG['output_folder'], f'best_model{MODEL_CONFIG['model_id']}.keras'))
+best_model = tf.keras.models.load_model(os.path.join(GENERAL_CONFIG['output_folder'], f'best_model_trial{study.best_trial.number}.keras'))
 
-# Evaluate Final Model
-evaluation_results = best_model.evaluate(x_test_scaled, y_test_scaled)
-logging.info(f"Final Test Results: {evaluation_results}")
+# Evaluate Final Model - NEW LOGGING SECTION
+evaluation_results = best_model.evaluate(x_test_scaled, y_test_scaled, verbose=0)
+test_loss, test_accuracy, test_auc, test_precision, test_recall = evaluation_results
+
+logging.info(f"Final Test Results - Loss: {test_loss:.4f}, Accuracy: {test_accuracy:.4f}, "
+             f"AUC: {test_auc:.4f}, Precision: {test_precision:.4f}, Recall: {test_recall:.4f}")
 
 # Predictions
 y_test_pred_proba = best_model.predict(x_test_scaled)
@@ -193,23 +194,30 @@ metrics = {
     'f1_score': f1
 }
 
+# Log metrics
+logging.info(f"Final Test Metrics - Accuracy: {accuracy:.4f}, AUC: {roc_auc:.4f}, F1 Score: {f1:.4f}")
+
+# Save metrics to JSON
 with open(os.path.join(GENERAL_CONFIG['output_folder'], f"metrics-{MODEL_CONFIG['model_id']}.json"), 'w') as f:
     json.dump(metrics, f)
 
 # Plot Training and Validation Metrics
-history = best_model.history
-plt.figure()
-plt.plot(history['accuracy'], label='Train Accuracy')
-plt.plot(history['val_accuracy'], label='Validation Accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.legend()
-plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"accuracy-{MODEL_CONFIG['model_id']}.png"))
+if 'accuracy' in history.history and 'val_accuracy' in history.history:
+    plt.figure()
+    plt.plot(history.history['accuracy'], label='Train Accuracy')
+    plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+    plt.xlabel('Epochs')
+    plt.ylabel('Accuracy')
+    plt.legend()
+    plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"accuracy-{MODEL_CONFIG['model_id']}.png"))
+    plt.close()
 
-plt.figure()
-plt.plot(history['loss'], label='Train Loss')
-plt.plot(history['val_loss'], label='Validation Loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.legend()
-plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"loss-{MODEL_CONFIG['model_id']}.png"))
+if 'loss' in history.history and 'val_loss' in history.history:
+    plt.figure()
+    plt.plot(history.history['loss'], label='Train Loss')
+    plt.plot(history.history['val_loss'], label='Validation Loss')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"loss-{MODEL_CONFIG['model_id']}.png"))
+    plt.close()
