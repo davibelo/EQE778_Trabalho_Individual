@@ -121,7 +121,7 @@ def objective(trial):
         epochs=50,
         validation_data=(x_val_scaled, y_val_scaled),
         callbacks=callbacks,
-        verbose=0
+        verbose=1
     )
 
     val_loss = min(history.history['val_loss'])
