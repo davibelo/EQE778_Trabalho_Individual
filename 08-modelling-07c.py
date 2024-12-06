@@ -108,7 +108,7 @@ def objective(trial):
     callbacks = [
         tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
         tf.keras.callbacks.ModelCheckpoint(
-            filepath=os.path.join(GENERAL_CONFIG['output_folder'], 'best_model.h5'),
+            filepath=os.path.join(GENERAL_CONFIG['output_folder'], f'best_model{MODEL_CONFIG['model_id']}.keras'),
             save_best_only=True,
             monitor='val_loss'
         )
@@ -142,7 +142,7 @@ with open(os.path.join(GENERAL_CONFIG['output_folder'], 'best_params.json'), 'w'
     json.dump(best_params, f)
 
 # Load the Best Model
-best_model = tf.keras.models.load_model(os.path.join(GENERAL_CONFIG['output_folder'], 'best_model.h5'))
+best_model = tf.keras.models.load_model(os.path.join(GENERAL_CONFIG['output_folder'], f'best_model{MODEL_CONFIG['model_id']}.keras'))
 
 # Evaluate Final Model
 evaluation_results = best_model.evaluate(x_test_scaled, y_test_scaled)
