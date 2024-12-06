@@ -75,6 +75,7 @@ def create_model(trial):
     activation = trial.suggest_categorical('activation', ['relu', 'tanh', 'sigmoid'])
     l1_value = trial.suggest_float('l1_value', 1e-5, 1e-2)
     l2_value = trial.suggest_float('l2_value', 1e-5, 1e-2)
+    batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
 
     reg = regularizers.L1L2(l1=l1_value, l2=l2_value)
 
@@ -104,11 +105,11 @@ def create_model(trial):
         metrics=['accuracy', tf.keras.metrics.AUC(), tf.keras.metrics.Precision(), tf.keras.metrics.Recall()]
     )
 
-    return model
+    return model, batch_size
 
 # Objective function for Optuna
 def objective(trial):
-    model = create_model(trial)
+    model, batch_size = create_model(trial)
 
     callbacks = [
         tf.keras.callbacks.EarlyStopping(patience=CONFIG['training']['patience'], restore_best_weights=True)
@@ -116,7 +117,7 @@ def objective(trial):
 
     history = model.fit(
         x_train_scaled, y_train_scaled,
-        batch_size=128,
+        batch_size=batch_size,
         epochs=50,
         validation_data=(x_val_scaled, y_val_scaled),
         callbacks=callbacks,
@@ -124,22 +125,27 @@ def objective(trial):
     )
 
     val_loss = min(history.history['val_loss'])
+    logging.info(f"Trial {trial.number}: Validation Loss: {val_loss}")
     return val_loss
 
 # Run Optuna study
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=50)
+logging.info("Starting Optuna study...")
+study.optimize(objective, n_trials=50, callbacks=[
+    lambda study, trial: logging.info(f"Trial {trial.number} completed with value: {trial.value}, params: {trial.params}")
+])
+logging.info("Optuna study completed.")
 
 # Log the best parameters
 logging.info(f"Best trial: {study.best_trial.params}")
 
 # Train final model with best parameters
 best_params = study.best_trial.params
-final_model = create_model(optuna.trial.FixedTrial(best_params))
+final_model, batch_size = create_model(optuna.trial.FixedTrial(best_params))
 
 history = final_model.fit(
     x_train_scaled, y_train_scaled,
-    batch_size=128,
+    batch_size=batch_size,
     epochs=CONFIG['training']['epochs'],
     validation_data=(x_val_scaled, y_val_scaled),
     callbacks=[tf.keras.callbacks.EarlyStopping(patience=CONFIG['training']['patience'], restore_best_weights=True)]
