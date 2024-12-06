@@ -2,6 +2,7 @@
 MODELLING - DEEP LEARNING version c
 BINARY LABELS
 '''
+
 import os
 import time
 import json
@@ -27,12 +28,15 @@ GENERAL_CONFIG = {
 # Model Configuration
 MODEL_CONFIG = {
     'neurons_ratio': 20,
-    'dropout_rate': 0.05,
+    'dropout_rate_layer1': 0.3,
+    'dropout_rate_layer2': 0.2,
+    'dropout_rate_layer3': 0.1,
     'batch_size': 128,
     'learning_rate': 0.001,
     'patience': 20,
     'epochs': 100,
-    'multiple': 2
+    'multiple': 2,
+    'regularizer': regularizers.l2(0.0001)
 }
 
 # Dynamically generate the log file name based on the script name
@@ -78,20 +82,20 @@ num_outputs = y_train_scaled.shape[1]
 
 model = tf.keras.Sequential([
     layers.Input(shape=(num_features,)),
-    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio']), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio']), kernel_regularizer=MODEL_CONFIG['regularizer']),
     layers.BatchNormalization(),
     layers.ReLU(),
-    layers.Dropout(0.3),
+    layers.Dropout(MODEL_CONFIG['dropout_rate_layer1']),
 
-    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 2), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 2), kernel_regularizer=MODEL_CONFIG['regularizer']),
     layers.BatchNormalization(),
     layers.ReLU(),
-    layers.Dropout(0.2),
+    layers.Dropout(MODEL_CONFIG['dropout_rate_layer2']),
 
-    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 4), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 4), kernel_regularizer=MODEL_CONFIG['regularizer']),
     layers.ReLU(),
     layers.BatchNormalization(),
-    layers.Dropout(0.1),
+    layers.Dropout(MODEL_CONFIG['dropout_rate_layer3']),
 
     layers.Dense(num_outputs, activation='sigmoid')
 ])
