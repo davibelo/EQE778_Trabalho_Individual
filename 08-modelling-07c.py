@@ -1,5 +1,5 @@
 '''
-MODELLING - DEEP LEARNING version b
+MODELLING - DEEP LEARNING version c
 BINARY LABELS
 '''
 import os
