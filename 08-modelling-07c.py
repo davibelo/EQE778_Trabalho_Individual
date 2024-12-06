@@ -16,19 +16,23 @@ from sklearn.preprocessing import PowerTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 
-# Configuration Block
-CONFIG = {
+# General Configuration
+GENERAL_CONFIG = {
+    'figures_folder': 'figures',
+    'input_folder': 'input_files',
+    'output_folder': 'output_files',
+    'model_id': '07c'
+}
+
+# Model Configuration
+MODEL_CONFIG = {
     'neurons_ratio': 20,
     'dropout_rate': 0.05,
     'batch_size': 128,
     'learning_rate': 0.001,
     'patience': 20,
     'epochs': 100,
-    'multiple': 2,
-    'figures_folder': 'figures',
-    'input_folder': 'input_files',
-    'output_folder': 'output_files',
-    'model_id': '07c'
+    'multiple': 2
 }
 
 # Dynamically generate the log file name based on the script name
@@ -43,8 +47,8 @@ logging.basicConfig(
 )
 
 # Load Data
-df_scaled_x = joblib.load(os.path.join(CONFIG['input_folder'], 'df2_scaled_x.joblib'))
-df_scaled_y = joblib.load(os.path.join(CONFIG['input_folder'], 'df2_bin_y.joblib'))
+df_scaled_x = joblib.load(os.path.join(GENERAL_CONFIG['input_folder'], 'df2_scaled_x.joblib'))
+df_scaled_y = joblib.load(os.path.join(GENERAL_CONFIG['input_folder'], 'df2_bin_y.joblib'))
 
 x_scaled = df_scaled_x.values
 y_scaled = df_scaled_y.values
@@ -63,14 +67,8 @@ logging.info(f"y_val shape: {y_val_scaled.shape}")
 logging.info(f"x_test shape: {x_test_scaled.shape}")
 logging.info(f"y_test shape: {y_test_scaled.shape}")
 
-# # Handle Class Imbalance
-# class_weights = {
-#     0: (1 / np.sum(y_train_scaled == 0)) * (len(y_train_scaled) / 2.0),
-#     1: (1 / np.sum(y_train_scaled == 1)) * (len(y_train_scaled) / 2.0)
-# }
-
 # Function to determine neurons
-def neurons(num_features, ratio, multiple=CONFIG['multiple']):
+def neurons(num_features, ratio, multiple=MODEL_CONFIG['multiple']):
     neuron_count = int(num_features * ratio)
     return max(multiple, round(neuron_count / multiple) * multiple)
 
@@ -80,17 +78,17 @@ num_outputs = y_train_scaled.shape[1]
 
 model = tf.keras.Sequential([
     layers.Input(shape=(num_features,)),
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio']), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio']), kernel_regularizer=regularizers.l2(0.0001)),
     layers.BatchNormalization(),
     layers.ReLU(),
     layers.Dropout(0.3),
 
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 2), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 2), kernel_regularizer=regularizers.l2(0.0001)),
     layers.BatchNormalization(),
     layers.ReLU(),
     layers.Dropout(0.2),
 
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 4), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 4), kernel_regularizer=regularizers.l2(0.0001)),
     layers.ReLU(),
     layers.BatchNormalization(),
     layers.Dropout(0.1),
@@ -101,11 +99,11 @@ model = tf.keras.Sequential([
 model.summary(print_fn=logging.info)
 
 # Save Model Architecture
-os.makedirs(CONFIG['figures_folder'], exist_ok=True)
-plot_model(model, to_file=os.path.join(CONFIG['figures_folder'], f"model-{CONFIG['model_id']}.png"), show_shapes=True)
+os.makedirs(GENERAL_CONFIG['figures_folder'], exist_ok=True)
+plot_model(model, to_file=os.path.join(GENERAL_CONFIG['figures_folder'], f"model-{GENERAL_CONFIG['model_id']}.png"), show_shapes=True)
 
 # Compile Model
-opt = tf.keras.optimizers.RMSprop(learning_rate=CONFIG['learning_rate'])
+opt = tf.keras.optimizers.RMSprop(learning_rate=MODEL_CONFIG['learning_rate'])
 model.compile(
     loss='binary_crossentropy',
     optimizer=opt,
@@ -114,8 +112,8 @@ model.compile(
 
 # Callbacks
 callbacks = [
-    tf.keras.callbacks.EarlyStopping(patience=CONFIG['patience'], restore_best_weights=True),
-    tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=CONFIG['patience'], min_lr=1e-4)
+    tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
+    tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=MODEL_CONFIG['patience'], min_lr=1e-4)
 ]
 
 # Train Model
@@ -123,22 +121,21 @@ start_time = time.time()
 history = model.fit(
     x_train_scaled,
     y_train_scaled,
-    batch_size=CONFIG['batch_size'],
-    epochs=CONFIG['epochs'],
+    batch_size=MODEL_CONFIG['batch_size'],
+    epochs=MODEL_CONFIG['epochs'],
     validation_data=(x_val_scaled, y_val_scaled),
-    #class_weight=class_weights,
     callbacks=callbacks
 )
 end_time = time.time()
 logging.info(f"Training completed in {end_time - start_time:.2f} seconds.")
 
 # Save Training History
-os.makedirs(CONFIG['output_folder'], exist_ok=True)
-with open(os.path.join(CONFIG['output_folder'], f"history-{CONFIG['model_id']}.json"), 'w') as f:
+os.makedirs(GENERAL_CONFIG['output_folder'], exist_ok=True)
+with open(os.path.join(GENERAL_CONFIG['output_folder'], f"history-{GENERAL_CONFIG['model_id']}.json"), 'w') as f:
     json.dump(history.history, f)
 
 # Save Model
-model.save(os.path.join(CONFIG['output_folder'], f"model-{CONFIG['model_id']}.keras"))
+model.save(os.path.join(GENERAL_CONFIG['output_folder'], f"model-{GENERAL_CONFIG['model_id']}.keras"))
 
 # Evaluate Model
 evaluation_results = model.evaluate(x_test_scaled, y_test_scaled)
@@ -165,7 +162,7 @@ metrics = {
     'f1_score': f1
 }
 
-with open(os.path.join(CONFIG['output_folder'], f"metrics-{CONFIG['model_id']}.json"), 'w') as f:
+with open(os.path.join(GENERAL_CONFIG['output_folder'], f"metrics-{GENERAL_CONFIG['model_id']}.json"), 'w') as f:
     json.dump(metrics, f)
 
 # Plot Training and Validation Metrics
@@ -175,7 +172,7 @@ plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
 plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.legend()
-plt.savefig(os.path.join(CONFIG['figures_folder'], f"accuracy-{CONFIG['model_id']}.png"))
+plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"accuracy-{GENERAL_CONFIG['model_id']}.png"))
 
 plt.figure()
 plt.plot(history.history['loss'], label='Train Loss')
@@ -183,4 +180,4 @@ plt.plot(history.history['val_loss'], label='Validation Loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
-plt.savefig(os.path.join(CONFIG['figures_folder'], f"loss-{CONFIG['model_id']}.png"))
+plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"loss-{GENERAL_CONFIG['model_id']}.png"))
