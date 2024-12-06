@@ -31,6 +31,10 @@ MODEL_CONFIG = {
     'dropout_rate_layer1': 0.3,
     'dropout_rate_layer2': 0.2,
     'dropout_rate_layer3': 0.1,
+    'activation_layer1': 'relu',
+    'activation_layer2': 'relu',
+    'activation_layer3': 'relu',
+    'last_layer_activation': 'sigmoid',
     'batch_size': 128,
     'learning_rate': 0.001,
     'patience': 20,
@@ -84,20 +88,20 @@ model = tf.keras.Sequential([
     layers.Input(shape=(num_features,)),
     layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio']), kernel_regularizer=MODEL_CONFIG['regularizer']),
     layers.BatchNormalization(),
-    layers.ReLU(),
+    layers.Activation(MODEL_CONFIG['activation_layer1']),
     layers.Dropout(MODEL_CONFIG['dropout_rate_layer1']),
 
     layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 2), kernel_regularizer=MODEL_CONFIG['regularizer']),
     layers.BatchNormalization(),
-    layers.ReLU(),
+    layers.Activation(MODEL_CONFIG['activation_layer2']),
     layers.Dropout(MODEL_CONFIG['dropout_rate_layer2']),
 
     layers.Dense(neurons(num_features, MODEL_CONFIG['neurons_ratio'] / 4), kernel_regularizer=MODEL_CONFIG['regularizer']),
-    layers.ReLU(),
+    layers.Activation(MODEL_CONFIG['activation_layer3']),
     layers.BatchNormalization(),
     layers.Dropout(MODEL_CONFIG['dropout_rate_layer3']),
 
-    layers.Dense(num_outputs, activation='sigmoid')
+    layers.Dense(num_outputs, activation=MODEL_CONFIG['last_layer_activation'])
 ])
 
 model.summary(print_fn=logging.info)
