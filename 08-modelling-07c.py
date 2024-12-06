@@ -24,7 +24,7 @@ CONFIG = {
         'input_folder': 'input_files',
         'output_folder': 'output_files',
     },
-    'model_id': '07b',
+    'model_id': '07c',
     'training': {
         'patience': 20,
         'epochs': 100,
