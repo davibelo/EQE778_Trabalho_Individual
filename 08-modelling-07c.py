@@ -17,31 +17,21 @@ from sklearn.preprocessing import PowerTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 import optuna
+import optuna
 
 # General Configuration
 GENERAL_CONFIG = {
     'figures_folder': 'figures',
     'input_folder': 'input_files',
-    'output_folder': 'output_files',
-    'model_id': '07c'
+    'output_folder': 'output_files'
 }
 
-# Default Model Configuration
+# Model Configuration
 MODEL_CONFIG = {
-    'neurons_ratio': 20,
-    'dropout_rate_layer1': 0.3,
-    'dropout_rate_layer2': 0.2,
-    'dropout_rate_layer3': 0.1,
-    'activation_layer1': 'relu',
-    'activation_layer2': 'relu',
-    'activation_layer3': 'relu',
-    'last_layer_activation': 'sigmoid',
-    'batch_size': 128,
-    'learning_rate': 0.001,
+    'model_id': '07c',
     'patience': 20,
     'epochs': 100,
-    'multiple': 2,
-    'regularizer': 0.0001
+    'multiple': 2
 }
 
 # Dynamically generate the log file name based on the script name
@@ -90,20 +80,20 @@ def objective(trial):
         layers.Input(shape=(num_features,)),
         layers.Dense(neurons(num_features, neurons_ratio, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
         layers.BatchNormalization(),
-        layers.Activation(MODEL_CONFIG['activation_layer1']),
+        layers.ReLU(),
         layers.Dropout(dropout_rate_layer1),
 
         layers.Dense(neurons(num_features, neurons_ratio / 2, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
         layers.BatchNormalization(),
-        layers.Activation(MODEL_CONFIG['activation_layer2']),
+        layers.ReLU(),
         layers.Dropout(dropout_rate_layer2),
 
         layers.Dense(neurons(num_features, neurons_ratio / 4, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
-        layers.Activation(MODEL_CONFIG['activation_layer3']),
+        layers.ReLU(),
         layers.BatchNormalization(),
         layers.Dropout(dropout_rate_layer3),
 
-        layers.Dense(num_outputs, activation=MODEL_CONFIG['last_layer_activation'])
+        layers.Dense(num_outputs, activation='sigmoid')
     ])
 
     # Compile Model
@@ -116,7 +106,12 @@ def objective(trial):
 
     # Callbacks
     callbacks = [
-        tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True)
+        tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
+        tf.keras.callbacks.ModelCheckpoint(
+            filepath=os.path.join(GENERAL_CONFIG['output_folder'], 'best_model.h5'),
+            save_best_only=True,
+            monitor='val_loss'
+        )
     ]
 
     # Train Model
@@ -146,48 +141,15 @@ logging.info(f"Best Parameters: {best_params}")
 with open(os.path.join(GENERAL_CONFIG['output_folder'], 'best_params.json'), 'w') as f:
     json.dump(best_params, f)
 
-# Final Model Training with Best Parameters
-final_model = tf.keras.Sequential([
-    layers.Input(shape=(x_train_scaled.shape[1],)),
-    layers.Dense(neurons(x_train_scaled.shape[1], best_params['neurons_ratio'], MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(best_params['regularizer'])),
-    layers.BatchNormalization(),
-    layers.Activation(MODEL_CONFIG['activation_layer1']),
-    layers.Dropout(best_params['dropout_rate_layer1']),
-
-    layers.Dense(neurons(x_train_scaled.shape[1], best_params['neurons_ratio'] / 2, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(best_params['regularizer'])),
-    layers.BatchNormalization(),
-    layers.Activation(MODEL_CONFIG['activation_layer2']),
-    layers.Dropout(best_params['dropout_rate_layer2']),
-
-    layers.Dense(neurons(x_train_scaled.shape[1], best_params['neurons_ratio'] / 4, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(best_params['regularizer'])),
-    layers.Activation(MODEL_CONFIG['activation_layer3']),
-    layers.BatchNormalization(),
-    layers.Dropout(best_params['dropout_rate_layer3']),
-
-    layers.Dense(y_train_scaled.shape[1], activation=MODEL_CONFIG['last_layer_activation'])
-])
-
-final_model.compile(
-    loss='binary_crossentropy',
-    optimizer=tf.keras.optimizers.RMSprop(learning_rate=best_params['learning_rate']),
-    metrics=['accuracy', tf.keras.metrics.AUC(), tf.keras.metrics.Precision(), tf.keras.metrics.Recall()]
-)
-
-final_history = final_model.fit(
-    x_train_scaled,
-    y_train_scaled,
-    batch_size=best_params['batch_size'],
-    epochs=MODEL_CONFIG['epochs'],
-    validation_data=(x_val_scaled, y_val_scaled),
-    callbacks=[tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True)]
-)
+# Load the Best Model
+best_model = tf.keras.models.load_model(os.path.join(GENERAL_CONFIG['output_folder'], 'best_model.h5'))
 
 # Evaluate Final Model
-evaluation_results = final_model.evaluate(x_test_scaled, y_test_scaled)
+evaluation_results = best_model.evaluate(x_test_scaled, y_test_scaled)
 logging.info(f"Final Test Results: {evaluation_results}")
 
 # Predictions
-y_test_pred_proba = final_model.predict(x_test_scaled)
+y_test_pred_proba = best_model.predict(x_test_scaled)
 y_test_pred_class = (y_test_pred_proba > 0.5).astype(int)
 
 # Metrics
@@ -202,22 +164,23 @@ metrics = {
     'f1_score': f1
 }
 
-with open(os.path.join(GENERAL_CONFIG['output_folder'], f"metrics-{GENERAL_CONFIG['model_id']}.json"), 'w') as f:
+with open(os.path.join(GENERAL_CONFIG['output_folder'], f"metrics-{MODEL_CONFIG['model_id']}.json"), 'w') as f:
     json.dump(metrics, f)
 
 # Plot Training and Validation Metrics
+history = best_model.history
 plt.figure()
-plt.plot(final_history.history['accuracy'], label='Train Accuracy')
-plt.plot(final_history.history['val_accuracy'], label='Validation Accuracy')
+plt.plot(history['accuracy'], label='Train Accuracy')
+plt.plot(history['val_accuracy'], label='Validation Accuracy')
 plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.legend()
-plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"accuracy-{GENERAL_CONFIG['model_id']}.png"))
+plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"accuracy-{MODEL_CONFIG['model_id']}.png"))
 
 plt.figure()
-plt.plot(final_history.history['loss'], label='Train Loss')
-plt.plot(final_history.history['val_loss'], label='Validation Loss')
+plt.plot(history['loss'], label='Train Loss')
+plt.plot(history['val_loss'], label='Validation Loss')
 plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
-plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"loss-{GENERAL_CONFIG['model_id']}.png"))
+plt.savefig(os.path.join(GENERAL_CONFIG['figures_folder'], f"loss-{MODEL_CONFIG['model_id']}.png"))
