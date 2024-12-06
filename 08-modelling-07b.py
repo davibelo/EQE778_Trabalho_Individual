@@ -18,7 +18,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 
 # Configuration Block
 CONFIG = {
-    'neurons_ratio': 5,
+    'neurons_ratio': 10,
     'dropout_rate': 0.05,
     'batch_size': 128,
     'learning_rate': 0.001,
@@ -53,7 +53,7 @@ logging.info(f"x scaled shape: {x_scaled.shape}")
 logging.info(f"y scaled shape: {y_scaled.shape}")
 
 # Split data
-x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.9, random_state=42)
+x_train_scaled, x_rem_scaled, y_train_scaled, y_rem_scaled = train_test_split(x_scaled, y_scaled, train_size=0.7, random_state=42)
 x_val_scaled, x_test_scaled, y_val_scaled, y_test_scaled = train_test_split(x_rem_scaled, y_rem_scaled, test_size=1/3, random_state=42)
 
 logging.info(f"x_train shape: {x_train_scaled.shape}")
