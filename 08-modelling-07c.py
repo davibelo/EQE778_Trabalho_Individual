@@ -61,77 +61,101 @@ def neurons(num_features, ratio, multiple):
     neuron_count = int(num_features * ratio)
     return max(multiple, round(neuron_count / multiple) * multiple)
 
-# Objective function for Optuna
+# Objective function for Optuna with added logging
 def objective(trial):
-    # Hyperparameter suggestions
-    neurons_ratio = trial.suggest_int('neurons_ratio', 10, 50, step=5)
-    dropout_rate_layer1 = trial.suggest_float('dropout_rate_layer1', 0.1, 0.5, step=0.05)
-    dropout_rate_layer2 = trial.suggest_float('dropout_rate_layer2', 0.1, 0.5, step=0.05)
-    dropout_rate_layer3 = trial.suggest_float('dropout_rate_layer3', 0.1, 0.5, step=0.05)
-    learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True)
-    regularizer = trial.suggest_float('regularizer', 1e-6, 1e-2, log=True)
-    batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
+    try:
+        # Log trial start
+        logging.info(f"Starting trial {trial.number}")
+        
+        # Hyperparameter suggestions
+        neurons_ratio = trial.suggest_int('neurons_ratio', 10, 50, step=5)
+        dropout_rate_layer1 = trial.suggest_float('dropout_rate_layer1', 0.1, 0.5, step=0.05)
+        dropout_rate_layer2 = trial.suggest_float('dropout_rate_layer2', 0.1, 0.5, step=0.05)
+        dropout_rate_layer3 = trial.suggest_float('dropout_rate_layer3', 0.1, 0.5, step=0.05)
+        learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True)
+        regularizer = trial.suggest_float('regularizer', 1e-6, 1e-2, log=True)
+        batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
 
-    # Define Model
-    num_features = x_train_scaled.shape[1]
-    num_outputs = y_train_scaled.shape[1]
+        # Log hyperparameters
+        logging.info(f"Trial {trial.number} Hyperparameters: "
+                     f"neurons_ratio={neurons_ratio}, "
+                     f"dropout_rate_layer1={dropout_rate_layer1}, "
+                     f"dropout_rate_layer2={dropout_rate_layer2}, "
+                     f"dropout_rate_layer3={dropout_rate_layer3}, "
+                     f"learning_rate={learning_rate}, "
+                     f"regularizer={regularizer}, "
+                     f"batch_size={batch_size}")
+        
+        # Define Model
+        num_features = x_train_scaled.shape[1]
+        num_outputs = y_train_scaled.shape[1]
 
-    model = tf.keras.Sequential([
-        layers.Input(shape=(num_features,)),
-        layers.Dense(neurons(num_features, neurons_ratio, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-        layers.Dropout(dropout_rate_layer1),
+        model = tf.keras.Sequential([
+            layers.Input(shape=(num_features,)),
+            layers.Dense(neurons(num_features, neurons_ratio, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
+            layers.BatchNormalization(),
+            layers.ReLU(),
+            layers.Dropout(dropout_rate_layer1),
 
-        layers.Dense(neurons(num_features, neurons_ratio / 2, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
-        layers.BatchNormalization(),
-        layers.ReLU(),
-        layers.Dropout(dropout_rate_layer2),
+            layers.Dense(neurons(num_features, neurons_ratio / 2, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
+            layers.BatchNormalization(),
+            layers.ReLU(),
+            layers.Dropout(dropout_rate_layer2),
 
-        layers.Dense(neurons(num_features, neurons_ratio / 4, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
-        layers.ReLU(),
-        layers.BatchNormalization(),
-        layers.Dropout(dropout_rate_layer3),
+            layers.Dense(neurons(num_features, neurons_ratio / 4, MODEL_CONFIG['multiple']), kernel_regularizer=regularizers.l2(regularizer)),
+            layers.ReLU(),
+            layers.BatchNormalization(),
+            layers.Dropout(dropout_rate_layer3),
 
-        layers.Dense(num_outputs, activation='sigmoid')
-    ])
+            layers.Dense(num_outputs, activation='sigmoid')
+        ])
 
-    # Compile Model
-    opt = tf.keras.optimizers.RMSprop(learning_rate=learning_rate)
-    model.compile(
-        loss='binary_crossentropy',
-        optimizer=opt,
-        metrics=['accuracy']
-    )
-
-    # Callbacks
-    callbacks = [
-        tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
-        tf.keras.callbacks.ModelCheckpoint(
-            filepath=os.path.join(GENERAL_CONFIG['output_folder'], f'best_model{MODEL_CONFIG['model_id']}.keras'),
-            save_best_only=True,
-            monitor='val_loss'
+        # Compile Model
+        opt = tf.keras.optimizers.RMSprop(learning_rate=learning_rate)
+        model.compile(
+            loss='binary_crossentropy',
+            optimizer=opt,
+            metrics=['accuracy']
         )
-    ]
 
-    # Train Model
-    history = model.fit(
-        x_train_scaled,
-        y_train_scaled,
-        batch_size=batch_size,
-        epochs=MODEL_CONFIG['epochs'],
-        validation_data=(x_val_scaled, y_val_scaled),
-        callbacks=callbacks,
-        verbose=0
-    )
+        # Callbacks
+        callbacks = [
+            tf.keras.callbacks.EarlyStopping(patience=MODEL_CONFIG['patience'], restore_best_weights=True),
+            tf.keras.callbacks.ModelCheckpoint(
+                filepath=os.path.join(GENERAL_CONFIG['output_folder'], f'best_model_trial{trial.number}.keras'),
+                save_best_only=True,
+                monitor='val_loss'
+            )
+        ]
 
-    # Evaluate Model
-    val_accuracy = max(history.history['val_accuracy'])
-    return 1 - val_accuracy  # Optuna minimizes the objective
+        # Train Model
+        history = model.fit(
+            x_train_scaled,
+            y_train_scaled,
+            batch_size=batch_size,
+            epochs=MODEL_CONFIG['epochs'],
+            validation_data=(x_val_scaled, y_val_scaled),
+            callbacks=callbacks,
+            verbose=0
+        )
 
-# Run Optuna Study
+        # Evaluate Model
+        val_accuracy = max(history.history['val_accuracy'])
+
+        # Log trial result
+        logging.info(f"Trial {trial.number} completed with Validation Accuracy: {val_accuracy:.4f}")
+
+        return 1 - val_accuracy  # Optuna minimizes the objective
+
+    except Exception as e:
+        logging.error(f"Error in trial {trial.number}: {str(e)}")
+        raise
+
+# Run Optuna Study with logging during optimization
 study = optuna.create_study()
+logging.info("Starting Optuna study optimization...")
 study.optimize(objective, n_trials=50)
+logging.info("Optuna study optimization completed.")
 
 # Log Best Parameters
 best_params = study.best_params
