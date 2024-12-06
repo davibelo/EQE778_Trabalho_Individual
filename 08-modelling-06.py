@@ -17,7 +17,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 from optuna.integration import TFKerasPruningCallback
 
-
 # Dynamically generate the log file name based on the script name
 LOG_FILE = f"{os.path.splitext(os.path.basename(__file__))[0]}.log"
 
@@ -89,7 +88,7 @@ def objective(trial):
     # Initial number of neurons for the first layer
     neurons = int(neurons_ratio * num_features)
     neurons = 2 * ((neurons + 1) // 2)  # Round to nearest multiple of 2
-   
+    
     # Build the model
     model = tf.keras.Sequential()
     model.add(layers.Input(shape=(num_features,)))
@@ -197,34 +196,15 @@ try:
 except ImportError:
     logging.warning("Optuna visualization libraries are not installed.")
 
-# Retrieve the best model
-best_model = best_trial.user_attrs["final_model"]
 
-# Evaluate the best model on test data
-test_loss = best_model.evaluate(x_test_scaled, y_test_scaled, verbose=0)
-logging.info(f"Test loss of the best model: {test_loss}")
-
-# Save the best model
-best_model.save(os.path.join(OUTPUT_FOLDER, f'{MODEL_ID}_best.keras'))
-
-#==============================================================================
-
-# Plot the optimization history
-optuna.visualization.plot_optimization_history(study).write_html(
-    os.path.join(FIGURES_FOLDER, f'{MODEL_ID}_optimization_history.html')
-)
-optuna.visualization.plot_param_importances(study).write_html(
-    os.path.join(FIGURES_FOLDER, f'{MODEL_ID}_param_importance.html')
-)
-
-# Assuming you have your model predictions and actual values
-y_test_pred_scaled = model.predict(x_test_scaled)
-y_pred_scaled = model.predict(x_scaled)
+# Final calculations with the best model
+y_test_pred_scaled = best_model.predict(x_test_scaled)
+y_pred_scaled = best_model.predict(x_scaled)
 residue_test = y_test_scaled.ravel() - y_test_pred_scaled.ravel()
 residue = y_scaled.ravel() - y_pred_scaled.ravel()
 
-# Calculate RMSE
-rmse_dl = np.sqrt(model.evaluate(x_test_scaled, y_test_scaled, batch_size=1000, verbose=0))
+# Calculate RMSE using the best model
+rmse_dl = np.sqrt(best_model.evaluate(x_test_scaled, y_test_scaled, batch_size=1000, verbose=0))
 logging.info(f"RMSE: {rmse_dl}")
 
 # Calculate R-squared value
@@ -234,58 +214,38 @@ logging.info(f"Test data R²: {r2_test}")
 r2_all = r2_score(y_scaled, y_pred_scaled)
 logging.info(f"All data R²: {r2_all}")
 
-plt.figure(figsize = (10,5))
-plt.plot(history.history['loss'], linewidth = 2)
-plt.plot(history.history['val_loss'], linewidth = 2)
-plt.title('Training loss RMSE: %.3f' %(rmse_dl), fontsize = 14)
-plt.ylabel('Loss', fontsize = 12)
-plt.xlabel('Epoch', fontsize = 12)
-plt.legend(['train', 'validation'], loc='upper right', fontsize = 12)
+
+# Plotting the training loss
+plt.figure(figsize=(10, 5))
+plt.plot(history.history['loss'], linewidth=2)
+plt.plot(history.history['val_loss'], linewidth=2)
+plt.title(f'Training loss RMSE: {rmse_dl:.3f}', fontsize=14)
+plt.ylabel('Loss', fontsize=12)
+plt.xlabel('Epoch', fontsize=12)
+plt.legend(['train', 'validation'], loc='upper right', fontsize=12)
 plt.grid()
-plt.xticks(fontsize = 11)
-plt.yticks(fontsize = 11)
+plt.xticks(fontsize=11)
+plt.yticks(fontsize=11)
 plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_training_loss.png')
 
-prediction_results = np.asarray(np.column_stack((y_test_scaled, y_test_pred_scaled)))
-prediction_results = sorted(prediction_results, key= lambda x: x[0])
-prediction_results = np.asarray(prediction_results)
-plt.figure(figsize = (10,5))
-plt.plot(np.asarray(np.asarray(prediction_results[:,0])), 
-         linestyle='-', linewidth=0.5, marker='o', markersize=3, label = 'Real')
-plt.plot(np.asarray(np.asarray(prediction_results[:,1])), 
-          linestyle='-', linewidth=0.5, marker='^', markersize=3, label = 'Prediction')
-plt.title('Test Data: y real x y prediction, RMSE: %.3f'
-          %(rmse_dl), fontsize = 14)
-plt.xlabel('Test Data', fontsize = 12)
-plt.ylabel('y normalized', fontsize = 12)
-plt.legend(fontsize = 12)
+# Plotting test data: y real vs y prediction
+prediction_results = np.column_stack((y_test_scaled, y_test_pred_scaled))
+prediction_results = prediction_results[np.argsort(prediction_results[:, 0])]
+plt.figure(figsize=(10, 5))
+plt.plot(prediction_results[:, 0], linestyle='-', linewidth=0.5, marker='o', markersize=3, label='Real')
+plt.plot(prediction_results[:, 1], linestyle='-', linewidth=0.5, marker='^', markersize=3, label='Prediction')
+plt.title(f'Test Data: y real x y prediction, RMSE: {rmse_dl:.3f}', fontsize=14)
+plt.xlabel('Test Data', fontsize=12)
+plt.ylabel('y normalized', fontsize=12)
+plt.legend(fontsize=12)
 plt.grid()
-plt.xticks(fontsize = 11)
-plt.yticks(fontsize = 11)
+plt.xticks(fontsize=11)
+plt.yticks(fontsize=11)
 plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_test_data_real_and_pred.png')
-
-prediction_results = np.asarray(np.column_stack((y_scaled, y_pred_scaled)))
-prediction_results = sorted(prediction_results, key= lambda x: x[0])
-prediction_results = np.asarray(prediction_results)
-plt.figure(figsize = (10,5))
-plt.plot(np.asarray(np.asarray(prediction_results[:,0])), 
-         linestyle='-', linewidth=0.5, marker='o', markersize=3, label = 'Real')
-plt.plot(np.asarray(np.asarray(prediction_results[:,1])), 
-         linestyle='-', linewidth=0.5, marker='^', markersize=3, label = 'Prediction')
-plt.title('All Data: y real x y prediction, RMSE: %.3f'
-          %(rmse_dl), fontsize = 14)
-plt.xlabel('All Data', fontsize = 12)
-plt.ylabel('y normalized', fontsize = 12)
-plt.legend(fontsize = 12)
-plt.grid()
-plt.xticks(fontsize = 11)
-plt.yticks(fontsize = 11)
-plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_all_data_real_and_pred.png')
 
 # Predicted vs True values - Test Data
 plt.figure()
-reta = np.random.uniform(low=-2, high=2, size=(50,))
-plt.plot(reta,reta, color='black', label='x = y') #plot reta x = y
+plt.plot(np.linspace(-2, 2, 50), np.linspace(-2, 2, 50), color='black', label='x = y')  # plot x = y line
 plt.scatter(y_test_scaled, y_test_pred_scaled, color='blue', marker='x')
 plt.legend(fontsize=15, loc='best')
 plt.xlabel('True Values', fontsize=15)
@@ -305,4 +265,3 @@ plt.tight_layout()
 plt.savefig(f'{FIGURES_FOLDER}/MODEL_{MODEL_ID}_test_residue.png')
 
 plt.close()
-
