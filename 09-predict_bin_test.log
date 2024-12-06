@@ -1,0 +1,6 @@
+2024-12-05 15:54:21,528 - INFO - Optimized Models loaded successfully.
+2024-12-05 15:54:21,530 - INFO - Input scaler loaded successfully.
+2024-12-05 15:54:21,616 - INFO - Input data shape: (1, 5)
+2024-12-05 15:54:21,616 - INFO - Predicted probabilities shape: (1, 2)
+2024-12-05 15:54:21,616 - INFO - Predicted classes shape: (1, 2)
+2024-12-05 15:54:21,617 - INFO - Prediction completed successfully.

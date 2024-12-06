@@ -1,0 +1,142 @@
+2024-12-03 15:46:55,302 - INFO - x scaled shape: (897254, 5)
+2024-12-03 15:46:55,302 - INFO - y scaled shape: (897254, 2)
+2024-12-03 15:46:55,397 - INFO - x_train shape: (628077, 5)
+2024-12-03 15:46:55,397 - INFO - y_train shape: (628077, 2)
+2024-12-03 15:46:55,397 - INFO - x_val shape: (179451, 5)
+2024-12-03 15:46:55,398 - INFO - y_val shape: (179451, 2)
+2024-12-03 15:46:55,398 - INFO - x_test shape: (89726, 5)
+2024-12-03 15:46:55,398 - INFO - y_test shape: (89726, 2)
+2024-12-03 15:46:55,398 - INFO - Starting optimization for output 0
+2024-12-03 15:47:11,710 - INFO - Trial 0: n_estimators=300, max_depth=20, min_samples_split=4, min_samples_leaf=2, ROC AUC=0.8223
+2024-12-03 15:47:23,527 - INFO - Trial 1: n_estimators=230, max_depth=40, min_samples_split=4, min_samples_leaf=7, ROC AUC=0.8279
+2024-12-03 15:47:31,550 - INFO - Trial 2: n_estimators=170, max_depth=50, min_samples_split=4, min_samples_leaf=9, ROC AUC=0.8285
+2024-12-03 15:47:39,841 - INFO - Trial 3: n_estimators=160, max_depth=30, min_samples_split=4, min_samples_leaf=5, ROC AUC=0.8264
+2024-12-03 15:47:53,195 - INFO - Trial 4: n_estimators=260, max_depth=30, min_samples_split=9, min_samples_leaf=6, ROC AUC=0.8276
+2024-12-03 15:48:04,193 - INFO - Trial 5: n_estimators=270, max_depth=10, min_samples_split=2, min_samples_leaf=3, ROC AUC=0.8037
+2024-12-03 15:48:11,473 - INFO - Trial 6: n_estimators=140, max_depth=50, min_samples_split=9, min_samples_leaf=1, ROC AUC=0.8235
+2024-12-03 15:48:21,164 - INFO - Trial 7: n_estimators=200, max_depth=20, min_samples_split=8, min_samples_leaf=9, ROC AUC=0.8286
+2024-12-03 15:48:35,285 - INFO - Trial 8: n_estimators=280, max_depth=40, min_samples_split=3, min_samples_leaf=6, ROC AUC=0.8276
+2024-12-03 15:48:43,117 - INFO - Trial 9: n_estimators=190, max_depth=10, min_samples_split=8, min_samples_leaf=1, ROC AUC=0.8037
+2024-12-03 15:48:48,273 - INFO - Trial 10: n_estimators=100, max_depth=20, min_samples_split=7, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:48:53,562 - INFO - Trial 11: n_estimators=100, max_depth=20, min_samples_split=7, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:48:59,001 - INFO - Trial 12: n_estimators=110, max_depth=20, min_samples_split=6, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:49:04,046 - INFO - Trial 13: n_estimators=100, max_depth=20, min_samples_split=6, min_samples_leaf=8, ROC AUC=0.8283
+2024-12-03 15:49:09,223 - INFO - Trial 14: n_estimators=120, max_depth=10, min_samples_split=7, min_samples_leaf=10, ROC AUC=0.8036
+2024-12-03 15:49:16,101 - INFO - Trial 15: n_estimators=140, max_depth=30, min_samples_split=10, min_samples_leaf=8, ROC AUC=0.8282
+2024-12-03 15:49:23,282 - INFO - Trial 16: n_estimators=140, max_depth=20, min_samples_split=7, min_samples_leaf=4, ROC AUC=0.8263
+2024-12-03 15:49:28,293 - INFO - Trial 17: n_estimators=100, max_depth=30, min_samples_split=5, min_samples_leaf=10, ROC AUC=0.8279
+2024-12-03 15:49:39,205 - INFO - Trial 18: n_estimators=230, max_depth=40, min_samples_split=7, min_samples_leaf=8, ROC AUC=0.8284
+2024-12-03 15:49:44,719 - INFO - Trial 19: n_estimators=130, max_depth=10, min_samples_split=8, min_samples_leaf=9, ROC AUC=0.8035
+2024-12-03 15:49:52,542 - INFO - Trial 20: n_estimators=160, max_depth=20, min_samples_split=5, min_samples_leaf=7, ROC AUC=0.8283
+2024-12-03 15:49:58,011 - INFO - Trial 21: n_estimators=110, max_depth=20, min_samples_split=6, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:50:03,892 - INFO - Trial 22: n_estimators=120, max_depth=20, min_samples_split=6, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:50:09,709 - INFO - Trial 23: n_estimators=120, max_depth=30, min_samples_split=7, min_samples_leaf=9, ROC AUC=0.8282
+2024-12-03 15:50:13,952 - INFO - Trial 24: n_estimators=100, max_depth=10, min_samples_split=5, min_samples_leaf=10, ROC AUC=0.8037
+2024-12-03 15:50:22,541 - INFO - Trial 25: n_estimators=180, max_depth=20, min_samples_split=9, min_samples_leaf=7, ROC AUC=0.8284
+2024-12-03 15:50:29,811 - INFO - Trial 26: n_estimators=150, max_depth=20, min_samples_split=7, min_samples_leaf=8, ROC AUC=0.8286
+2024-12-03 15:50:36,116 - INFO - Trial 27: n_estimators=150, max_depth=10, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8034
+2024-12-03 15:50:46,125 - INFO - Trial 28: n_estimators=210, max_depth=30, min_samples_split=10, min_samples_leaf=9, ROC AUC=0.8286
+2024-12-03 15:50:53,862 - INFO - Trial 29: n_estimators=160, max_depth=20, min_samples_split=7, min_samples_leaf=8, ROC AUC=0.8286
+2024-12-03 15:51:02,549 - INFO - Trial 30: n_estimators=170, max_depth=30, min_samples_split=6, min_samples_leaf=5, ROC AUC=0.8264
+2024-12-03 15:51:08,992 - INFO - Trial 31: n_estimators=130, max_depth=20, min_samples_split=7, min_samples_leaf=8, ROC AUC=0.8284
+2024-12-03 15:51:19,574 - INFO - Trial 32: n_estimators=220, max_depth=20, min_samples_split=8, min_samples_leaf=7, ROC AUC=0.8284
+2024-12-03 15:51:26,822 - INFO - Trial 33: n_estimators=150, max_depth=20, min_samples_split=7, min_samples_leaf=9, ROC AUC=0.8284
+2024-12-03 15:51:34,236 - INFO - Trial 34: n_estimators=180, max_depth=10, min_samples_split=5, min_samples_leaf=6, ROC AUC=0.8038
+2024-12-03 15:51:41,877 - INFO - Trial 35: n_estimators=160, max_depth=30, min_samples_split=7, min_samples_leaf=9, ROC AUC=0.8285
+2024-12-03 15:51:48,019 - INFO - Trial 36: n_estimators=120, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8284
+2024-12-03 15:52:00,459 - INFO - Trial 37: n_estimators=300, max_depth=10, min_samples_split=8, min_samples_leaf=4, ROC AUC=0.8038
+2024-12-03 15:52:12,259 - INFO - Trial 38: n_estimators=240, max_depth=40, min_samples_split=6, min_samples_leaf=7, ROC AUC=0.8279
+2024-12-03 15:52:19,770 - INFO - Trial 39: n_estimators=150, max_depth=20, min_samples_split=9, min_samples_leaf=9, ROC AUC=0.8284
+2024-12-03 15:52:29,398 - INFO - Trial 40: n_estimators=190, max_depth=30, min_samples_split=8, min_samples_leaf=5, ROC AUC=0.8264
+2024-12-03 15:52:34,876 - INFO - Trial 41: n_estimators=110, max_depth=20, min_samples_split=6, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:52:41,298 - INFO - Trial 42: n_estimators=130, max_depth=20, min_samples_split=7, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:52:47,820 - INFO - Trial 43: n_estimators=130, max_depth=20, min_samples_split=7, min_samples_leaf=10, ROC AUC=0.8286
+2024-12-03 15:52:54,219 - INFO - Trial 44: n_estimators=130, max_depth=20, min_samples_split=7, min_samples_leaf=9, ROC AUC=0.8282
+2024-12-03 15:53:00,153 - INFO - Trial 45: n_estimators=140, max_depth=10, min_samples_split=8, min_samples_leaf=10, ROC AUC=0.8034
+2024-12-03 15:53:08,543 - INFO - Trial 46: n_estimators=170, max_depth=50, min_samples_split=2, min_samples_leaf=9, ROC AUC=0.8285
+2024-12-03 15:53:15,362 - INFO - Trial 47: n_estimators=130, max_depth=30, min_samples_split=6, min_samples_leaf=6, ROC AUC=0.8271
+2024-12-03 15:53:23,243 - INFO - Trial 48: n_estimators=150, max_depth=20, min_samples_split=7, min_samples_leaf=2, ROC AUC=0.8241
+2024-12-03 15:53:28,772 - INFO - Trial 49: n_estimators=110, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8284
+2024-12-03 15:53:28,791 - INFO - Best parameters for output 0: {'n_estimators': 150, 'max_depth': 20, 'min_samples_split': 7, 'min_samples_leaf': 8}
+2024-12-03 15:53:28,792 - INFO - Best validation ROC AUC for output 0: 0.828624462739805
+2024-12-03 15:53:35,813 - INFO - Final Random Forest model for output 0 training completed.
+2024-12-03 15:53:36,229 - INFO - Test Accuracy (output 0): 0.8431335398881038
+2024-12-03 15:53:36,229 - INFO - Test ROC AUC (output 0): 0.8300933407104548
+2024-12-03 15:53:36,269 - INFO - Classification Report (output 0):
+              precision    recall  f1-score   support
+
+           0       0.78      0.22      0.35     16804
+           1       0.85      0.99      0.91     72922
+
+    accuracy                           0.84     89726
+   macro avg       0.82      0.60      0.63     89726
+weighted avg       0.83      0.84      0.81     89726
+
+2024-12-03 15:53:36,552 - INFO - Optimized Random Forest model for output 0 saved as opt_model-10-output0.joblib.
+2024-12-03 15:53:36,552 - INFO - Starting optimization for output 1
+2024-12-03 15:53:42,357 - INFO - Trial 0: n_estimators=120, max_depth=50, min_samples_split=2, min_samples_leaf=8, ROC AUC=0.8452
+2024-12-03 15:53:50,127 - INFO - Trial 1: n_estimators=160, max_depth=50, min_samples_split=9, min_samples_leaf=10, ROC AUC=0.8455
+2024-12-03 15:53:56,729 - INFO - Trial 2: n_estimators=130, max_depth=20, min_samples_split=2, min_samples_leaf=6, ROC AUC=0.8449
+2024-12-03 15:54:02,108 - INFO - Trial 3: n_estimators=110, max_depth=30, min_samples_split=5, min_samples_leaf=8, ROC AUC=0.8452
+2024-12-03 15:54:10,320 - INFO - Trial 4: n_estimators=170, max_depth=20, min_samples_split=3, min_samples_leaf=7, ROC AUC=0.8456
+2024-12-03 15:54:15,958 - INFO - Trial 5: n_estimators=110, max_depth=50, min_samples_split=9, min_samples_leaf=5, ROC AUC=0.8437
+2024-12-03 15:54:21,550 - INFO - Trial 6: n_estimators=110, max_depth=40, min_samples_split=3, min_samples_leaf=5, ROC AUC=0.8437
+2024-12-03 15:54:33,351 - INFO - Trial 7: n_estimators=250, max_depth=30, min_samples_split=6, min_samples_leaf=8, ROC AUC=0.8456
+2024-12-03 15:54:48,376 - INFO - Trial 8: n_estimators=300, max_depth=20, min_samples_split=10, min_samples_leaf=2, ROC AUC=0.8437
+2024-12-03 15:54:53,992 - INFO - Trial 9: n_estimators=110, max_depth=50, min_samples_split=10, min_samples_leaf=9, ROC AUC=0.8454
+2024-12-03 15:55:07,355 - INFO - Trial 10: n_estimators=250, max_depth=30, min_samples_split=6, min_samples_leaf=3, ROC AUC=0.8408
+2024-12-03 15:55:15,845 - INFO - Trial 11: n_estimators=210, max_depth=10, min_samples_split=6, min_samples_leaf=7, ROC AUC=0.8255
+2024-12-03 15:55:26,533 - INFO - Trial 12: n_estimators=210, max_depth=20, min_samples_split=4, min_samples_leaf=7, ROC AUC=0.8456
+2024-12-03 15:55:38,270 - INFO - Trial 13: n_estimators=240, max_depth=30, min_samples_split=5, min_samples_leaf=10, ROC AUC=0.8455
+2024-12-03 15:55:49,112 - INFO - Trial 14: n_estimators=270, max_depth=10, min_samples_split=7, min_samples_leaf=4, ROC AUC=0.8256
+2024-12-03 15:55:59,313 - INFO - Trial 15: n_estimators=210, max_depth=40, min_samples_split=4, min_samples_leaf=7, ROC AUC=0.8453
+2024-12-03 15:56:09,064 - INFO - Trial 16: n_estimators=180, max_depth=20, min_samples_split=7, min_samples_leaf=1, ROC AUC=0.8415
+2024-12-03 15:56:19,960 - INFO - Trial 17: n_estimators=230, max_depth=40, min_samples_split=4, min_samples_leaf=9, ROC AUC=0.8456
+2024-12-03 15:56:30,806 - INFO - Trial 18: n_estimators=230, max_depth=40, min_samples_split=4, min_samples_leaf=9, ROC AUC=0.8456
+2024-12-03 15:56:44,790 - INFO - Trial 19: n_estimators=280, max_depth=40, min_samples_split=4, min_samples_leaf=6, ROC AUC=0.8448
+2024-12-03 15:56:52,477 - INFO - Trial 20: n_estimators=190, max_depth=10, min_samples_split=3, min_samples_leaf=9, ROC AUC=0.8255
+2024-12-03 15:57:03,231 - INFO - Trial 21: n_estimators=230, max_depth=40, min_samples_split=4, min_samples_leaf=9, ROC AUC=0.8456
+2024-12-03 15:57:13,855 - INFO - Trial 22: n_estimators=230, max_depth=40, min_samples_split=5, min_samples_leaf=10, ROC AUC=0.8455
+2024-12-03 15:57:23,904 - INFO - Trial 23: n_estimators=210, max_depth=30, min_samples_split=4, min_samples_leaf=8, ROC AUC=0.8456
+2024-12-03 15:57:31,256 - INFO - Trial 24: n_estimators=150, max_depth=40, min_samples_split=3, min_samples_leaf=9, ROC AUC=0.8455
+2024-12-03 15:57:40,772 - INFO - Trial 25: n_estimators=200, max_depth=20, min_samples_split=5, min_samples_leaf=7, ROC AUC=0.8456
+2024-12-03 15:57:53,576 - INFO - Trial 26: n_estimators=270, max_depth=30, min_samples_split=7, min_samples_leaf=9, ROC AUC=0.8457
+2024-12-03 15:58:06,814 - INFO - Trial 27: n_estimators=270, max_depth=30, min_samples_split=7, min_samples_leaf=6, ROC AUC=0.8448
+2024-12-03 15:58:20,702 - INFO - Trial 28: n_estimators=300, max_depth=20, min_samples_split=8, min_samples_leaf=10, ROC AUC=0.8458
+2024-12-03 15:58:34,653 - INFO - Trial 29: n_estimators=300, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 15:58:46,572 - INFO - Trial 30: n_estimators=300, max_depth=10, min_samples_split=8, min_samples_leaf=10, ROC AUC=0.8253
+2024-12-03 15:58:59,909 - INFO - Trial 31: n_estimators=290, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 15:59:13,335 - INFO - Trial 32: n_estimators=290, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 15:59:26,824 - INFO - Trial 33: n_estimators=290, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 15:59:39,813 - INFO - Trial 34: n_estimators=280, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 15:59:52,686 - INFO - Trial 35: n_estimators=280, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:00:03,078 - INFO - Trial 36: n_estimators=260, max_depth=10, min_samples_split=9, min_samples_leaf=6, ROC AUC=0.8256
+2024-12-03 16:00:17,110 - INFO - Trial 37: n_estimators=280, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:00:31,074 - INFO - Trial 38: n_estimators=280, max_depth=20, min_samples_split=9, min_samples_leaf=5, ROC AUC=0.8449
+2024-12-03 16:00:42,077 - INFO - Trial 39: n_estimators=260, max_depth=10, min_samples_split=10, min_samples_leaf=7, ROC AUC=0.8255
+2024-12-03 16:00:54,490 - INFO - Trial 40: n_estimators=250, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:01:09,534 - INFO - Trial 41: n_estimators=290, max_depth=20, min_samples_split=8, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:01:23,047 - INFO - Trial 42: n_estimators=280, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:01:36,692 - INFO - Trial 43: n_estimators=280, max_depth=30, min_samples_split=10, min_samples_leaf=7, ROC AUC=0.8454
+2024-12-03 16:01:49,237 - INFO - Trial 44: n_estimators=260, max_depth=20, min_samples_split=9, min_samples_leaf=7, ROC AUC=0.8456
+2024-12-03 16:02:02,622 - INFO - Trial 45: n_estimators=280, max_depth=20, min_samples_split=9, min_samples_leaf=8, ROC AUC=0.8458
+2024-12-03 16:02:14,795 - INFO - Trial 46: n_estimators=300, max_depth=10, min_samples_split=10, min_samples_leaf=9, ROC AUC=0.8255
+2024-12-03 16:02:27,945 - INFO - Trial 47: n_estimators=270, max_depth=30, min_samples_split=9, min_samples_leaf=7, ROC AUC=0.8454
+2024-12-03 16:02:41,069 - INFO - Trial 48: n_estimators=250, max_depth=20, min_samples_split=10, min_samples_leaf=4, ROC AUC=0.8444
+2024-12-03 16:02:46,901 - INFO - Trial 49: n_estimators=140, max_depth=10, min_samples_split=8, min_samples_leaf=6, ROC AUC=0.8257
+2024-12-03 16:02:46,904 - INFO - Best parameters for output 1: {'n_estimators': 300, 'max_depth': 20, 'min_samples_split': 8, 'min_samples_leaf': 8}
+2024-12-03 16:02:46,904 - INFO - Best validation ROC AUC for output 1: 0.8458401442649794
+2024-12-03 16:03:00,263 - INFO - Final Random Forest model for output 1 training completed.
+2024-12-03 16:03:01,108 - INFO - Test Accuracy (output 1): 0.7807547422151885
+2024-12-03 16:03:01,108 - INFO - Test ROC AUC (output 1): 0.8456261822480138
+2024-12-03 16:03:01,149 - INFO - Classification Report (output 1):
+              precision    recall  f1-score   support
+
+           0       0.81      0.88      0.84     59761
+           1       0.71      0.59      0.64     29965
+
+    accuracy                           0.78     89726
+   macro avg       0.76      0.73      0.74     89726
+weighted avg       0.77      0.78      0.78     89726
+
+2024-12-03 16:03:01,571 - INFO - Optimized Random Forest model for output 1 saved as opt_model-10-output1.joblib.

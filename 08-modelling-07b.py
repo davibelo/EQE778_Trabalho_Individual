@@ -18,13 +18,13 @@ from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 
 # Configuration Block
 CONFIG = {
-    'neurons_ratio': 10,
+    'neurons_ratio': 20,
     'dropout_rate': 0.05,
     'batch_size': 128,
     'learning_rate': 0.001,
     'patience': 20,
     'epochs': 100,
-    'multiple': 8,
+    'multiple': 2,
     'figures_folder': 'figures',
     'input_folder': 'input_files',
     'output_folder': 'output_files',

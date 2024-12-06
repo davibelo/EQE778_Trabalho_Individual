@@ -1,0 +1,19 @@
+2024-12-02 17:40:32,209 - INFO - x scaled shape: (897254, 5)
+2024-12-02 17:40:32,210 - INFO - y scaled shape: (897254, 2)
+2024-12-02 17:40:32,309 - INFO - x_train shape: (628077, 5)
+2024-12-02 17:40:32,310 - INFO - y_train shape: (628077, 2)
+2024-12-02 17:40:32,310 - INFO - x_val shape: (179451, 5)
+2024-12-02 17:40:32,310 - INFO - y_val shape: (179451, 2)
+2024-12-02 17:40:32,310 - INFO - x_test shape: (89726, 5)
+2024-12-02 17:40:32,310 - INFO - y_test shape: (89726, 2)
+2024-12-02 17:41:05,389 - INFO - Trial 0: n_estimators=266, max_depth=20, min_samples_split=10, min_samples_leaf=18, Avg MSE=0.7564, Avg R2=0.2439
+2024-12-02 17:41:05,438 - INFO - Best parameters: {'n_estimators': 266, 'max_depth': 20, 'min_samples_split': 10, 'min_samples_leaf': 18}
+2024-12-02 17:41:05,438 - INFO - Best validation: 0.24390837076838395
+2024-12-02 17:41:37,662 - INFO - Final Multi-output Random Forest Regressor training completed.
+2024-12-02 17:41:38,165 - INFO - Test MSE (output 0): 0.7894085004089649
+2024-12-02 17:41:38,165 - INFO - Test MAE (output 0): 0.7673065583509384
+2024-12-02 17:41:38,165 - INFO - Test R2 (output 0): 0.20986991833580626
+2024-12-02 17:41:38,165 - INFO - Test MSE (output 1): 0.7285533874380907
+2024-12-02 17:41:38,165 - INFO - Test MAE (output 1): 0.6683534752378171
+2024-12-02 17:41:38,165 - INFO - Test R2 (output 1): 0.2757478390471654
+2024-12-02 17:41:38,552 - INFO - Optimized Multi-output Random Forest Regressor model saved as optimized_multi_model-03a.joblib.

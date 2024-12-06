@@ -1,0 +1,1096 @@
+2024-12-05 15:56:42,263 - INFO - Optimized Models loaded successfully.
+2024-12-05 15:56:42,264 - INFO - Input scaler loaded successfully.
+2024-12-05 15:56:42,323 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,323 - INFO - Predicted probabilities: [array([0.66505507]), array([0.18206338])]
+2024-12-05 15:56:42,324 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,324 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,379 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,379 - INFO - Predicted probabilities: [array([0.66505507]), array([0.18206338])]
+2024-12-05 15:56:42,380 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,380 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,380 - INFO - Total Cost: 1510000.0
+2024-12-05 15:56:42,435 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,435 - INFO - Predicted probabilities: [array([0.66505507]), array([0.18206338])]
+2024-12-05 15:56:42,435 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,435 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,491 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,491 - INFO - Predicted probabilities: [array([0.66505507]), array([0.18206338])]
+2024-12-05 15:56:42,492 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,492 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,492 - INFO - Total Cost: 1610000.0
+2024-12-05 15:56:42,547 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,547 - INFO - Predicted probabilities: [array([0.70811512]), array([0.1575605])]
+2024-12-05 15:56:42,547 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,547 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,602 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,602 - INFO - Predicted probabilities: [array([0.70811512]), array([0.1575605])]
+2024-12-05 15:56:42,603 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,603 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,603 - INFO - Total Cost: 1610000.0
+2024-12-05 15:56:42,658 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,659 - INFO - Predicted probabilities: [array([0.62638586]), array([0.13006239])]
+2024-12-05 15:56:42,659 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,659 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,714 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,714 - INFO - Predicted probabilities: [array([0.62638586]), array([0.13006239])]
+2024-12-05 15:56:42,715 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,715 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,715 - INFO - Total Cost: 1510000.0
+2024-12-05 15:56:42,771 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,771 - INFO - Predicted probabilities: [array([0.77345402]), array([0.21298253])]
+2024-12-05 15:56:42,771 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,771 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,826 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,826 - INFO - Predicted probabilities: [array([0.77345402]), array([0.21298253])]
+2024-12-05 15:56:42,826 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,827 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,827 - INFO - Total Cost: 1506426.761723416
+2024-12-05 15:56:42,881 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,881 - INFO - Predicted probabilities: [array([0.87317567]), array([0.27463445])]
+2024-12-05 15:56:42,881 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,881 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,937 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,937 - INFO - Predicted probabilities: [array([0.87317567]), array([0.27463445])]
+2024-12-05 15:56:42,938 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,938 - INFO - Prediction completed successfully.
+2024-12-05 15:56:42,938 - INFO - Total Cost: 1504818.5710778125
+2024-12-05 15:56:42,992 - INFO - Input data shape: (5,)
+2024-12-05 15:56:42,992 - INFO - Predicted probabilities: [array([0.81237264]), array([0.21173696])]
+2024-12-05 15:56:42,993 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:42,993 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,048 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,048 - INFO - Predicted probabilities: [array([0.81237264]), array([0.21173696])]
+2024-12-05 15:56:43,049 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,049 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,049 - INFO - Total Cost: 1473322.1707191735
+2024-12-05 15:56:43,104 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,104 - INFO - Predicted probabilities: [array([0.86138394]), array([0.34966308])]
+2024-12-05 15:56:43,104 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,105 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,159 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,159 - INFO - Predicted probabilities: [array([0.86138394]), array([0.34966308])]
+2024-12-05 15:56:43,160 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,160 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,160 - INFO - Total Cost: 1538596.54269748
+2024-12-05 15:56:43,216 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,216 - INFO - Predicted probabilities: [array([0.72207394]), array([0.18177721])]
+2024-12-05 15:56:43,217 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,217 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,271 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,271 - INFO - Predicted probabilities: [array([0.72207394]), array([0.18177721])]
+2024-12-05 15:56:43,271 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,271 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,272 - INFO - Total Cost: 1521744.5726311305
+2024-12-05 15:56:43,327 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,328 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:43,328 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,328 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,382 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,382 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:43,382 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,383 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,383 - INFO - Total Cost: 1496958.6794895092
+2024-12-05 15:56:43,438 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,438 - INFO - Predicted probabilities: [array([0.8012625]), array([0.11281727])]
+2024-12-05 15:56:43,438 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,438 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,492 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,492 - INFO - Predicted probabilities: [array([0.8012625]), array([0.11281727])]
+2024-12-05 15:56:43,493 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,493 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,493 - INFO - Total Cost: 1518433.587873914
+2024-12-05 15:56:43,547 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,547 - INFO - Predicted probabilities: [array([0.63251892]), array([0.14118074])]
+2024-12-05 15:56:43,548 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,548 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,603 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,603 - INFO - Predicted probabilities: [array([0.63251892]), array([0.14118074])]
+2024-12-05 15:56:43,603 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,603 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,604 - INFO - Total Cost: 1529667.2229392077
+2024-12-05 15:56:43,657 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,657 - INFO - Predicted probabilities: [array([0.64301107]), array([0.11045378])]
+2024-12-05 15:56:43,658 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,658 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,713 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,713 - INFO - Predicted probabilities: [array([0.64301107]), array([0.11045378])]
+2024-12-05 15:56:43,713 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,713 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,713 - INFO - Total Cost: 1523877.6435364808
+2024-12-05 15:56:43,768 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,768 - INFO - Predicted probabilities: [array([0.63251892]), array([0.14118074])]
+2024-12-05 15:56:43,768 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,768 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,824 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,824 - INFO - Predicted probabilities: [array([0.63251892]), array([0.14118074])]
+2024-12-05 15:56:43,824 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,824 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,825 - INFO - Total Cost: 1529947.0889660893
+2024-12-05 15:56:43,879 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,879 - INFO - Predicted probabilities: [array([0.64301107]), array([0.11045378])]
+2024-12-05 15:56:43,880 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,880 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,934 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,935 - INFO - Predicted probabilities: [array([0.64301107]), array([0.11045378])]
+2024-12-05 15:56:43,935 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,935 - INFO - Prediction completed successfully.
+2024-12-05 15:56:43,935 - INFO - Total Cost: 1521221.9224398253
+2024-12-05 15:56:43,989 - INFO - Input data shape: (5,)
+2024-12-05 15:56:43,989 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:43,990 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:43,990 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,044 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,044 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,045 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,045 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,045 - INFO - Total Cost: 1512643.8498106697
+2024-12-05 15:56:44,100 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,100 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,100 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,100 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,154 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,154 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,155 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,155 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,155 - INFO - Total Cost: 1510786.6968608433
+2024-12-05 15:56:44,210 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,210 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:44,211 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,211 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,265 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,265 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:44,266 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,266 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,266 - INFO - Total Cost: 1513572.426285583
+2024-12-05 15:56:44,320 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,320 - INFO - Predicted probabilities: [array([0.62103332]), array([0.14677734])]
+2024-12-05 15:56:44,320 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,320 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,376 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,376 - INFO - Predicted probabilities: [array([0.62103332]), array([0.14677734])]
+2024-12-05 15:56:44,376 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,376 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,377 - INFO - Total Cost: 1512382.524715017
+2024-12-05 15:56:44,431 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,431 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,431 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,432 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,485 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,485 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,485 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,486 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,486 - INFO - Total Cost: 1511453.9482401041
+2024-12-05 15:56:44,540 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,540 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:44,540 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,540 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,594 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,595 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:44,595 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,595 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,595 - INFO - Total Cost: 1512846.8129524738
+2024-12-05 15:56:44,650 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,650 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,650 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,651 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,704 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,704 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,704 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,704 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,705 - INFO - Total Cost: 1511310.2656363726
+2024-12-05 15:56:44,759 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,759 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,760 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,760 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,814 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,814 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:44,814 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,814 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,814 - INFO - Total Cost: 1509100.5569451647
+2024-12-05 15:56:44,869 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,869 - INFO - Predicted probabilities: [array([0.68834747]), array([0.11019364])]
+2024-12-05 15:56:44,870 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,870 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,924 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,924 - INFO - Predicted probabilities: [array([0.68834747]), array([0.11019364])]
+2024-12-05 15:56:44,924 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,924 - INFO - Prediction completed successfully.
+2024-12-05 15:56:44,925 - INFO - Total Cost: 1509827.9376153569
+2024-12-05 15:56:44,979 - INFO - Input data shape: (5,)
+2024-12-05 15:56:44,979 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:44,980 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:44,980 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,051 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,051 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,051 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,052 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,052 - INFO - Total Cost: 1512239.6267996028
+2024-12-05 15:56:45,106 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,106 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,106 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,106 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,161 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,161 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,161 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,161 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,161 - INFO - Total Cost: 1511035.1678549726
+2024-12-05 15:56:45,217 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,217 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,217 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,217 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,272 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,272 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,272 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,272 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,272 - INFO - Total Cost: 1509853.128741539
+2024-12-05 15:56:45,328 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,328 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,328 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,328 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,383 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,383 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,383 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,384 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,384 - INFO - Total Cost: 1509912.5461495551
+2024-12-05 15:56:45,439 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,439 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,439 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,439 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,493 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,493 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,493 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,494 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,494 - INFO - Total Cost: 1511835.533922275
+2024-12-05 15:56:45,549 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,549 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,549 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,549 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,604 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,604 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,604 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,604 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,604 - INFO - Total Cost: 1511225.6571021741
+2024-12-05 15:56:45,659 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,659 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,660 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,660 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,714 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,714 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,714 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,714 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,715 - INFO - Total Cost: 1511250.8482283566
+2024-12-05 15:56:45,769 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,770 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,770 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,770 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,824 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,824 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,824 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,824 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,824 - INFO - Total Cost: 1510673.2299293722
+2024-12-05 15:56:45,880 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,880 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,880 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,880 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,934 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,934 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:45,934 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,934 - INFO - Prediction completed successfully.
+2024-12-05 15:56:45,935 - INFO - Total Cost: 1510120.8027565703
+2024-12-05 15:56:45,989 - INFO - Input data shape: (5,)
+2024-12-05 15:56:45,989 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:45,990 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:45,990 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,043 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,043 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:46,043 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,043 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,043 - INFO - Total Cost: 1510397.0163429712
+2024-12-05 15:56:46,098 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,098 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:46,098 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,099 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,154 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,154 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:46,154 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,154 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,155 - INFO - Total Cost: 1510673.2299293722
+2024-12-05 15:56:46,209 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,209 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:46,209 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,209 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,264 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,264 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:46,265 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,265 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,265 - INFO - Total Cost: 1510508.4010411408
+2024-12-05 15:56:46,320 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,320 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,320 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,320 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,376 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,376 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,376 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,376 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,376 - INFO - Total Cost: 1510463.5591779426
+2024-12-05 15:56:46,430 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,430 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,431 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,431 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,485 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,485 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,486 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,486 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,486 - INFO - Total Cost: 1510573.9992316242
+2024-12-05 15:56:46,540 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,540 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,540 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,540 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,595 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,595 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,596 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,596 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,596 - INFO - Total Cost: 1510423.641191091
+2024-12-05 15:56:46,650 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,650 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,651 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,651 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,705 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,705 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,706 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,706 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,706 - INFO - Total Cost: 1510285.5343978903
+2024-12-05 15:56:46,761 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,761 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,761 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,762 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,817 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,817 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,818 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,818 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,818 - INFO - Total Cost: 1510395.9744515722
+2024-12-05 15:56:46,871 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,871 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,871 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,871 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,927 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,927 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,928 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,928 - INFO - Prediction completed successfully.
+2024-12-05 15:56:46,928 - INFO - Total Cost: 1510524.8944682768
+2024-12-05 15:56:46,983 - INFO - Input data shape: (5,)
+2024-12-05 15:56:46,983 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:46,983 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:46,983 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,037 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,037 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,039 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,039 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,039 - INFO - Total Cost: 1510384.3272063571
+2024-12-05 15:56:47,093 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,093 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,093 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,093 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,149 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,149 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,150 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,150 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,150 - INFO - Total Cost: 1510257.8676583718
+2024-12-05 15:56:47,205 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,205 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,205 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,205 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,262 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,262 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,262 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,262 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,262 - INFO - Total Cost: 1510119.7608651714
+2024-12-05 15:56:47,317 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,317 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,317 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,317 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,372 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,372 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,372 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,372 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,373 - INFO - Total Cost: 1510188.8142617717
+2024-12-05 15:56:47,426 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,427 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,427 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,427 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,482 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,482 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,482 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,482 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,483 - INFO - Total Cost: 1510119.7608651714
+2024-12-05 15:56:47,537 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,537 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,538 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,538 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,592 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,592 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,592 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,592 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,593 - INFO - Total Cost: 1510188.8142617717
+2024-12-05 15:56:47,647 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,647 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,647 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,648 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,703 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,703 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,703 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,703 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,703 - INFO - Total Cost: 1510119.7608651714
+2024-12-05 15:56:47,757 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,757 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,758 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,758 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,813 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,813 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,814 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,814 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,814 - INFO - Total Cost: 1510188.8142617717
+2024-12-05 15:56:47,868 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,868 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,868 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,868 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,923 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,923 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:47,924 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,924 - INFO - Prediction completed successfully.
+2024-12-05 15:56:47,924 - INFO - Total Cost: 1510169.983679855
+2024-12-05 15:56:47,979 - INFO - Input data shape: (5,)
+2024-12-05 15:56:47,979 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:47,980 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:47,980 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,034 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,034 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,034 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,034 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,034 - INFO - Total Cost: 1510169.2430180865
+2024-12-05 15:56:48,089 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,089 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,090 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,090 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,160 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,160 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,160 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,160 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,160 - INFO - Total Cost: 1510135.0710044252
+2024-12-05 15:56:48,216 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,216 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,216 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,216 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,271 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,271 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,271 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,271 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,272 - INFO - Total Cost: 1510066.726977102
+2024-12-05 15:56:48,326 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,326 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:48,326 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,326 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,381 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,381 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:48,381 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,381 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,381 - INFO - Total Cost: 1510135.0710044252
+2024-12-05 15:56:48,436 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,436 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,436 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,437 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,491 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,491 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,491 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,491 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,491 - INFO - Total Cost: 1510198.9253051914
+2024-12-05 15:56:48,546 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,546 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,546 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,546 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,601 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,601 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,601 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,601 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,601 - INFO - Total Cost: 1510118.3139495044
+2024-12-05 15:56:48,657 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,657 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,657 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,657 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,712 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,712 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,713 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,713 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,713 - INFO - Total Cost: 1510148.6946482821
+2024-12-05 15:56:48,767 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,767 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,768 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,768 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,823 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,823 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,823 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,823 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,823 - INFO - Total Cost: 1510125.2813213915
+2024-12-05 15:56:48,878 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,878 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,879 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,879 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,934 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,934 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:48,934 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,935 - INFO - Prediction completed successfully.
+2024-12-05 15:56:48,935 - INFO - Total Cost: 1510083.7872512043
+2024-12-05 15:56:48,989 - INFO - Input data shape: (5,)
+2024-12-05 15:56:48,989 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:48,989 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:48,990 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,045 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,045 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:49,045 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,046 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,046 - INFO - Total Cost: 1510088.1153267943
+2024-12-05 15:56:49,100 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,100 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,100 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,100 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,156 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,156 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,156 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,156 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,157 - INFO - Total Cost: 1510096.4201393926
+2024-12-05 15:56:49,212 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,212 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,212 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,212 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,266 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,266 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,266 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,266 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,266 - INFO - Total Cost: 1510087.6403615773
+2024-12-05 15:56:49,321 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,321 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,321 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,321 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,376 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,376 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,376 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,376 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,377 - INFO - Total Cost: 1510070.3770124272
+2024-12-05 15:56:49,431 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,431 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:49,431 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,431 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,485 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,485 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:49,485 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,485 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,486 - INFO - Total Cost: 1510095.1926947227
+2024-12-05 15:56:49,540 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,540 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,540 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,540 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,595 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,595 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,596 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,596 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,596 - INFO - Total Cost: 1510091.7927678763
+2024-12-05 15:56:49,650 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,650 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,650 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,651 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,705 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,705 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,705 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,706 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,706 - INFO - Total Cost: 1510083.3245242897
+2024-12-05 15:56:49,761 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,761 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,761 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,761 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,815 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,815 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,815 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,815 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,816 - INFO - Total Cost: 1510079.0086870021
+2024-12-05 15:56:49,871 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,871 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,871 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,871 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,926 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,926 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:49,926 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,927 - INFO - Prediction completed successfully.
+2024-12-05 15:56:49,927 - INFO - Total Cost: 1510074.6928497148
+2024-12-05 15:56:49,981 - INFO - Input data shape: (5,)
+2024-12-05 15:56:49,981 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:49,982 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:49,982 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,037 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,037 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:50,037 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,037 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,037 - INFO - Total Cost: 1510074.6928497145
+2024-12-05 15:56:50,092 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,092 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:50,092 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,092 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,148 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,148 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:50,148 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,148 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,148 - INFO - Total Cost: 1510077.6594567997
+2024-12-05 15:56:50,203 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,203 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,204 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,204 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,258 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,259 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,259 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,259 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,259 - INFO - Total Cost: 1510081.6236619512
+2024-12-05 15:56:50,313 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,313 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,314 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,314 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,368 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,368 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,369 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,369 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,369 - INFO - Total Cost: 1510079.6415593755
+2024-12-05 15:56:50,423 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,423 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,423 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,424 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,478 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,478 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,478 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,478 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,478 - INFO - Total Cost: 1510077.6594567997
+2024-12-05 15:56:50,534 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,534 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,534 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,534 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,589 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,589 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,589 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,589 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,589 - INFO - Total Cost: 1510076.8062966433
+2024-12-05 15:56:50,644 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,644 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,644 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,644 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,711 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,712 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,712 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,712 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,712 - INFO - Total Cost: 1510077.03674105
+2024-12-05 15:56:50,768 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,768 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,768 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,769 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,823 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,823 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,823 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,823 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,824 - INFO - Total Cost: 1510076.3630850336
+2024-12-05 15:56:50,879 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,879 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,880 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,880 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,934 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,934 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,934 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,934 - INFO - Prediction completed successfully.
+2024-12-05 15:56:50,934 - INFO - Total Cost: 1510075.7974477226
+2024-12-05 15:56:50,989 - INFO - Input data shape: (5,)
+2024-12-05 15:56:50,989 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:50,989 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:50,989 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,044 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,044 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,044 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,044 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,045 - INFO - Total Cost: 1510076.0392359076
+2024-12-05 15:56:51,099 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,099 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,099 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,099 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,154 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,154 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,154 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,154 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,154 - INFO - Total Cost: 1510075.2579680616
+2024-12-05 15:56:51,210 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,210 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,210 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,210 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,280 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,281 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,281 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,281 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,281 - INFO - Total Cost: 1510074.7184884008
+2024-12-05 15:56:51,335 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,335 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,336 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,336 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,392 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,392 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,393 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,393 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,393 - INFO - Total Cost: 1510074.1790087395
+2024-12-05 15:56:51,447 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,447 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,447 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,447 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,501 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,501 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,502 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,502 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,502 - INFO - Total Cost: 1510074.3901436557
+2024-12-05 15:56:51,557 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,557 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,557 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,558 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,612 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,612 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,612 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,612 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,612 - INFO - Total Cost: 1510074.1790087398
+2024-12-05 15:56:51,667 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,667 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,667 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,667 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,723 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,723 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,724 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,724 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,724 - INFO - Total Cost: 1510074.410363295
+2024-12-05 15:56:51,777 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,777 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,778 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,778 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,833 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,833 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,833 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,833 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,833 - INFO - Total Cost: 1510074.2132239798
+2024-12-05 15:56:51,888 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,888 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,888 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,888 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,943 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,943 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,944 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,944 - INFO - Prediction completed successfully.
+2024-12-05 15:56:51,944 - INFO - Total Cost: 1510073.9377461008
+2024-12-05 15:56:51,998 - INFO - Input data shape: (5,)
+2024-12-05 15:56:51,998 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:51,998 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:51,998 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,054 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,054 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,055 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,055 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,055 - INFO - Total Cost: 1510074.0534233786
+2024-12-05 15:56:52,109 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,109 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,109 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,110 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,164 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,164 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,164 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,164 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,165 - INFO - Total Cost: 1510073.8028761856
+2024-12-05 15:56:52,219 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,219 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,219 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,220 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,275 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,275 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,275 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,275 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,275 - INFO - Total Cost: 1510073.6680062704
+2024-12-05 15:56:52,331 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,331 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,331 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,332 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,386 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,386 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,387 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,387 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,387 - INFO - Total Cost: 1510073.5331363552
+2024-12-05 15:56:52,442 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,442 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,442 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,443 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,497 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,498 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,498 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,498 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,498 - INFO - Total Cost: 1510073.3982664403
+2024-12-05 15:56:52,553 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,553 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,553 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,554 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,607 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,607 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,608 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,608 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,608 - INFO - Total Cost: 1510073.2633965248
+2024-12-05 15:56:52,685 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,686 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,686 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,686 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,739 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,739 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,739 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,739 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,739 - INFO - Total Cost: 1510073.1285266099
+2024-12-05 15:56:52,794 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,794 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,794 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,795 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,850 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,850 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,851 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,851 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,851 - INFO - Total Cost: 1510072.9936566944
+2024-12-05 15:56:52,905 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,905 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,905 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,905 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,959 - INFO - Input data shape: (5,)
+2024-12-05 15:56:52,959 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:52,959 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:52,960 - INFO - Prediction completed successfully.
+2024-12-05 15:56:52,960 - INFO - Total Cost: 1510072.8587867792
+2024-12-05 15:56:53,015 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,015 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,016 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,016 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,070 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,070 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,070 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,070 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,071 - INFO - Total Cost: 1510072.723916864
+2024-12-05 15:56:53,125 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,125 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,125 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,125 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,180 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,180 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,180 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,180 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,182 - INFO - Total Cost: 1510072.5890469488
+2024-12-05 15:56:53,236 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,236 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,236 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,237 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,292 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,293 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,293 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,293 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,293 - INFO - Total Cost: 1510072.723916864
+2024-12-05 15:56:53,348 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,348 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,348 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,349 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,403 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,403 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,404 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,404 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,404 - INFO - Total Cost: 1510072.5890469488
+2024-12-05 15:56:53,458 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,458 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,458 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,458 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,514 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,514 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,515 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,515 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,515 - INFO - Total Cost: 1510072.723916864
+2024-12-05 15:56:53,570 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,570 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,571 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,571 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,625 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,625 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,625 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,625 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,626 - INFO - Total Cost: 1510072.5890469488
+2024-12-05 15:56:53,680 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,680 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,680 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,680 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,735 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,735 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,735 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,735 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,736 - INFO - Total Cost: 1510072.6564819063
+2024-12-05 15:56:53,791 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,791 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,792 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,792 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,847 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,847 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:53,847 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,847 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,847 - INFO - Total Cost: 1510072.7576343429
+2024-12-05 15:56:53,901 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,902 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,902 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,902 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,956 - INFO - Input data shape: (5,)
+2024-12-05 15:56:53,956 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:53,957 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:53,957 - INFO - Prediction completed successfully.
+2024-12-05 15:56:53,957 - INFO - Total Cost: 1510072.7070581247
+2024-12-05 15:56:54,010 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,010 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:54,010 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,010 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,065 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,065 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:54,066 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,066 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,066 - INFO - Total Cost: 1510072.723916864
+2024-12-05 15:56:54,121 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,121 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,121 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,122 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,177 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,177 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,177 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,177 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,177 - INFO - Total Cost: 1510072.7407756033
+2024-12-05 15:56:54,232 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,232 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,233 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,233 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,287 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,287 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,287 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,288 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,288 - INFO - Total Cost: 1510072.723916864
+2024-12-05 15:56:54,343 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,343 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,343 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,344 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,420 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,420 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,420 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,420 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,421 - INFO - Total Cost: 1510072.7407756033
+2024-12-05 15:56:54,474 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,474 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,474 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,475 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,528 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,528 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,528 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,528 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,529 - INFO - Total Cost: 1510072.7323462337
+2024-12-05 15:56:54,582 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,582 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,583 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,583 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,636 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,637 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,637 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,637 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,637 - INFO - Total Cost: 1510072.719702179
+2024-12-05 15:56:54,690 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,690 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,690 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,690 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,745 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,745 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,745 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,745 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,746 - INFO - Total Cost: 1510072.7154874946
+2024-12-05 15:56:54,799 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,799 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,799 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,799 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,853 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,853 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,854 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,854 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,854 - INFO - Total Cost: 1510072.7112728097
+2024-12-05 15:56:54,908 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,908 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,909 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,909 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,963 - INFO - Input data shape: (5,)
+2024-12-05 15:56:54,963 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:54,964 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:54,964 - INFO - Prediction completed successfully.
+2024-12-05 15:56:54,964 - INFO - Total Cost: 1510072.7070581247
+2024-12-05 15:56:55,017 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,018 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:55,018 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,018 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,071 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,071 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:55,071 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,071 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,071 - INFO - Total Cost: 1510072.7112728097
+2024-12-05 15:56:55,126 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,126 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,127 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,127 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,180 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,180 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,180 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,180 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,180 - INFO - Total Cost: 1510072.7136106961
+2024-12-05 15:56:55,234 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,235 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,235 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,235 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,290 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,290 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,290 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,291 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,291 - INFO - Total Cost: 1510072.7147796392
+2024-12-05 15:56:55,345 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,345 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,345 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,345 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,399 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,399 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,399 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,399 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,399 - INFO - Total Cost: 1510072.709858596
+2024-12-05 15:56:55,453 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,453 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:55,453 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,453 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,507 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,507 - INFO - Predicted probabilities: [array([0.6433086]), array([0.10259922])]
+2024-12-05 15:56:55,508 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,508 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,508 - INFO - Total Cost: 1510072.7112728097
+2024-12-05 15:56:55,562 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,562 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,562 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,562 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,616 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,616 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,616 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,616 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,617 - INFO - Total Cost: 1510072.7126870232
+2024-12-05 15:56:55,670 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,670 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,670 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,670 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,726 - INFO - Input data shape: (5,)
+2024-12-05 15:56:55,726 - INFO - Predicted probabilities: [array([0.59430081]), array([0.12473629])]
+2024-12-05 15:56:55,726 - INFO - Predicted classes: [array([1]), array([0])]
+2024-12-05 15:56:55,726 - INFO - Prediction completed successfully.
+2024-12-05 15:56:55,726 - INFO - Optimal values: [564994, 945078, 0.48]
+2024-12-05 15:56:55,726 - INFO - Minimum cost: 1510072.7126870232
+2024-12-05 15:56:55,726 - INFO - Number of function evaluations: 120
+2024-12-05 15:56:55,726 - INFO - Optimization success: False
+2024-12-05 15:56:55,726 - INFO - Message: Did not converge to a solution satisfying the constraints. See `maxcv` for magnitude of violation.
+2024-12-05 15:56:55,726 - INFO - Maximum constraint violation (maxcv): 0.09430081370480858

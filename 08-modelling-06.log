@@ -1,0 +1,19 @@
+2024-12-06 00:37:44,918 - INFO - x scaled shape: (897254, 5)
+2024-12-06 00:37:44,918 - INFO - y scaled shape: (897254, 2)
+2024-12-06 00:37:45,030 - INFO - x_train shape: (628077, 5)
+2024-12-06 00:37:45,030 - INFO - y_train shape: (628077, 2)
+2024-12-06 00:37:45,030 - INFO - x_val shape: (179451, 5)
+2024-12-06 00:37:45,030 - INFO - y_val shape: (179451, 2)
+2024-12-06 00:37:45,030 - INFO - x_test shape: (89726, 5)
+2024-12-06 00:37:45,030 - INFO - y_test shape: (89726, 2)
+2024-12-06 00:37:45,369 - WARNING - From C:\Users\davib\Downloads\EQE778_Trabalho_Individual\.venv\Lib\site-packages\keras\src\backend\common\global_state.py:82: The name tf.reset_default_graph is deprecated. Please use tf.compat.v1.reset_default_graph instead.
+
+2024-12-06 00:37:45,454 - INFO - Trial 0 hyperparameters: num_dense_layers=4, neurons_ratio=3.1302497500684647, dropout_rate=0.23070896307672462, learning_rate=1.1465559400427135e-05, activation=tanh
+2024-12-06 00:38:16,708 - INFO - Trial 0: Test R² score: 0.0107
+2024-12-06 00:38:16,708 - INFO - Trial 0: Validation Loss: 0.9900
+2024-12-06 00:38:16,922 - INFO - Trial 0 completed with value: 0.9899676442146301. Parameters: {'num_dense_layers': 4, 'neurons_ratio': 3.1302497500684647, 'dropout_rate': 0.23070896307672462, 'learning_rate': 1.1465559400427135e-05, 'activation': 'tanh'}
+2024-12-06 00:38:17,031 - INFO - Trial 1 hyperparameters: num_dense_layers=5, neurons_ratio=2.873793696412035, dropout_rate=0.24203947995160835, learning_rate=0.0004507501888527014, activation=relu
+2024-12-06 00:38:51,993 - INFO - Trial 1: Test R² score: 0.0470
+2024-12-06 00:38:51,993 - INFO - Trial 1: Validation Loss: 0.9534
+2024-12-06 00:38:52,260 - INFO - Trial 1 completed with value: 0.9533926844596863. Parameters: {'num_dense_layers': 5, 'neurons_ratio': 2.873793696412035, 'dropout_rate': 0.24203947995160835, 'learning_rate': 0.0004507501888527014, 'activation': 'relu'}
+2024-12-06 00:38:52,399 - INFO - Trial 2 hyperparameters: num_dense_layers=3, neurons_ratio=2.3903758767658205, dropout_rate=0.06336586248647663, learning_rate=0.0002798078830012167, activation=tanh

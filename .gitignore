@@ -1,7 +1,6 @@
 .venv/*
 UTAA*/
 lixo/*
-*.log
 *.csv
 UTAA*
 *.dmp

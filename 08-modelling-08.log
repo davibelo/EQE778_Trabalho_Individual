@@ -1,0 +1,40 @@
+2024-11-29 18:17:40,926 - x scaled shape: (897254, 5)
+2024-11-29 18:17:40,926 - y scaled shape: (897254, 2)
+2024-11-29 18:17:41,009 - x_train shape: (807528, 5)
+2024-11-29 18:17:41,009 - y_train shape: (807528, 2)
+2024-11-29 18:17:41,009 - x_val shape: (59817, 5)
+2024-11-29 18:17:41,009 - y_val shape: (59817, 2)
+2024-11-29 18:17:41,009 - x_test shape: (29909, 5)
+2024-11-29 18:17:41,009 - y_test shape: (29909, 2)
+2024-11-29 18:17:57,383 - Multi-output Random Forest model training completed.
+2024-11-29 18:17:58,159 - Validation Accuracy (output 0): 0.8298309845027333
+2024-11-29 18:17:58,159 - Validation ROC AUC (output 0): 0.8015261303104957
+2024-11-29 18:17:58,159 - Validation Accuracy (output 1): 0.7592490429142217
+2024-11-29 18:17:58,159 - Validation ROC AUC (output 1): 0.8210868308341519
+2024-11-29 18:17:58,567 - Test Accuracy (output 0): 0.8266073757063092
+2024-11-29 18:17:58,567 - Test ROC AUC (output 0): 0.7998999879205504
+2024-11-29 18:17:58,578 - Classification Report (output 0):
+              precision    recall  f1-score   support
+
+           0       0.86      0.94      0.90     24203
+           1       0.58      0.33      0.42      5706
+
+    accuracy                           0.83     29909
+   macro avg       0.72      0.64      0.66     29909
+weighted avg       0.80      0.83      0.81     29909
+
+2024-11-29 18:17:58,578 - Test Accuracy (output 1): 0.7569293523688522
+2024-11-29 18:17:58,578 - Test ROC AUC (output 1): 0.8173553037420846
+2024-11-29 18:17:58,590 - Classification Report (output 1):
+              precision    recall  f1-score   support
+
+           0       0.65      0.58      0.62     10002
+           1       0.80      0.84      0.82     19907
+
+    accuracy                           0.76     29909
+   macro avg       0.73      0.71      0.72     29909
+weighted avg       0.75      0.76      0.75     29909
+
+2024-11-29 18:18:01,268 - Multi-output Random Forest model saved as multi_model-08.joblib.
+2024-11-29 18:18:06,071 - Loaded model test accuracy (output 0): 0.8266073757063092
+2024-11-29 18:18:06,071 - Loaded model test accuracy (output 1): 0.7569293523688522

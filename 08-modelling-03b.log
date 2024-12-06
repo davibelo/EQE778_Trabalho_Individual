@@ -1,0 +1,122 @@
+2024-12-02 17:55:15,070 - INFO - x scaled shape: (897254, 5)
+2024-12-02 17:55:15,070 - INFO - y scaled shape: (897254, 2)
+2024-12-02 17:55:15,171 - INFO - x_train shape: (628077, 5)
+2024-12-02 17:55:15,171 - INFO - y_train shape: (628077, 2)
+2024-12-02 17:55:15,171 - INFO - x_val shape: (179451, 5)
+2024-12-02 17:55:15,171 - INFO - y_val shape: (179451, 2)
+2024-12-02 17:55:15,171 - INFO - x_test shape: (89726, 5)
+2024-12-02 17:55:15,171 - INFO - y_test shape: (89726, 2)
+2024-12-02 17:55:15,171 - INFO - Starting Optuna optimization for output 1
+2024-12-02 17:55:24,359 - INFO - Output 1 - Trial 0: n_estimators=135, max_depth=34, min_samples_split=6, min_samples_leaf=11, MSE=0.7979, R2=0.2013
+2024-12-02 17:55:30,987 - INFO - Output 1 - Trial 1: n_estimators=111, max_depth=14, min_samples_split=13, min_samples_leaf=2, MSE=0.7833, R2=0.2159
+2024-12-02 17:55:47,523 - INFO - Output 1 - Trial 2: n_estimators=212, max_depth=40, min_samples_split=4, min_samples_leaf=3, MSE=0.8374, R2=0.1618
+2024-12-02 17:56:06,120 - INFO - Output 1 - Trial 3: n_estimators=288, max_depth=32, min_samples_split=18, min_samples_leaf=15, MSE=0.7925, R2=0.2067
+2024-12-02 17:56:17,185 - INFO - Output 1 - Trial 4: n_estimators=160, max_depth=46, min_samples_split=4, min_samples_leaf=8, MSE=0.8045, R2=0.1947
+2024-12-02 17:56:36,440 - INFO - Output 1 - Trial 5: n_estimators=245, max_depth=40, min_samples_split=6, min_samples_leaf=2, MSE=0.8456, R2=0.1536
+2024-12-02 17:56:50,103 - INFO - Output 1 - Trial 6: n_estimators=188, max_depth=31, min_samples_split=3, min_samples_leaf=8, MSE=0.8044, R2=0.1948
+2024-12-02 17:57:06,402 - INFO - Output 1 - Trial 7: n_estimators=255, max_depth=25, min_samples_split=8, min_samples_leaf=19, MSE=0.7900, R2=0.2092
+2024-12-02 17:57:27,054 - INFO - Output 1 - Trial 8: n_estimators=300, max_depth=24, min_samples_split=17, min_samples_leaf=5, MSE=0.8067, R2=0.1924
+2024-12-02 17:57:40,176 - INFO - Output 1 - Trial 9: n_estimators=208, max_depth=29, min_samples_split=15, min_samples_leaf=18, MSE=0.7907, R2=0.2085
+2024-12-02 17:57:45,921 - INFO - Output 1 - Trial 10: n_estimators=107, max_depth=11, min_samples_split=12, min_samples_leaf=1, MSE=0.7909, R2=0.2083
+2024-12-02 17:58:00,576 - INFO - Output 1 - Trial 11: n_estimators=248, max_depth=15, min_samples_split=10, min_samples_leaf=20, MSE=0.7837, R2=0.2155
+2024-12-02 17:58:06,167 - INFO - Output 1 - Trial 12: n_estimators=102, max_depth=11, min_samples_split=11, min_samples_leaf=14, MSE=0.7909, R2=0.2082
+2024-12-02 17:58:21,825 - INFO - Output 1 - Trial 13: n_estimators=245, max_depth=18, min_samples_split=12, min_samples_leaf=13, MSE=0.7897, R2=0.2094
+2024-12-02 17:58:33,129 - INFO - Output 1 - Trial 14: n_estimators=175, max_depth=17, min_samples_split=15, min_samples_leaf=6, MSE=0.7920, R2=0.2072
+2024-12-02 17:58:41,853 - INFO - Output 1 - Trial 15: n_estimators=139, max_depth=17, min_samples_split=9, min_samples_leaf=17, MSE=0.7869, R2=0.2123
+2024-12-02 17:58:56,734 - INFO - Output 1 - Trial 16: n_estimators=223, max_depth=21, min_samples_split=20, min_samples_leaf=11, MSE=0.7956, R2=0.2036
+2024-12-02 17:59:10,857 - INFO - Output 1 - Trial 17: n_estimators=271, max_depth=10, min_samples_split=15, min_samples_leaf=8, MSE=0.8034, R2=0.1957
+2024-12-02 17:59:24,476 - INFO - Output 1 - Trial 18: n_estimators=228, max_depth=15, min_samples_split=10, min_samples_leaf=20, MSE=0.7837, R2=0.2155
+2024-12-02 17:59:33,975 - INFO - Output 1 - Trial 19: n_estimators=129, max_depth=22, min_samples_split=13, min_samples_leaf=4, MSE=0.8119, R2=0.1872
+2024-12-02 17:59:45,143 - INFO - Output 1 - Trial 20: n_estimators=191, max_depth=14, min_samples_split=7, min_samples_leaf=16, MSE=0.7826, R2=0.2165
+2024-12-02 17:59:55,188 - INFO - Output 1 - Trial 21: n_estimators=170, max_depth=14, min_samples_split=7, min_samples_leaf=16, MSE=0.7826, R2=0.2165
+2024-12-02 18:00:04,804 - INFO - Output 1 - Trial 22: n_estimators=167, max_depth=13, min_samples_split=7, min_samples_leaf=16, MSE=0.7827, R2=0.2165
+2024-12-02 18:00:15,692 - INFO - Output 1 - Trial 23: n_estimators=164, max_depth=27, min_samples_split=7, min_samples_leaf=16, MSE=0.7920, R2=0.2072
+2024-12-02 18:00:27,844 - INFO - Output 1 - Trial 24: n_estimators=186, max_depth=20, min_samples_split=5, min_samples_leaf=13, MSE=0.7926, R2=0.2066
+2024-12-02 18:00:36,560 - INFO - Output 1 - Trial 25: n_estimators=150, max_depth=13, min_samples_split=2, min_samples_leaf=17, MSE=0.7827, R2=0.2165
+2024-12-02 18:00:49,087 - INFO - Output 1 - Trial 26: n_estimators=193, max_depth=19, min_samples_split=8, min_samples_leaf=15, MSE=0.7902, R2=0.2089
+2024-12-02 18:01:00,495 - INFO - Output 1 - Trial 27: n_estimators=173, max_depth=50, min_samples_split=7, min_samples_leaf=13, MSE=0.7948, R2=0.2044
+2024-12-02 18:01:09,273 - INFO - Output 1 - Trial 28: n_estimators=151, max_depth=13, min_samples_split=5, min_samples_leaf=18, MSE=0.7828, R2=0.2164
+2024-12-02 18:01:17,545 - INFO - Output 1 - Trial 29: n_estimators=123, max_depth=35, min_samples_split=6, min_samples_leaf=11, MSE=0.7979, R2=0.2013
+2024-12-02 18:01:27,967 - INFO - Output 1 - Trial 30: n_estimators=202, max_depth=10, min_samples_split=9, min_samples_leaf=16, MSE=0.8034, R2=0.1957
+2024-12-02 18:01:36,007 - INFO - Output 1 - Trial 31: n_estimators=142, max_depth=13, min_samples_split=2, min_samples_leaf=17, MSE=0.7827, R2=0.2165
+2024-12-02 18:01:44,472 - INFO - Output 1 - Trial 32: n_estimators=140, max_depth=15, min_samples_split=2, min_samples_leaf=18, MSE=0.7837, R2=0.2154
+2024-12-02 18:01:55,812 - INFO - Output 1 - Trial 33: n_estimators=175, max_depth=23, min_samples_split=4, min_samples_leaf=15, MSE=0.7925, R2=0.2067
+2024-12-02 18:02:04,942 - INFO - Output 1 - Trial 34: n_estimators=159, max_depth=13, min_samples_split=6, min_samples_leaf=12, MSE=0.7827, R2=0.2165
+2024-12-02 18:02:15,598 - INFO - Output 1 - Trial 35: n_estimators=164, max_depth=17, min_samples_split=7, min_samples_leaf=10, MSE=0.7895, R2=0.2097
+2024-12-02 18:02:24,085 - INFO - Output 1 - Trial 36: n_estimators=122, max_depth=37, min_samples_split=5, min_samples_leaf=12, MSE=0.7963, R2=0.2028
+2024-12-02 18:02:37,271 - INFO - Output 1 - Trial 37: n_estimators=221, max_depth=13, min_samples_split=8, min_samples_leaf=10, MSE=0.7826, R2=0.2166
+2024-12-02 18:02:52,890 - INFO - Output 1 - Trial 38: n_estimators=228, max_depth=19, min_samples_split=8, min_samples_leaf=9, MSE=0.7952, R2=0.2039
+2024-12-02 18:03:06,456 - INFO - Output 1 - Trial 39: n_estimators=213, max_depth=15, min_samples_split=9, min_samples_leaf=7, MSE=0.7851, R2=0.2141
+2024-12-02 18:03:19,772 - INFO - Output 1 - Trial 40: n_estimators=193, max_depth=26, min_samples_split=4, min_samples_leaf=10, MSE=0.7993, R2=0.1998
+2024-12-02 18:03:29,942 - INFO - Output 1 - Trial 41: n_estimators=181, max_depth=12, min_samples_split=6, min_samples_leaf=14, MSE=0.7848, R2=0.2144
+2024-12-02 18:03:39,691 - INFO - Output 1 - Trial 42: n_estimators=156, max_depth=16, min_samples_split=7, min_samples_leaf=12, MSE=0.7862, R2=0.2129
+2024-12-02 18:03:52,507 - INFO - Output 1 - Trial 43: n_estimators=219, max_depth=13, min_samples_split=8, min_samples_leaf=16, MSE=0.7826, R2=0.2165
+2024-12-02 18:04:04,191 - INFO - Output 1 - Trial 44: n_estimators=221, max_depth=10, min_samples_split=10, min_samples_leaf=14, MSE=0.8035, R2=0.1957
+2024-12-02 18:04:16,696 - INFO - Output 1 - Trial 45: n_estimators=211, max_depth=12, min_samples_split=8, min_samples_leaf=19, MSE=0.7850, R2=0.2142
+2024-12-02 18:04:31,398 - INFO - Output 1 - Trial 46: n_estimators=236, max_depth=14, min_samples_split=6, min_samples_leaf=15, MSE=0.7826, R2=0.2166
+2024-12-02 18:04:46,988 - INFO - Output 1 - Trial 47: n_estimators=236, max_depth=21, min_samples_split=9, min_samples_leaf=15, MSE=0.7917, R2=0.2075
+2024-12-02 18:05:04,102 - INFO - Output 1 - Trial 48: n_estimators=272, max_depth=18, min_samples_split=4, min_samples_leaf=19, MSE=0.7875, R2=0.2116
+2024-12-02 18:05:17,181 - INFO - Output 1 - Trial 49: n_estimators=202, max_depth=40, min_samples_split=10, min_samples_leaf=16, MSE=0.7920, R2=0.2072
+2024-12-02 18:05:17,206 - INFO - Output 1 - Best parameters: {'n_estimators': 236, 'max_depth': 14, 'min_samples_split': 6, 'min_samples_leaf': 15}
+2024-12-02 18:05:17,206 - INFO - Output 1 - Best validation R2: 0.21661781799186253
+2024-12-02 18:05:30,814 - INFO - Output 1 - Test MSE: 0.7827734383817875
+2024-12-02 18:05:30,814 - INFO - Output 1 - Test MAE: 0.7688429778624761
+2024-12-02 18:05:30,814 - INFO - Output 1 - Test R2: 0.21651104532983334
+2024-12-02 18:05:30,953 - INFO - Model for output 1 saved as output_files\optimized_model_output_1-03b.joblib.
+2024-12-02 18:05:31,426 - INFO - Starting Optuna optimization for output 2
+2024-12-02 18:05:44,056 - INFO - Output 2 - Trial 0: n_estimators=190, max_depth=21, min_samples_split=4, min_samples_leaf=9, MSE=0.7317, R2=0.2697
+2024-12-02 18:05:59,700 - INFO - Output 2 - Trial 1: n_estimators=247, max_depth=47, min_samples_split=20, min_samples_leaf=19, MSE=0.7232, R2=0.2782
+2024-12-02 18:06:07,271 - INFO - Output 2 - Trial 2: n_estimators=109, max_depth=49, min_samples_split=11, min_samples_leaf=11, MSE=0.7296, R2=0.2718
+2024-12-02 18:06:16,993 - INFO - Output 2 - Trial 3: n_estimators=134, max_depth=46, min_samples_split=13, min_samples_leaf=7, MSE=0.7383, R2=0.2631
+2024-12-02 18:06:37,895 - INFO - Output 2 - Trial 4: n_estimators=293, max_depth=36, min_samples_split=14, min_samples_leaf=5, MSE=0.7417, R2=0.2597
+2024-12-02 18:06:55,050 - INFO - Output 2 - Trial 5: n_estimators=267, max_depth=41, min_samples_split=13, min_samples_leaf=19, MSE=0.7231, R2=0.2782
+2024-12-02 18:07:03,847 - INFO - Output 2 - Trial 6: n_estimators=131, max_depth=16, min_samples_split=13, min_samples_leaf=7, MSE=0.7241, R2=0.2773
+2024-12-02 18:07:17,384 - INFO - Output 2 - Trial 7: n_estimators=188, max_depth=26, min_samples_split=6, min_samples_leaf=8, MSE=0.7349, R2=0.2665
+2024-12-02 18:07:35,009 - INFO - Output 2 - Trial 8: n_estimators=251, max_depth=39, min_samples_split=17, min_samples_leaf=8, MSE=0.7344, R2=0.2670
+2024-12-02 18:07:50,115 - INFO - Output 2 - Trial 9: n_estimators=226, max_depth=28, min_samples_split=10, min_samples_leaf=11, MSE=0.7292, R2=0.2722
+2024-12-02 18:08:05,243 - INFO - Output 2 - Trial 10: n_estimators=298, max_depth=10, min_samples_split=8, min_samples_leaf=20, MSE=0.7441, R2=0.2573
+2024-12-02 18:08:21,167 - INFO - Output 2 - Trial 11: n_estimators=256, max_depth=41, min_samples_split=20, min_samples_leaf=19, MSE=0.7232, R2=0.2782
+2024-12-02 18:08:38,157 - INFO - Output 2 - Trial 12: n_estimators=267, max_depth=37, min_samples_split=20, min_samples_leaf=16, MSE=0.7245, R2=0.2768
+2024-12-02 18:08:52,103 - INFO - Output 2 - Trial 13: n_estimators=218, max_depth=43, min_samples_split=17, min_samples_leaf=15, MSE=0.7253, R2=0.2761
+2024-12-02 18:09:18,847 - INFO - Output 2 - Trial 14: n_estimators=270, max_depth=33, min_samples_split=2, min_samples_leaf=1, MSE=0.8247, R2=0.1768
+2024-12-02 18:09:33,782 - INFO - Output 2 - Trial 15: n_estimators=222, max_depth=42, min_samples_split=17, min_samples_leaf=16, MSE=0.7246, R2=0.2767
+2024-12-02 18:09:45,125 - INFO - Output 2 - Trial 16: n_estimators=175, max_depth=31, min_samples_split=15, min_samples_leaf=14, MSE=0.7261, R2=0.2752
+2024-12-02 18:10:01,693 - INFO - Output 2 - Trial 17: n_estimators=265, max_depth=41, min_samples_split=9, min_samples_leaf=19, MSE=0.7231, R2=0.2782
+2024-12-02 18:10:19,778 - INFO - Output 2 - Trial 18: n_estimators=280, max_depth=33, min_samples_split=9, min_samples_leaf=13, MSE=0.7268, R2=0.2745
+2024-12-02 18:10:34,678 - INFO - Output 2 - Trial 19: n_estimators=238, max_depth=50, min_samples_split=7, min_samples_leaf=18, MSE=0.7236, R2=0.2777
+2024-12-02 18:10:45,484 - INFO - Output 2 - Trial 20: n_estimators=169, max_depth=23, min_samples_split=12, min_samples_leaf=17, MSE=0.7241, R2=0.2772
+2024-12-02 18:11:02,096 - INFO - Output 2 - Trial 21: n_estimators=259, max_depth=42, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:11:19,489 - INFO - Output 2 - Trial 22: n_estimators=281, max_depth=45, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:11:37,025 - INFO - Output 2 - Trial 23: n_estimators=284, max_depth=46, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:11:54,761 - INFO - Output 2 - Trial 24: n_estimators=287, max_depth=45, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:12:13,263 - INFO - Output 2 - Trial 25: n_estimators=291, max_depth=46, min_samples_split=2, min_samples_leaf=17, MSE=0.7240, R2=0.2774
+2024-12-02 18:12:31,397 - INFO - Output 2 - Trial 26: n_estimators=281, max_depth=45, min_samples_split=4, min_samples_leaf=13, MSE=0.7268, R2=0.2745
+2024-12-02 18:12:50,340 - INFO - Output 2 - Trial 27: n_estimators=300, max_depth=37, min_samples_split=4, min_samples_leaf=17, MSE=0.7240, R2=0.2774
+2024-12-02 18:13:08,536 - INFO - Output 2 - Trial 28: n_estimators=238, max_depth=50, min_samples_split=6, min_samples_leaf=3, MSE=0.7650, R2=0.2364
+2024-12-02 18:13:26,218 - INFO - Output 2 - Trial 29: n_estimators=282, max_depth=44, min_samples_split=3, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:13:40,018 - INFO - Output 2 - Trial 30: n_estimators=214, max_depth=35, min_samples_split=3, min_samples_leaf=15, MSE=0.7253, R2=0.2761
+2024-12-02 18:13:57,406 - INFO - Output 2 - Trial 31: n_estimators=279, max_depth=44, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:14:15,034 - INFO - Output 2 - Trial 32: n_estimators=282, max_depth=48, min_samples_split=7, min_samples_leaf=18, MSE=0.7236, R2=0.2778
+2024-12-02 18:14:30,423 - INFO - Output 2 - Trial 33: n_estimators=244, max_depth=45, min_samples_split=3, min_samples_leaf=18, MSE=0.7236, R2=0.2777
+2024-12-02 18:14:47,620 - INFO - Output 2 - Trial 34: n_estimators=275, max_depth=39, min_samples_split=4, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:15:04,941 - INFO - Output 2 - Trial 35: n_estimators=273, max_depth=39, min_samples_split=5, min_samples_leaf=18, MSE=0.7236, R2=0.2778
+2024-12-02 18:15:23,069 - INFO - Output 2 - Trial 36: n_estimators=290, max_depth=47, min_samples_split=7, min_samples_leaf=20, MSE=0.7228, R2=0.2786
+2024-12-02 18:15:41,656 - INFO - Output 2 - Trial 37: n_estimators=300, max_depth=48, min_samples_split=7, min_samples_leaf=19, MSE=0.7231, R2=0.2783
+2024-12-02 18:15:48,356 - INFO - Output 2 - Trial 38: n_estimators=101, max_depth=47, min_samples_split=8, min_samples_leaf=16, MSE=0.7249, R2=0.2764
+2024-12-02 18:16:07,513 - INFO - Output 2 - Trial 39: n_estimators=288, max_depth=39, min_samples_split=6, min_samples_leaf=10, MSE=0.7305, R2=0.2709
+2024-12-02 18:16:20,966 - INFO - Output 2 - Trial 40: n_estimators=207, max_depth=47, min_samples_split=11, min_samples_leaf=12, MSE=0.7279, R2=0.2734
+2024-12-02 18:16:37,059 - INFO - Output 2 - Trial 41: n_estimators=257, max_depth=43, min_samples_split=5, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:16:55,132 - INFO - Output 2 - Trial 42: n_estimators=287, max_depth=50, min_samples_split=4, min_samples_leaf=19, MSE=0.7231, R2=0.2782
+2024-12-02 18:17:12,333 - INFO - Output 2 - Trial 43: n_estimators=275, max_depth=48, min_samples_split=6, min_samples_leaf=20, MSE=0.7228, R2=0.2785
+2024-12-02 18:17:27,772 - INFO - Output 2 - Trial 44: n_estimators=245, max_depth=47, min_samples_split=6, min_samples_leaf=18, MSE=0.7236, R2=0.2777
+2024-12-02 18:17:44,428 - INFO - Output 2 - Trial 45: n_estimators=269, max_depth=40, min_samples_split=8, min_samples_leaf=19, MSE=0.7232, R2=0.2782
+2024-12-02 18:17:53,383 - INFO - Output 2 - Trial 46: n_estimators=140, max_depth=48, min_samples_split=3, min_samples_leaf=17, MSE=0.7243, R2=0.2771
+2024-12-02 18:18:11,566 - INFO - Output 2 - Trial 47: n_estimators=292, max_depth=49, min_samples_split=9, min_samples_leaf=20, MSE=0.7228, R2=0.2786
+2024-12-02 18:18:28,561 - INFO - Output 2 - Trial 48: n_estimators=291, max_depth=14, min_samples_split=10, min_samples_leaf=15, MSE=0.7195, R2=0.2818
+2024-12-02 18:18:44,052 - INFO - Output 2 - Trial 49: n_estimators=294, max_depth=11, min_samples_split=10, min_samples_leaf=15, MSE=0.7331, R2=0.2682
+2024-12-02 18:18:44,057 - INFO - Output 2 - Best parameters: {'n_estimators': 291, 'max_depth': 14, 'min_samples_split': 10, 'min_samples_leaf': 15}
+2024-12-02 18:18:44,057 - INFO - Output 2 - Best validation R2: 0.2818368043530276
+2024-12-02 18:19:00,778 - INFO - Output 2 - Test MSE: 0.7246572095930102
+2024-12-02 18:19:00,778 - INFO - Output 2 - Test MAE: 0.6708217736384764
+2024-12-02 18:19:00,778 - INFO - Output 2 - Test R2: 0.27962101467494327
+2024-12-02 18:19:00,946 - INFO - Model for output 2 saved as output_files\optimized_model_output_2-03b.joblib.

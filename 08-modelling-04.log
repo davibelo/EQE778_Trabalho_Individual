@@ -1,0 +1,121 @@
+2024-11-15 20:58:10,636 - INFO - Starting training script
+2024-11-15 20:58:10,636 - INFO - Model ID: 04
+2024-11-15 20:58:10,636 - INFO - Figures folder: figures
+2024-11-15 20:58:10,637 - INFO - Input folder: input_files
+2024-11-15 20:58:10,637 - INFO - Output folder: output_files
+2024-11-15 20:58:10,652 - INFO - x scaled shape: (721561, 5)
+2024-11-15 20:58:10,652 - INFO - y scaled shape: (721561, 2)
+2024-11-15 20:58:10,715 - INFO - x_train shape: (505092, 5)
+2024-11-15 20:58:10,715 - INFO - y_train shape: (505092, 2)
+2024-11-15 20:58:10,715 - INFO - x_val shape: (144312, 5)
+2024-11-15 20:58:10,715 - INFO - y_val shape: (144312, 2)
+2024-11-15 20:58:10,716 - INFO - x_test shape: (72157, 5)
+2024-11-15 20:58:10,716 - INFO - y_test shape: (72157, 2)
+2024-11-15 20:58:11,379 - INFO - Training model for output 1/2
+2024-11-15 20:58:28,108 - INFO - Output 1, Epoch 1/50 - Epoch Loss: 717.5812
+2024-11-15 20:58:44,932 - INFO - Output 1, Epoch 2/50 - Epoch Loss: 701.5927
+2024-11-15 20:59:01,754 - INFO - Output 1, Epoch 3/50 - Epoch Loss: 700.7538
+2024-11-15 20:59:18,449 - INFO - Output 1, Epoch 4/50 - Epoch Loss: 700.3225
+2024-11-15 20:59:35,278 - INFO - Output 1, Epoch 5/50 - Epoch Loss: 699.8094
+2024-11-15 20:59:51,964 - INFO - Output 1, Epoch 6/50 - Epoch Loss: 699.5134
+2024-11-15 21:00:08,724 - INFO - Output 1, Epoch 7/50 - Epoch Loss: 699.2147
+2024-11-15 21:00:25,483 - INFO - Output 1, Epoch 8/50 - Epoch Loss: 698.8978
+2024-11-15 21:00:42,136 - INFO - Output 1, Epoch 9/50 - Epoch Loss: 698.6424
+2024-11-15 21:00:58,935 - INFO - Output 1, Epoch 10/50 - Epoch Loss: 698.5273
+2024-11-15 21:01:15,653 - INFO - Output 1, Epoch 11/50 - Epoch Loss: 698.3009
+2024-11-15 21:01:32,452 - INFO - Output 1, Epoch 12/50 - Epoch Loss: 698.1681
+2024-11-15 21:01:49,272 - INFO - Output 1, Epoch 13/50 - Epoch Loss: 698.0988
+2024-11-15 21:02:06,050 - INFO - Output 1, Epoch 14/50 - Epoch Loss: 697.9023
+2024-11-15 21:02:22,856 - INFO - Output 1, Epoch 15/50 - Epoch Loss: 697.8511
+2024-11-15 21:02:39,611 - INFO - Output 1, Epoch 16/50 - Epoch Loss: 697.7329
+2024-11-15 21:02:56,423 - INFO - Output 1, Epoch 17/50 - Epoch Loss: 697.7341
+2024-11-15 21:03:13,195 - INFO - Output 1, Epoch 18/50 - Epoch Loss: 697.5999
+2024-11-15 21:03:29,841 - INFO - Output 1, Epoch 19/50 - Epoch Loss: 697.5211
+2024-11-15 21:03:46,616 - INFO - Output 1, Epoch 20/50 - Epoch Loss: 697.4875
+2024-11-15 21:04:03,329 - INFO - Output 1, Epoch 21/50 - Epoch Loss: 697.4639
+2024-11-15 21:04:20,058 - INFO - Output 1, Epoch 22/50 - Epoch Loss: 697.3602
+2024-11-15 21:04:36,740 - INFO - Output 1, Epoch 23/50 - Epoch Loss: 697.3134
+2024-11-15 21:04:53,438 - INFO - Output 1, Epoch 24/50 - Epoch Loss: 697.2444
+2024-11-15 21:05:10,176 - INFO - Output 1, Epoch 25/50 - Epoch Loss: 697.2058
+2024-11-15 21:05:26,852 - INFO - Output 1, Epoch 26/50 - Epoch Loss: 697.1636
+2024-11-15 21:05:43,621 - INFO - Output 1, Epoch 27/50 - Epoch Loss: 697.0944
+2024-11-15 21:06:00,426 - INFO - Output 1, Epoch 28/50 - Epoch Loss: 697.0378
+2024-11-15 21:06:17,124 - INFO - Output 1, Epoch 29/50 - Epoch Loss: 696.9521
+2024-11-15 21:06:33,913 - INFO - Output 1, Epoch 30/50 - Epoch Loss: 696.8926
+2024-11-15 21:06:50,630 - INFO - Output 1, Epoch 31/50 - Epoch Loss: 696.8675
+2024-11-15 21:07:07,378 - INFO - Output 1, Epoch 32/50 - Epoch Loss: 696.8333
+2024-11-15 21:07:24,157 - INFO - Output 1, Epoch 33/50 - Epoch Loss: 696.8059
+2024-11-15 21:07:40,827 - INFO - Output 1, Epoch 34/50 - Epoch Loss: 696.6650
+2024-11-15 21:07:57,637 - INFO - Output 1, Epoch 35/50 - Epoch Loss: 696.7089
+2024-11-15 21:08:14,355 - INFO - Output 1, Epoch 36/50 - Epoch Loss: 696.7408
+2024-11-15 21:08:31,155 - INFO - Output 1, Epoch 37/50 - Epoch Loss: 696.5362
+2024-11-15 21:08:47,844 - INFO - Output 1, Epoch 38/50 - Epoch Loss: 696.5886
+2024-11-15 21:09:04,411 - INFO - Output 1, Epoch 39/50 - Epoch Loss: 696.4459
+2024-11-15 21:09:21,066 - INFO - Output 1, Epoch 40/50 - Epoch Loss: 696.4822
+2024-11-15 21:09:37,743 - INFO - Output 1, Epoch 41/50 - Epoch Loss: 696.4766
+2024-11-15 21:09:54,406 - INFO - Output 1, Epoch 42/50 - Epoch Loss: 696.3644
+2024-11-15 21:10:11,003 - INFO - Output 1, Epoch 43/50 - Epoch Loss: 696.3191
+2024-11-15 21:10:27,671 - INFO - Output 1, Epoch 44/50 - Epoch Loss: 696.3471
+2024-11-15 21:10:44,320 - INFO - Output 1, Epoch 45/50 - Epoch Loss: 696.2762
+2024-11-15 21:11:00,918 - INFO - Output 1, Epoch 46/50 - Epoch Loss: 696.3000
+2024-11-15 21:11:17,607 - INFO - Output 1, Epoch 47/50 - Epoch Loss: 696.2625
+2024-11-15 21:11:34,183 - INFO - Output 1, Epoch 48/50 - Epoch Loss: 696.2941
+2024-11-15 21:11:50,858 - INFO - Output 1, Epoch 49/50 - Epoch Loss: 696.1410
+2024-11-15 21:12:07,673 - INFO - Output 1, Epoch 50/50 - Epoch Loss: 696.0898
+2024-11-15 21:12:07,673 - INFO - Finished training model for output 1. Final Epoch Loss: 696.0898
+2024-11-15 21:12:07,673 - INFO - Training model for output 2/2
+2024-11-15 21:12:24,089 - INFO - Output 2, Epoch 1/50 - Epoch Loss: 682.4425
+2024-11-15 21:12:40,706 - INFO - Output 2, Epoch 2/50 - Epoch Loss: 665.4063
+2024-11-15 21:12:57,297 - INFO - Output 2, Epoch 3/50 - Epoch Loss: 664.7038
+2024-11-15 21:13:13,791 - INFO - Output 2, Epoch 4/50 - Epoch Loss: 664.1446
+2024-11-15 21:13:30,319 - INFO - Output 2, Epoch 5/50 - Epoch Loss: 663.8233
+2024-11-15 21:13:46,823 - INFO - Output 2, Epoch 6/50 - Epoch Loss: 663.5720
+2024-11-15 21:14:03,447 - INFO - Output 2, Epoch 7/50 - Epoch Loss: 663.4841
+2024-11-15 21:14:19,918 - INFO - Output 2, Epoch 8/50 - Epoch Loss: 663.3399
+2024-11-15 21:14:36,419 - INFO - Output 2, Epoch 9/50 - Epoch Loss: 663.1844
+2024-11-15 21:14:53,115 - INFO - Output 2, Epoch 10/50 - Epoch Loss: 663.1117
+2024-11-15 21:15:09,541 - INFO - Output 2, Epoch 11/50 - Epoch Loss: 663.0288
+2024-11-15 21:15:26,120 - INFO - Output 2, Epoch 12/50 - Epoch Loss: 662.9705
+2024-11-15 21:15:42,528 - INFO - Output 2, Epoch 13/50 - Epoch Loss: 662.8766
+2024-11-15 21:15:59,132 - INFO - Output 2, Epoch 14/50 - Epoch Loss: 662.8777
+2024-11-15 21:16:15,788 - INFO - Output 2, Epoch 15/50 - Epoch Loss: 662.7994
+2024-11-15 21:16:32,253 - INFO - Output 2, Epoch 16/50 - Epoch Loss: 662.7749
+2024-11-15 21:16:48,822 - INFO - Output 2, Epoch 17/50 - Epoch Loss: 662.7696
+2024-11-15 21:17:05,319 - INFO - Output 2, Epoch 18/50 - Epoch Loss: 662.7278
+2024-11-15 21:17:21,798 - INFO - Output 2, Epoch 19/50 - Epoch Loss: 662.8161
+2024-11-15 21:17:38,388 - INFO - Output 2, Epoch 20/50 - Epoch Loss: 662.7386
+2024-11-15 21:17:54,945 - INFO - Output 2, Epoch 21/50 - Epoch Loss: 662.7131
+2024-11-15 21:18:11,516 - INFO - Output 2, Epoch 22/50 - Epoch Loss: 662.6142
+2024-11-15 21:18:28,002 - INFO - Output 2, Epoch 23/50 - Epoch Loss: 662.6317
+2024-11-15 21:18:44,658 - INFO - Output 2, Epoch 24/50 - Epoch Loss: 662.5325
+2024-11-15 21:19:01,244 - INFO - Output 2, Epoch 25/50 - Epoch Loss: 662.6028
+2024-11-15 21:19:17,749 - INFO - Output 2, Epoch 26/50 - Epoch Loss: 662.5629
+2024-11-15 21:19:34,279 - INFO - Output 2, Epoch 27/50 - Epoch Loss: 662.5626
+2024-11-15 21:19:50,771 - INFO - Output 2, Epoch 28/50 - Epoch Loss: 662.5772
+2024-11-15 21:20:07,357 - INFO - Output 2, Epoch 29/50 - Epoch Loss: 662.5101
+2024-11-15 21:20:23,903 - INFO - Output 2, Epoch 30/50 - Epoch Loss: 662.5601
+2024-11-15 21:20:40,348 - INFO - Output 2, Epoch 31/50 - Epoch Loss: 662.4171
+2024-11-15 21:20:56,925 - INFO - Output 2, Epoch 32/50 - Epoch Loss: 662.5514
+2024-11-15 21:21:13,383 - INFO - Output 2, Epoch 33/50 - Epoch Loss: 662.4553
+2024-11-15 21:21:29,994 - INFO - Output 2, Epoch 34/50 - Epoch Loss: 662.5008
+2024-11-15 21:21:46,465 - INFO - Output 2, Epoch 35/50 - Epoch Loss: 662.4204
+2024-11-15 21:22:02,960 - INFO - Output 2, Epoch 36/50 - Epoch Loss: 662.5355
+2024-11-15 21:22:19,532 - INFO - Output 2, Epoch 37/50 - Epoch Loss: 662.5357
+2024-11-15 21:22:36,006 - INFO - Output 2, Epoch 38/50 - Epoch Loss: 662.4625
+2024-11-15 21:22:52,577 - INFO - Output 2, Epoch 39/50 - Epoch Loss: 662.5764
+2024-11-15 21:23:09,059 - INFO - Output 2, Epoch 40/50 - Epoch Loss: 662.4976
+2024-11-15 21:23:25,609 - INFO - Output 2, Epoch 41/50 - Epoch Loss: 662.5134
+2024-11-15 21:23:42,168 - INFO - Output 2, Epoch 42/50 - Epoch Loss: 662.4580
+2024-11-15 21:23:58,722 - INFO - Output 2, Epoch 43/50 - Epoch Loss: 662.4286
+2024-11-15 21:24:15,471 - INFO - Output 2, Epoch 44/50 - Epoch Loss: 662.5291
+2024-11-15 21:24:32,043 - INFO - Output 2, Epoch 45/50 - Epoch Loss: 662.4108
+2024-11-15 21:24:48,780 - INFO - Output 2, Epoch 46/50 - Epoch Loss: 662.4133
+2024-11-15 21:25:05,403 - INFO - Output 2, Epoch 47/50 - Epoch Loss: 662.3969
+2024-11-15 21:25:21,920 - INFO - Output 2, Epoch 48/50 - Epoch Loss: 662.4434
+2024-11-15 21:25:38,536 - INFO - Output 2, Epoch 49/50 - Epoch Loss: 662.4002
+2024-11-15 21:25:55,011 - INFO - Output 2, Epoch 50/50 - Epoch Loss: 662.3159
+2024-11-15 21:25:55,011 - INFO - Finished training model for output 2. Final Epoch Loss: 662.3159
+2024-11-15 21:25:57,441 - INFO - R^2 score on validation set: 0.1225
+2024-11-15 21:25:57,441 - INFO - R^2 score on test set: 0.1239
+2024-11-15 21:25:58,307 - INFO - Validation plot saved.
+2024-11-15 21:25:58,578 - INFO - Test plot saved.
