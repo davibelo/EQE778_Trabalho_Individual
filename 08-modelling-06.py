@@ -77,9 +77,9 @@ def objective(trial):
     activation = trial.suggest_categorical('activation', ['relu', 'softplus', 'tanh'])
 
     # Log the hyperparameters for the current trial
-    logging.info(f"Trial {trial.number} hyperparameters:")
-    logging.info(f"num_dense_layers={num_dense_layers}, neurons_ratio={neurons_ratio}")
-    logging.info(f"dropout_rate={dropout_rate}, learning_rate={learning_rate}, activation={activation}")
+    logging.info(f"Trial {trial.number} hyperparameters: num_dense_layers={num_dense_layers}, "
+                 f"neurons_ratio={neurons_ratio}, dropout_rate={dropout_rate}, "
+                 f"learning_rate={learning_rate}, activation={activation}")
 
     # Define the model
     num_features = x_train_scaled.shape[1]
@@ -88,60 +88,27 @@ def objective(trial):
     # Initial number of neurons for the first layer
     neurons = int(neurons_ratio * num_features)
     neurons = 2 * ((neurons + 1) // 2)  # Round to nearest multiple of 2
-    
+
     # Build the model
     model = tf.keras.Sequential()
     model.add(layers.Input(shape=(num_features,)))
-    logging.info(f"Adding Input layer with {num_features} neurons")
-
-    # Add hidden layers (exactly num_dense_layers)
     for i in range(num_dense_layers):
-        logging.info(f"Adding Dense layer {i + 1} with {neurons} neurons")
         model.add(
             layers.Dense(
                 neurons,
-                activation=activation,
-                kernel_regularizer=regularizers.l2(0.01)
+                use_bias=False,
+                kernel_regularizer=regularizers.l2(1e-4)
             )
         )
-        model.add(layers.Dropout(dropout_rate))
         model.add(layers.BatchNormalization())
-        neurons = max(2, 2 * ((neurons // 2 + 1) // 2))  # Ensure neurons are multiple of 2
-
-    # Log after hidden layers
-    logging.info("Finished adding hidden layers.")
-
-    # Add the output layer
-    logging.info(f"Adding output Dense layer with {num_outputs} neurons")
+        model.add(layers.Activation(activation))
+        model.add(layers.Dropout(dropout_rate))
+        neurons = max(2, 2 * ((neurons // 2 + 1) // 2))
     model.add(layers.Dense(num_outputs))
 
     # Compile the model
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
-                  loss='mse')
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate), loss='mse')
 
-    # Log model summary with detailed layer information
-    buffer = io.StringIO()
-    model.summary(print_fn=lambda x: buffer.write(x + "\n"))
-    summary = buffer.getvalue()
-    buffer.close()
-    logging.info("Model Summary:")
-    for line in summary.splitlines():
-        logging.info(line)
-    logging.info("Detailed Layer Information:")
-    for i, layer in enumerate(model.layers):
-        try:
-            output_shape = layer.output_shape  # Accessible after model is built
-        except AttributeError:
-            output_shape = "Not built yet"
-
-        layer_info = (
-            f"Layer {i + 1}: {layer.name}, "
-            f"Type: {layer.__class__.__name__}, "
-            f"Output Shape: {output_shape}, "
-            f"Parameters: {layer.count_params()}"
-        )
-        logging.info(layer_info)
-   
     # Train the model
     history = model.fit(
         x_train_scaled, y_train_scaled,
@@ -154,8 +121,18 @@ def objective(trial):
 
     # Evaluate the model
     val_loss = model.evaluate(x_val_scaled, y_val_scaled, verbose=0)
-    logging.info(f"Trial {trial.number}: Validation Loss: {val_loss}")
+
+    # Calculate and log the test R² score
+    y_test_pred_scaled = model.predict(x_test_scaled)
+    test_r2 = r2_score(y_test_scaled, y_test_pred_scaled)
+    logging.info(f"Trial {trial.number}: Test R² score: {test_r2:.4f}")
+
+    # Log validation loss and test R² score
+    logging.info(f"Trial {trial.number}: Validation Loss: {val_loss:.4f}")
+
+    # Save the model in user attributes for the best trial
     trial.set_user_attr("final_model", model)
+
     return val_loss
 
 
