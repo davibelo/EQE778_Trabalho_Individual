@@ -16,13 +16,13 @@ from sklearn.preprocessing import PowerTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
 
-# Adjusted Hyperparameters
+# Configuration Block
 CONFIG = {
     'neurons_ratio': 10,
     'dropout_rate': 0.05,
-    'batch_size': 64,  # Reduced batch size
-    'learning_rate': 0.0005,  # Reduced learning rate
-    'patience': 10,  # Reduced patience
+    'batch_size': 128,
+    'learning_rate': 0.001,
+    'patience': 20,
     'epochs': 100,
     'multiple': 8,
     'figures_folder': 'figures',
@@ -80,20 +80,20 @@ num_outputs = y_train_scaled.shape[1]
 
 model = tf.keras.Sequential([
     layers.Input(shape=(num_features,)),
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio']), kernel_regularizer=regularizers.l2(0.001)),
-    layers.BatchNormalization(),
-    layers.ReLU(),
-    layers.Dropout(0.5),
-
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 2), kernel_regularizer=regularizers.l2(0.001)),
+    layers.Dense(neurons(num_features, CONFIG['neurons_ratio']), kernel_regularizer=regularizers.l2(0.0001)),
     layers.BatchNormalization(),
     layers.ReLU(),
     layers.Dropout(0.3),
 
-    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 8), kernel_regularizer=regularizers.l2(0.001)),
+    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 2), kernel_regularizer=regularizers.l2(0.0001)),
     layers.BatchNormalization(),
     layers.ReLU(),
     layers.Dropout(0.2),
+
+    layers.Dense(neurons(num_features, CONFIG['neurons_ratio'] / 4), kernel_regularizer=regularizers.l2(0.0001)),
+    layers.ReLU(),
+    layers.BatchNormalization(),
+    layers.Dropout(0.1),
 
     layers.Dense(num_outputs, activation='sigmoid')
 ])
@@ -101,25 +101,21 @@ model = tf.keras.Sequential([
 model.summary(print_fn=logging.info)
 
 # Save Model Architecture
+os.makedirs(CONFIG['figures_folder'], exist_ok=True)
 plot_model(model, to_file=os.path.join(CONFIG['figures_folder'], f"model-{CONFIG['model_id']}.png"), show_shapes=True)
 
-# Compile Model with Adam Optimizer
-opt = tf.keras.optimizers.Adam(learning_rate=CONFIG['learning_rate'], amsgrad=True)
+# Compile Model
+opt = tf.keras.optimizers.RMSprop(learning_rate=CONFIG['learning_rate'])
 model.compile(
     loss='binary_crossentropy',
     optimizer=opt,
     metrics=['accuracy', tf.keras.metrics.AUC(), tf.keras.metrics.Precision(), tf.keras.metrics.Recall()]
 )
 
-# Updated Callbacks
+# Callbacks
 callbacks = [
     tf.keras.callbacks.EarlyStopping(patience=CONFIG['patience'], restore_best_weights=True),
-    tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=CONFIG['patience'], min_lr=1e-5),
-    tf.keras.callbacks.ModelCheckpoint(
-        filepath=os.path.join(CONFIG['output_folder'], f"best_model-{CONFIG['model_id']}.keras"),
-        monitor='val_loss',
-        save_best_only=True
-    )
+    tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=CONFIG['patience'], min_lr=1e-4)
 ]
 
 # Train Model
@@ -137,8 +133,12 @@ end_time = time.time()
 logging.info(f"Training completed in {end_time - start_time:.2f} seconds.")
 
 # Save Training History
+os.makedirs(CONFIG['output_folder'], exist_ok=True)
 with open(os.path.join(CONFIG['output_folder'], f"history-{CONFIG['model_id']}.json"), 'w') as f:
     json.dump(history.history, f)
+
+# Save Model
+model.save(os.path.join(CONFIG['output_folder'], f"model-{CONFIG['model_id']}.keras"))
 
 # Evaluate Model
 evaluation_results = model.evaluate(x_test_scaled, y_test_scaled)
