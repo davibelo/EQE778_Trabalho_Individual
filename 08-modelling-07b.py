@@ -63,11 +63,11 @@ logging.info(f"y_val shape: {y_val_scaled.shape}")
 logging.info(f"x_test shape: {x_test_scaled.shape}")
 logging.info(f"y_test shape: {y_test_scaled.shape}")
 
-# Handle Class Imbalance
-class_weights = {
-    0: (1 / np.sum(y_train_scaled == 0)) * (len(y_train_scaled) / 2.0),
-    1: (1 / np.sum(y_train_scaled == 1)) * (len(y_train_scaled) / 2.0)
-}
+# # Handle Class Imbalance
+# class_weights = {
+#     0: (1 / np.sum(y_train_scaled == 0)) * (len(y_train_scaled) / 2.0),
+#     1: (1 / np.sum(y_train_scaled == 1)) * (len(y_train_scaled) / 2.0)
+# }
 
 # Function to determine neurons
 def neurons(num_features, ratio, multiple=CONFIG['multiple']):
@@ -126,7 +126,7 @@ history = model.fit(
     batch_size=CONFIG['batch_size'],
     epochs=CONFIG['epochs'],
     validation_data=(x_val_scaled, y_val_scaled),
-    class_weight=class_weights,
+    #class_weight=class_weights,
     callbacks=callbacks
 )
 end_time = time.time()
