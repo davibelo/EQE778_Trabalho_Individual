@@ -152,7 +152,7 @@ y_test_pred_class = (y_test_pred_proba > 0.5).astype(int)
 # Metrics
 accuracy = accuracy_score(y_test_scaled, y_test_pred_class)
 roc_auc = roc_auc_score(y_test_scaled, y_test_pred_proba)
-f1 = f1_score(y_test_scaled, y_test_pred_class)
+f1 = f1_score(y_test_scaled, y_test_pred_class, average='macro')
 
 logging.info(f"Test data Accuracy: {accuracy}")
 logging.info(f"Test data ROC AUC: {roc_auc}")
