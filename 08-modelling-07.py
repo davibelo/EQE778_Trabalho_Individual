@@ -76,19 +76,19 @@ model = tf.keras.Sequential()
 model.add(layers.Input(shape=(num_features,)))
 
 model.add(layers.Dense(neurons(num_features, NEURONS_RATIO),                        
-                       kernel_regularizer=regularizers.l2(0.001)))
+                       kernel_regularizer=regularizers.l2(0.0001)))
 model.add(layers.BatchNormalization())
 model.add(layers.ReLU())
 model.add(layers.Dropout(0.3))
 
 model.add(layers.Dense(neurons(num_features, NEURONS_RATIO / 2), 
-                       kernel_regularizer=regularizers.l2(0.001)))
+                       kernel_regularizer=regularizers.l2(0.0001)))
 model.add(layers.BatchNormalization())
 model.add(layers.ReLU())
 model.add(layers.Dropout(0.2))
 
 model.add(layers.Dense(neurons(num_features, NEURONS_RATIO / 4),                        
-                       kernel_regularizer=regularizers.l2(0.001)))
+                       kernel_regularizer=regularizers.l2(0.0001)))
 model.add(layers.ReLU())
 model.add(layers.BatchNormalization())
 model.add(layers.Dropout(0.1))
