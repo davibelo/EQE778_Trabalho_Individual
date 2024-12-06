@@ -1,3 +1,7 @@
+'''
+MODELLING - DEEP LEARNING version b
+BINARY LABELS
+'''
 import os
 import time
 import json
