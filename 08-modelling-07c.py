@@ -115,7 +115,12 @@ def objective(trial):
         model.compile(
             loss='binary_crossentropy',
             optimizer=opt,
-            metrics=['accuracy']
+            metrics=[
+                'accuracy', 
+                tf.keras.metrics.AUC(name='auc'), 
+                tf.keras.metrics.Precision(name='precision'), 
+                tf.keras.metrics.Recall(name='recall')
+            ]
         )
 
         # Callbacks
