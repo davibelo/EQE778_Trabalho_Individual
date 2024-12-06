@@ -88,8 +88,8 @@ def objective(trial):
 
     # Initial number of neurons for the first layer
     neurons = int(neurons_ratio * num_features)
-    neurons = 8 * ((neurons + 7) // 8)  # Round to nearest multiple of 8
-    
+    neurons = 2 * ((neurons + 1) // 2)  # Round to nearest multiple of 2
+   
     # Build the model
     model = tf.keras.Sequential()
     model.add(layers.Input(shape=(num_features,)))
@@ -107,7 +107,7 @@ def objective(trial):
         )
         model.add(layers.Dropout(dropout_rate))
         model.add(layers.BatchNormalization())
-        neurons = max(8, 8 * ((neurons // 2 + 7) // 8))  # Ensure neurons are multiple of 8
+        neurons = max(2, 2 * ((neurons // 2 + 1) // 2))  # Ensure neurons are multiple of 2
 
     # Log after hidden layers
     logging.info("Finished adding hidden layers.")
