@@ -62,8 +62,7 @@ def objective(trial):
     min_samples_leaf = trial.suggest_int("min_samples_leaf", 1, 10)
     
     # Define the Random Forest model
-    rf_base_model = RandomForestClassifier(
-        n_estimators=n_estimators,
+    rf_base_model = RandomForestClassifier(        
         n_estimators=n_estimators,
         max_depth=max_depth,
         min_samples_split=min_samples_split,
