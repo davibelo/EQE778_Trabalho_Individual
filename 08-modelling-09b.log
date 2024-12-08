@@ -11,3 +11,4 @@
 2024-12-07 22:49:46,445 - INFO - Trial 2: n_estimators=140, max_depth=50, min_samples_split=9, min_samples_leaf=10, Avg ROC AUC=0.8375
 2024-12-07 22:50:03,581 - INFO - Trial 3: n_estimators=160, max_depth=50, min_samples_split=7, min_samples_leaf=2, Avg ROC AUC=0.8311
 2024-12-07 22:50:17,351 - INFO - Trial 4: n_estimators=140, max_depth=40, min_samples_split=6, min_samples_leaf=9, Avg ROC AUC=0.8375
+2024-12-07 22:50:32,054 - INFO - Trial 5: n_estimators=150, max_depth=30, min_samples_split=10, min_samples_leaf=10, Avg ROC AUC=0.8375
