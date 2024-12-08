@@ -1,12 +1,10 @@
-2024-12-08 10:15:10,319 - INFO - x scaled shape: (897254, 5)
-2024-12-08 10:15:10,319 - INFO - y scaled shape: (897254, 2)
-2024-12-08 10:15:10,407 - INFO - x_train shape: (628077, 5)
-2024-12-08 10:15:10,407 - INFO - y_train shape: (628077, 2)
-2024-12-08 10:15:10,407 - INFO - x_val shape: (179451, 5)
-2024-12-08 10:15:10,407 - INFO - y_val shape: (179451, 2)
-2024-12-08 10:15:10,407 - INFO - x_test shape: (89726, 5)
-2024-12-08 10:15:10,407 - INFO - y_test shape: (89726, 2)
-2024-12-08 10:15:10,476 - INFO - Class weights: {0: np.float64(1.1693703489248883), 1: np.float64(0.8734853215436543)}
-2024-12-08 10:15:10,476 - INFO - Starting Optuna study...
-2024-12-08 10:23:27,796 - INFO - Trial 0: Validation Loss: 0.4860619604587555
-2024-12-08 10:23:27,796 - INFO - Trial 0 completed with value: 0.4860619604587555, params: {'neurons_ratio': 41.5014675640602, 'dropout_rate': 0.23392042233374832, 'learning_rate': 0.0021299276154432274, 'activation': 'sigmoid', 'l1_value': 0.0005766961107685276, 'l2_value': 0.004812674930243058, 'batch_size': 64}
+2024-12-08 10:33:16,091 - INFO - x scaled shape: (897254, 5)
+2024-12-08 10:33:16,091 - INFO - y scaled shape: (897254, 2)
+2024-12-08 10:33:16,181 - INFO - x_train shape: (628077, 5)
+2024-12-08 10:33:16,181 - INFO - y_train shape: (628077, 2)
+2024-12-08 10:33:16,181 - INFO - x_val shape: (179451, 5)
+2024-12-08 10:33:16,181 - INFO - y_val shape: (179451, 2)
+2024-12-08 10:33:16,181 - INFO - x_test shape: (89726, 5)
+2024-12-08 10:33:16,181 - INFO - y_test shape: (89726, 2)
+2024-12-08 10:33:16,252 - INFO - Class weights: {0: np.float64(1.1693703489248883), 1: np.float64(0.8734853215436543)}
+2024-12-08 10:33:16,253 - INFO - Starting Optuna study...
