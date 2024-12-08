@@ -171,32 +171,45 @@ history = final_model.fit(
     callbacks=[tf.keras.callbacks.EarlyStopping(patience=CONFIG['training']['patience'], restore_best_weights=True)]
 )
 
-# Evaluate the final model on the test set
-test_predictions = final_model.predict(x_test_scaled)
-test_predictions_binary = (test_predictions > 0.5).astype(int)  # Convert probabilities to binary predictions
+# Evaluate the final model on the test dataset
+y_test_pred_prob = final_model.predict(x_test_scaled)
+y_test_pred = (y_test_pred_prob > 0.5).astype(int)  # Convert probabilities to binary predictions
 
-# Calculate metrics
-accuracy = accuracy_score(y_test_scaled, test_predictions_binary)
-roc_auc = roc_auc_score(y_test_scaled, test_predictions)  # Use probabilities for ROC AUC
-f1 = f1_score(y_test_scaled, test_predictions_binary, average='weighted')
+# Initialize a dictionary to store metrics for each output
+metrics_per_output = {}
 
-# Log the metrics
-logging.info(f"Final Model Metrics on Test Set:")
-logging.info(f"Accuracy: {accuracy:.4f}")
-logging.info(f"ROC AUC: {roc_auc:.4f}")
-logging.info(f"F1 Score: {f1:.4f}")
+# Calculate metrics for each output
+num_outputs = y_test_scaled.shape[1]
+for i in range(num_outputs):
+    accuracy = accuracy_score(y_test_scaled[:, i], y_test_pred[:, i])
+    roc_auc = roc_auc_score(y_test_scaled[:, i], y_test_pred_prob[:, i])
+    f1 = f1_score(y_test_scaled[:, i], y_test_pred[:, i])
 
-# Save metrics to a JSON file
-metrics = {
-    'accuracy': accuracy,
-    'roc_auc': roc_auc,
-    'f1_score': f1
-}
+    # Log metrics for this output
+    logging.info(f"Metrics for Output {i + 1}:")
+    logging.info(f"Accuracy: {accuracy:.4f}")
+    logging.info(f"ROC AUC: {roc_auc:.4f}")
+    logging.info(f"F1 Score: {f1:.4f}")
 
-metrics_path = os.path.join(CONFIG['folders']['output_folder'], f"metrics-{CONFIG['model_id']}.json")
-with open(metrics_path, 'w') as f:
-    json.dump(metrics, f, indent=4)
-logging.info(f"Metrics saved to {metrics_path}")
+    # Print metrics for convenience
+    print(f"Metrics for Output {i + 1}:")
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"ROC AUC: {roc_auc:.4f}")
+    print(f"F1 Score: {f1:.4f}")
+
+    # Store metrics
+    metrics_per_output[f"Output_{i + 1}"] = {
+        "Accuracy": accuracy,
+        "ROC AUC": roc_auc,
+        "F1 Score": f1
+    }
+
+# Optionally save metrics as a JSON file
+metrics_file = os.path.join(CONFIG['folders']['output_folder'], f"metrics-{CONFIG['model_id']}.json")
+with open(metrics_file, "w") as f:
+    json.dump(metrics_per_output, f, indent=4)
+
+logging.info(f"Metrics saved to {metrics_file}")
 
 # Save the final model
 os.makedirs(CONFIG['folders']['output_folder'], exist_ok=True)
