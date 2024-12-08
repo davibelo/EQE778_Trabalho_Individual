@@ -1,5 +1,5 @@
 '''
-MODELLING - DEEP LEARNING version c - RMSprop Optimizer
+MODELLING - DEEP LEARNING version d - Adam Optimizer
 BINARY LABELS
 '''
 import os
@@ -24,7 +24,7 @@ CONFIG = {
         'input_folder': 'input_files',
         'output_folder': 'output_files',
     },
-    'model_id': '07c',
+    'model_id': '07d',
     'training': {
         'patience': 20,
         'epochs': 100,
@@ -101,7 +101,7 @@ def create_model(trial):
 
     model.compile(
         loss='binary_crossentropy',
-        optimizer=tf.keras.optimizers.RMSprop(learning_rate=learning_rate),
+        optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
         metrics=['accuracy', tf.keras.metrics.AUC(), tf.keras.metrics.Precision(), tf.keras.metrics.Recall()]
     )
 
