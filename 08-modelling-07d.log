@@ -1,26 +1,10 @@
-2024-12-08 12:38:07,993 - INFO - x scaled shape: (897254, 5)
-2024-12-08 12:38:07,993 - INFO - y scaled shape: (897254, 2)
-2024-12-08 12:38:08,084 - INFO - x_train shape: (628077, 5)
-2024-12-08 12:38:08,084 - INFO - y_train shape: (628077, 2)
-2024-12-08 12:38:08,084 - INFO - x_val shape: (179451, 5)
-2024-12-08 12:38:08,084 - INFO - y_val shape: (179451, 2)
-2024-12-08 12:38:08,084 - INFO - x_test shape: (89726, 5)
-2024-12-08 12:38:08,084 - INFO - y_test shape: (89726, 2)
-2024-12-08 12:38:08,155 - INFO - Class weights: {0: np.float64(1.1693703489248883), 1: np.float64(0.8734853215436543)}
-2024-12-08 12:38:08,155 - INFO - Starting Optuna study...
-2024-12-08 12:51:58,704 - INFO - Trial 0: Validation Loss: 0.49099352955818176
-2024-12-08 12:51:58,704 - INFO - Trial 0 completed with value: 0.49099352955818176, params: {'neurons_ratio': 38.04803975470212, 'dropout_rate': 0.4470902268275282, 'learning_rate': 0.0009751286011783336, 'activation': 'relu', 'l1_value': 0.0016930737905568633, 'l2_value': 0.0019666123196383748, 'batch_size': 32}
-2024-12-08 13:03:40,112 - INFO - Trial 1: Validation Loss: 0.49997031688690186
-2024-12-08 13:03:40,112 - INFO - Trial 1 completed with value: 0.49997031688690186, params: {'neurons_ratio': 23.466625132056556, 'dropout_rate': 0.479169977954751, 'learning_rate': 0.0005556980098229469, 'activation': 'relu', 'l1_value': 0.009640721601812207, 'l2_value': 0.0028339940142087946, 'batch_size': 32}
-2024-12-08 13:11:43,621 - INFO - Trial 2: Validation Loss: 0.4760117828845978
-2024-12-08 13:11:43,621 - INFO - Trial 2 completed with value: 0.4760117828845978, params: {'neurons_ratio': 41.53386767913716, 'dropout_rate': 0.3055285674939029, 'learning_rate': 0.00010693832851151447, 'activation': 'relu', 'l1_value': 0.004276889663281958, 'l2_value': 0.009343595828314772, 'batch_size': 64}
-2024-12-08 13:25:42,994 - INFO - Trial 3: Validation Loss: 0.49166229367256165
-2024-12-08 13:25:42,995 - INFO - Trial 3 completed with value: 0.49166229367256165, params: {'neurons_ratio': 41.709257061607154, 'dropout_rate': 0.29832869328656636, 'learning_rate': 1.7841344118617517e-05, 'activation': 'sigmoid', 'l1_value': 0.005131495791381401, 'l2_value': 0.007029918168601444, 'batch_size': 32}
-2024-12-08 13:30:08,957 - INFO - Trial 4: Validation Loss: 0.4929404556751251
-2024-12-08 13:30:08,957 - INFO - Trial 4 completed with value: 0.4929404556751251, params: {'neurons_ratio': 36.044059024561655, 'dropout_rate': 0.43672418126406176, 'learning_rate': 0.00033889433111159773, 'activation': 'tanh', 'l1_value': 0.003837578930874757, 'l2_value': 0.004431766796677486, 'batch_size': 128}
-2024-12-08 13:43:01,856 - INFO - Trial 5: Validation Loss: 0.4797264337539673
-2024-12-08 13:43:01,857 - INFO - Trial 5 completed with value: 0.4797264337539673, params: {'neurons_ratio': 29.091487970719857, 'dropout_rate': 0.2737400741273884, 'learning_rate': 7.222039094668034e-05, 'activation': 'relu', 'l1_value': 0.009598702033919862, 'l2_value': 0.006560370074259928, 'batch_size': 32}
-2024-12-08 13:45:47,606 - INFO - Trial 6: Validation Loss: 0.5175841450691223
-2024-12-08 13:45:47,606 - INFO - Trial 6 completed with value: 0.5175841450691223, params: {'neurons_ratio': 34.99667036093797, 'dropout_rate': 0.46313584529387886, 'learning_rate': 0.0010167748663270136, 'activation': 'sigmoid', 'l1_value': 0.006671581442482843, 'l2_value': 0.0038658075746760235, 'batch_size': 256}
-2024-12-08 13:53:58,786 - INFO - Trial 7: Validation Loss: 0.5219845771789551
-2024-12-08 13:53:58,786 - INFO - Trial 7 completed with value: 0.5219845771789551, params: {'neurons_ratio': 42.06138671074701, 'dropout_rate': 0.4567384976149471, 'learning_rate': 0.004965246261328327, 'activation': 'tanh', 'l1_value': 0.0005366975113763825, 'l2_value': 0.005884771029735188, 'batch_size': 64}
+2024-12-08 13:57:48,724 - INFO - x scaled shape: (897254, 5)
+2024-12-08 13:57:48,724 - INFO - y scaled shape: (897254, 2)
+2024-12-08 13:57:48,817 - INFO - x_train shape: (628077, 5)
+2024-12-08 13:57:48,817 - INFO - y_train shape: (628077, 2)
+2024-12-08 13:57:48,817 - INFO - x_val shape: (179451, 5)
+2024-12-08 13:57:48,817 - INFO - y_val shape: (179451, 2)
+2024-12-08 13:57:48,817 - INFO - x_test shape: (89726, 5)
+2024-12-08 13:57:48,817 - INFO - y_test shape: (89726, 2)
+2024-12-08 13:57:48,888 - INFO - Class weights: {0: np.float64(1.1693703489248883), 1: np.float64(0.8734853215436543)}
+2024-12-08 13:57:48,888 - INFO - Starting Optuna study...

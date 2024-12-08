@@ -92,10 +92,10 @@ def create_model(trial):
     # Hyperparameters to tune
     neurons_ratio = trial.suggest_float('neurons_ratio', 10, 50)
     dropout_rate = trial.suggest_float('dropout_rate', 0.1, 0.5)
-    learning_rate = trial.suggest_loguniform('learning_rate', 1e-5, 1e-2)
     activation = trial.suggest_categorical('activation', ['relu', 'tanh', 'sigmoid'])
-    l1_value = trial.suggest_float('l1_value', 1e-5, 1e-2)
-    l2_value = trial.suggest_float('l2_value', 1e-5, 1e-2)
+    l1_value = trial.suggest_float('l1_value', 1e-5, 1e-2, log=True)
+    l2_value = trial.suggest_float('l2_value', 1e-5, 1e-2, log=True)
+    learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True)
     batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
 
     reg = regularizers.L1L2(l1=l1_value, l2=l2_value)
