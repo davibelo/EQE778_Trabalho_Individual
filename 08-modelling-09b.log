@@ -1,0 +1,13 @@
+2024-12-07 22:48:54,380 - INFO - x scaled shape: (897254, 5)
+2024-12-07 22:48:54,380 - INFO - y scaled shape: (897254, 2)
+2024-12-07 22:48:54,474 - INFO - x_train shape: (628077, 5)
+2024-12-07 22:48:54,474 - INFO - y_train shape: (628077, 2)
+2024-12-07 22:48:54,474 - INFO - x_val shape: (179451, 5)
+2024-12-07 22:48:54,474 - INFO - y_val shape: (179451, 2)
+2024-12-07 22:48:54,474 - INFO - x_test shape: (89726, 5)
+2024-12-07 22:48:54,474 - INFO - y_test shape: (89726, 2)
+2024-12-07 22:49:05,366 - INFO - Trial 0: n_estimators=110, max_depth=20, min_samples_split=8, min_samples_leaf=7, Avg ROC AUC=0.8372
+2024-12-07 22:49:32,739 - INFO - Trial 1: n_estimators=270, max_depth=40, min_samples_split=2, min_samples_leaf=5, Avg ROC AUC=0.8360
+2024-12-07 22:49:46,445 - INFO - Trial 2: n_estimators=140, max_depth=50, min_samples_split=9, min_samples_leaf=10, Avg ROC AUC=0.8375
+2024-12-07 22:50:03,581 - INFO - Trial 3: n_estimators=160, max_depth=50, min_samples_split=7, min_samples_leaf=2, Avg ROC AUC=0.8311
+2024-12-07 22:50:17,351 - INFO - Trial 4: n_estimators=140, max_depth=40, min_samples_split=6, min_samples_leaf=9, Avg ROC AUC=0.8375

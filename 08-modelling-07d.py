@@ -1,5 +1,5 @@
 '''
-MODELLING - DEEP LEARNING version d - Adam Optimizer
+MODELLING - DEEP LEARNING version d - Adam Optimizer and balanced Classes
 BINARY LABELS
 '''
 import os
@@ -16,6 +16,7 @@ from tensorflow.keras.utils import plot_model
 from sklearn.preprocessing import PowerTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, roc_auc_score, f1_score
+from sklearn.utils.class_weight import compute_class_weight
 
 # Configuration Block
 CONFIG = {
@@ -62,6 +63,16 @@ logging.info(f"x_val shape: {x_val_scaled.shape}")
 logging.info(f"y_val shape: {y_val_scaled.shape}")
 logging.info(f"x_test shape: {x_test_scaled.shape}")
 logging.info(f"y_test shape: {y_test_scaled.shape}")
+
+# Compute class weights
+class_weights = compute_class_weight(
+    class_weight="balanced",
+    classes=np.unique(y_train_scaled.ravel()),  # Flatten for binary classification
+    y=y_train_scaled.ravel()
+)
+
+class_weight_dict = {i: weight for i, weight in enumerate(class_weights)}
+logging.info(f"Class weights: {class_weight_dict}")
 
 # Function to define a model for hyperparameter tuning
 def create_model(trial):
@@ -121,7 +132,8 @@ def objective(trial):
         epochs=50,
         validation_data=(x_val_scaled, y_val_scaled),
         callbacks=callbacks,
-        verbose=1
+        verbose=1,
+        class_weight=class_weight_dict
     )
 
     val_loss = min(history.history['val_loss'])
