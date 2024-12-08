@@ -43,6 +43,14 @@ logging.basicConfig(
     filemode='w'
 )
 
+# Set environment variables for multi-threading
+os.environ["OMP_NUM_THREADS"] = str(os.cpu_count())  # Use all available CPU cores
+os.environ["TF_NUM_INTRAOP_THREADS"] = str(os.cpu_count())  # Single operation threading
+os.environ["TF_NUM_INTEROP_THREADS"] = str(os.cpu_count())  # Multi-operation threading
+
+# Disable GPU - AMD not compatible with TensorFlow on Windows
+tf.config.set_visible_devices([], 'GPU')
+
 # Load Data
 df_scaled_x = joblib.load(os.path.join(CONFIG['folders']['input_folder'], 'df2_scaled_x.joblib'))
 df_scaled_y = joblib.load(os.path.join(CONFIG['folders']['input_folder'], 'df2_bin_y.joblib'))
