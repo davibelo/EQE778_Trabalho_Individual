@@ -162,7 +162,7 @@ num_outputs = y_test_scaled.shape[1]
 for i in range(num_outputs):
     accuracy = accuracy_score(y_test_scaled[:, i], y_test_pred[:, i])
     roc_auc = roc_auc_score(y_test_scaled[:, i], y_test_pred_prob[:, i])
-    f1 = f1_score(y_test_scaled[:, i], y_test_pred[:, i])
+    f1 = f1_score(y_test_scaled[:, i], y_test_pred[:, i], average='weighted')
 
     # Log metrics for this output
     logging.info(f"Metrics for Output {i + 1}:")
