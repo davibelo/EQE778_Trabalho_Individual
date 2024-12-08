@@ -117,7 +117,7 @@ def create_model(trial):
         layers.BatchNormalization(),
         layers.Dropout(dropout_rate / 4),
 
-        layers.Dense(num_outputs, activation='sigmoid')
+        layers.Dense(num_outputs, activation=activation)
     ])
 
     model.compile(
