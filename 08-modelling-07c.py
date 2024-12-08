@@ -27,7 +27,9 @@ CONFIG = {
     'model_id': '07c',
     'training': {
         'patience': 20,
-        'epochs': 100,
+        'epochs_training': 50,
+        'epochs_final': 100,
+        'n_trials': 50
     }
 }
 
@@ -118,7 +120,7 @@ def objective(trial):
     history = model.fit(
         x_train_scaled, y_train_scaled,
         batch_size=batch_size,
-        epochs=50,
+        epochs=CONFIG['training']['epochs_training'],
         validation_data=(x_val_scaled, y_val_scaled),
         callbacks=callbacks,
         verbose=1
@@ -131,7 +133,7 @@ def objective(trial):
 # Run Optuna study
 study = optuna.create_study(direction='minimize')
 logging.info("Starting Optuna study...")
-study.optimize(objective, n_trials=50, callbacks=[
+study.optimize(objective, n_trials=CONFIG['training']['n_trials'], callbacks=[
     lambda study, trial: logging.info(f"Trial {trial.number} completed with value: {trial.value}, params: {trial.params}")
 ])
 logging.info("Optuna study completed.")
@@ -146,10 +148,11 @@ final_model, batch_size = create_model(optuna.trial.FixedTrial(best_params))
 history = final_model.fit(
     x_train_scaled, y_train_scaled,
     batch_size=batch_size,
-    epochs=CONFIG['training']['epochs'],
+    epochs=CONFIG['training']['epochs_final'],
     validation_data=(x_val_scaled, y_val_scaled),
     callbacks=[tf.keras.callbacks.EarlyStopping(patience=CONFIG['training']['patience'], restore_best_weights=True)]
 )
+
 # Evaluate the final model on the test dataset
 y_test_pred_prob = final_model.predict(x_test_scaled)
 y_test_pred = (y_test_pred_prob > 0.5).astype(int)  # Convert probabilities to binary predictions
