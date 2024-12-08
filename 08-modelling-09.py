@@ -123,7 +123,13 @@ y_test_pred_class = multi_rf_model.predict(x_test_scaled)
 
 test_accuracies = [accuracy_score(y_test_scaled[:, i], y_test_pred_class[:, i]) for i in range(y_test_scaled.shape[1])]
 test_roc_aucs = [roc_auc_score(y_test_scaled[:, i], y_test_pred_proba[:, i]) for i in range(y_test_scaled.shape[1])]
+test_f1_scores = [f1_score(y_test_scaled[:, i], y_test_pred_class[:, i], average='weighted') for i in range(y_test_scaled.shape[1])]
 
+for i, (acc, roc, f1) in enumerate(zip(test_accuracies, test_roc_aucs, test_f1_scores)):
+    logging.info(f"Test Accuracy (output {i}): {acc}")
+    logging.info(f"Test ROC AUC (output {i}): {roc}")
+    logging.info(f"Test F1 Score (output {i}, weighted): {f1}")
+    logging.info(f"Classification Report (output {i}):\n{classification_report(y_test_scaled[:, i], y_test_pred_class[:, i])}")
 for i, (acc, roc) in enumerate(zip(test_accuracies, test_roc_aucs)):
     logging.info(f"Test Accuracy (output {i}): {acc}")
     logging.info(f"Test ROC AUC (output {i}): {roc}")
