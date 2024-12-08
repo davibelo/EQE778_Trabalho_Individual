@@ -178,7 +178,7 @@ test_predictions_binary = (test_predictions > 0.5).astype(int)  # Convert probab
 # Calculate metrics
 accuracy = accuracy_score(y_test_scaled, test_predictions_binary)
 roc_auc = roc_auc_score(y_test_scaled, test_predictions)  # Use probabilities for ROC AUC
-f1 = f1_score(y_test_scaled, test_predictions_binary, average='binary')
+f1 = f1_score(y_test_scaled, test_predictions_binary, average='weighted')
 
 # Log the metrics
 logging.info(f"Final Model Metrics on Test Set:")
