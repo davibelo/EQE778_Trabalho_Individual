@@ -171,6 +171,33 @@ history = final_model.fit(
     callbacks=[tf.keras.callbacks.EarlyStopping(patience=CONFIG['training']['patience'], restore_best_weights=True)]
 )
 
+# Evaluate the final model on the test set
+test_predictions = final_model.predict(x_test_scaled)
+test_predictions_binary = (test_predictions > 0.5).astype(int)  # Convert probabilities to binary predictions
+
+# Calculate metrics
+accuracy = accuracy_score(y_test_scaled, test_predictions_binary)
+roc_auc = roc_auc_score(y_test_scaled, test_predictions)  # Use probabilities for ROC AUC
+f1 = f1_score(y_test_scaled, test_predictions_binary, average='binary')
+
+# Log the metrics
+logging.info(f"Final Model Metrics on Test Set:")
+logging.info(f"Accuracy: {accuracy:.4f}")
+logging.info(f"ROC AUC: {roc_auc:.4f}")
+logging.info(f"F1 Score: {f1:.4f}")
+
+# Save metrics to a JSON file
+metrics = {
+    'accuracy': accuracy,
+    'roc_auc': roc_auc,
+    'f1_score': f1
+}
+
+metrics_path = os.path.join(CONFIG['folders']['output_folder'], f"metrics-{CONFIG['model_id']}.json")
+with open(metrics_path, 'w') as f:
+    json.dump(metrics, f, indent=4)
+logging.info(f"Metrics saved to {metrics_path}")
+
 # Save the final model
 os.makedirs(CONFIG['folders']['output_folder'], exist_ok=True)
 final_model.save(os.path.join(CONFIG['folders']['output_folder'], f"best_model-{CONFIG['model_id']}.keras"))
