@@ -8,3 +8,114 @@
 2024-12-08 20:41:10,938 - INFO - y_test shape: (89726, 2)
 2024-12-08 20:41:11,010 - INFO - Class weights: {0: np.float64(1.1693703489248883), 1: np.float64(0.8734853215436543)}
 2024-12-08 20:41:11,019 - INFO - Starting Optuna study...
+2024-12-08 20:44:14,046 - INFO - Trial 0: Validation Loss: 0.48339858651161194
+2024-12-08 20:44:14,046 - INFO - Trial 0 completed with value: 0.48339858651161194, params: {'neurons_ratio': 45.59050708443062, 'dropout_rate': 0.48089199780049674, 'activation': 'relu', 'l1_value': 0.00012989579366889475, 'l2_value': 4.822545302956225e-05, 'learning_rate': 0.007075469835435406, 'batch_size': 256}
+2024-12-08 20:52:45,980 - INFO - Trial 1: Validation Loss: 0.4720929265022278
+2024-12-08 20:52:45,980 - INFO - Trial 1 completed with value: 0.4720929265022278, params: {'neurons_ratio': 48.91854695498009, 'dropout_rate': 0.36611449452105393, 'activation': 'tanh', 'l1_value': 0.00045001251297929756, 'l2_value': 0.0002710815272339141, 'learning_rate': 2.2559124481885038e-05, 'batch_size': 64}
+2024-12-08 21:03:45,817 - INFO - Trial 2: Validation Loss: 0.6574807167053223
+2024-12-08 21:03:45,818 - INFO - Trial 2 completed with value: 0.6574807167053223, params: {'neurons_ratio': 35.399758526849595, 'dropout_rate': 0.3876660024265214, 'activation': 'tanh', 'l1_value': 0.0038595990147323326, 'l2_value': 0.0004168057216919278, 'learning_rate': 0.009084116658770125, 'batch_size': 32}
+2024-12-08 21:07:24,749 - INFO - Trial 3: Validation Loss: 0.48338931798934937
+2024-12-08 21:07:24,749 - INFO - Trial 3 completed with value: 0.48338931798934937, params: {'neurons_ratio': 15.947065780529908, 'dropout_rate': 0.1982892501390477, 'activation': 'tanh', 'l1_value': 7.125067033492851e-05, 'l2_value': 0.003255715020792032, 'learning_rate': 0.006561630658859839, 'batch_size': 128}
+2024-12-08 21:11:48,745 - INFO - Trial 4: Validation Loss: 0.4518619775772095
+2024-12-08 21:11:48,746 - INFO - Trial 4 completed with value: 0.4518619775772095, params: {'neurons_ratio': 36.832262660121245, 'dropout_rate': 0.10818639463841691, 'activation': 'tanh', 'l1_value': 7.10599049495458e-05, 'l2_value': 0.003158630729877084, 'learning_rate': 8.915303503797909e-05, 'batch_size': 128}
+2024-12-08 21:16:07,610 - INFO - Trial 5: Validation Loss: 0.47120875120162964
+2024-12-08 21:16:07,611 - INFO - Trial 5 completed with value: 0.47120875120162964, params: {'neurons_ratio': 36.64507637150463, 'dropout_rate': 0.4818097994283742, 'activation': 'relu', 'l1_value': 3.677672668075618e-05, 'l2_value': 0.0002646588104505441, 'learning_rate': 0.0027539929172129326, 'batch_size': 128}
+2024-12-08 21:23:35,640 - INFO - Trial 6: Validation Loss: 0.4624442756175995
+2024-12-08 21:23:35,640 - INFO - Trial 6 completed with value: 0.4624442756175995, params: {'neurons_ratio': 31.037775112495485, 'dropout_rate': 0.3441096883584716, 'activation': 'tanh', 'l1_value': 1.2745573157554706e-05, 'l2_value': 0.000537361890841135, 'learning_rate': 2.119514451604249e-05, 'batch_size': 64}
+2024-12-08 21:27:33,134 - INFO - Trial 7: Validation Loss: 0.4763985574245453
+2024-12-08 21:27:33,135 - INFO - Trial 7 completed with value: 0.4763985574245453, params: {'neurons_ratio': 27.123645872002044, 'dropout_rate': 0.17642187571754855, 'activation': 'relu', 'l1_value': 0.006540259510621261, 'l2_value': 0.0006004973591536208, 'learning_rate': 1.0770793699745977e-05, 'batch_size': 128}
+2024-12-08 21:29:29,508 - INFO - Trial 8: Validation Loss: 0.4713823199272156
+2024-12-08 21:29:29,508 - INFO - Trial 8 completed with value: 0.4713823199272156, params: {'neurons_ratio': 12.883061802679157, 'dropout_rate': 0.42803583829713865, 'activation': 'tanh', 'l1_value': 4.89116382815372e-05, 'l2_value': 0.004701040577068335, 'learning_rate': 2.164251247250014e-05, 'batch_size': 256}
+2024-12-08 21:42:50,089 - INFO - Trial 9: Validation Loss: 0.4688985049724579
+2024-12-08 21:42:50,089 - INFO - Trial 9 completed with value: 0.4688985049724579, params: {'neurons_ratio': 33.36035301549743, 'dropout_rate': 0.17159632724728707, 'activation': 'sigmoid', 'l1_value': 0.0003314837439481849, 'l2_value': 0.0010551879073026655, 'learning_rate': 0.00016394830819929196, 'batch_size': 32}
+2024-12-08 21:46:57,600 - INFO - Trial 10: Validation Loss: 0.4708014726638794
+2024-12-08 21:46:57,601 - INFO - Trial 10 completed with value: 0.4708014726638794, params: {'neurons_ratio': 22.505966900141143, 'dropout_rate': 0.111010962184952, 'activation': 'sigmoid', 'l1_value': 0.0011664736888385967, 'l2_value': 0.009509130482432616, 'learning_rate': 0.00018209339553404183, 'batch_size': 128}
+2024-12-08 21:55:22,364 - INFO - Trial 11: Validation Loss: 0.4503049850463867
+2024-12-08 21:55:22,365 - INFO - Trial 11 completed with value: 0.4503049850463867, params: {'neurons_ratio': 41.046973779775705, 'dropout_rate': 0.2808213531258545, 'activation': 'tanh', 'l1_value': 1.0231136411177764e-05, 'l2_value': 7.249691980243103e-05, 'learning_rate': 6.652248210875005e-05, 'batch_size': 64}
+2024-12-08 22:03:42,867 - INFO - Trial 12: Validation Loss: 0.449184775352478
+2024-12-08 22:03:42,868 - INFO - Trial 12 completed with value: 0.449184775352478, params: {'neurons_ratio': 41.869747709735684, 'dropout_rate': 0.2706545177625472, 'activation': 'tanh', 'l1_value': 1.0613666536719437e-05, 'l2_value': 1.9164831945578466e-05, 'learning_rate': 0.0006814273659404914, 'batch_size': 64}
+2024-12-08 22:12:02,304 - INFO - Trial 13: Validation Loss: 0.4464717209339142
+2024-12-08 22:12:02,304 - INFO - Trial 13 completed with value: 0.4464717209339142, params: {'neurons_ratio': 41.52452816299398, 'dropout_rate': 0.26305757875804653, 'activation': 'tanh', 'l1_value': 1.0690525584751455e-05, 'l2_value': 1.0910078641544666e-05, 'learning_rate': 0.0007245883031414907, 'batch_size': 64}
+2024-12-08 22:20:31,104 - INFO - Trial 14: Validation Loss: 0.4570963680744171
+2024-12-08 22:20:31,104 - INFO - Trial 14 completed with value: 0.4570963680744171, params: {'neurons_ratio': 42.97340042836923, 'dropout_rate': 0.2626144934986592, 'activation': 'sigmoid', 'l1_value': 1.8023409227526486e-05, 'l2_value': 1.0138214629200943e-05, 'learning_rate': 0.0008929439103675114, 'batch_size': 64}
+2024-12-08 22:29:14,346 - INFO - Trial 15: Validation Loss: 0.45233869552612305
+2024-12-08 22:29:14,347 - INFO - Trial 15 completed with value: 0.45233869552612305, params: {'neurons_ratio': 49.1553058421341, 'dropout_rate': 0.23882615398932316, 'activation': 'tanh', 'l1_value': 2.6485439326234525e-05, 'l2_value': 1.0429905797999364e-05, 'learning_rate': 0.0006665184179170271, 'batch_size': 64}
+2024-12-08 22:37:30,876 - INFO - Trial 16: Validation Loss: 0.46821722388267517
+2024-12-08 22:37:30,877 - INFO - Trial 16 completed with value: 0.46821722388267517, params: {'neurons_ratio': 40.61501944332518, 'dropout_rate': 0.31974920290255027, 'activation': 'tanh', 'l1_value': 0.0001498528164239788, 'l2_value': 3.003459856801e-05, 'learning_rate': 0.0007236609320390671, 'batch_size': 64}
+2024-12-08 22:42:16,765 - INFO - Trial 17: Validation Loss: 0.48895153403282166
+2024-12-08 22:42:16,765 - INFO - Trial 17 completed with value: 0.48895153403282166, params: {'neurons_ratio': 26.89377725733106, 'dropout_rate': 0.23726972133529672, 'activation': 'tanh', 'l1_value': 0.001213575965641556, 'l2_value': 2.2680447461394966e-05, 'learning_rate': 0.001767285184360493, 'batch_size': 64}
+2024-12-08 22:50:35,260 - INFO - Trial 18: Validation Loss: 0.4526440501213074
+2024-12-08 22:50:35,261 - INFO - Trial 18 completed with value: 0.4526440501213074, params: {'neurons_ratio': 45.22378293997882, 'dropout_rate': 0.3038941892888273, 'activation': 'relu', 'l1_value': 2.4612461556191624e-05, 'l2_value': 0.0001133543813832259, 'learning_rate': 0.00039331227828248266, 'batch_size': 64}
+2024-12-08 23:04:25,196 - INFO - Trial 19: Validation Loss: 0.47225522994995117
+2024-12-08 23:04:25,196 - INFO - Trial 19 completed with value: 0.47225522994995117, params: {'neurons_ratio': 39.08524368648696, 'dropout_rate': 0.2145469942748109, 'activation': 'sigmoid', 'l1_value': 9.832186575169628e-05, 'l2_value': 2.194838197040267e-05, 'learning_rate': 0.0019501906492001993, 'batch_size': 32}
+2024-12-08 23:07:34,416 - INFO - Trial 20: Validation Loss: 0.42855018377304077
+2024-12-08 23:07:34,417 - INFO - Trial 20 completed with value: 0.42855018377304077, params: {'neurons_ratio': 44.670307157126864, 'dropout_rate': 0.15243911897993004, 'activation': 'tanh', 'l1_value': 1.076692773187276e-05, 'l2_value': 0.0001264240271756127, 'learning_rate': 0.0003028180797985102, 'batch_size': 256}
+2024-12-08 23:10:42,792 - INFO - Trial 21: Validation Loss: 0.4284422993659973
+2024-12-08 23:10:42,793 - INFO - Trial 21 completed with value: 0.4284422993659973, params: {'neurons_ratio': 45.05584619271666, 'dropout_rate': 0.14854911556954942, 'activation': 'tanh', 'l1_value': 1.0246543604078777e-05, 'l2_value': 0.0001298388649959211, 'learning_rate': 0.000346793455533819, 'batch_size': 256}
+2024-12-08 23:13:55,760 - INFO - Trial 22: Validation Loss: 0.43333518505096436
+2024-12-08 23:13:55,760 - INFO - Trial 22 completed with value: 0.43333518505096436, params: {'neurons_ratio': 45.77486583918364, 'dropout_rate': 0.14955041586642587, 'activation': 'tanh', 'l1_value': 2.014245291406515e-05, 'l2_value': 0.00014879573328867936, 'learning_rate': 0.00022969127684000157, 'batch_size': 256}
+2024-12-08 23:17:14,393 - INFO - Trial 23: Validation Loss: 0.4308907687664032
+2024-12-08 23:17:14,394 - INFO - Trial 23 completed with value: 0.4308907687664032, params: {'neurons_ratio': 46.616889700950814, 'dropout_rate': 0.14324972328896868, 'activation': 'tanh', 'l1_value': 2.2554629658266243e-05, 'l2_value': 0.0001465981725288057, 'learning_rate': 0.0002720667503093191, 'batch_size': 256}
+2024-12-08 23:20:31,585 - INFO - Trial 24: Validation Loss: 0.4451494514942169
+2024-12-08 23:20:31,585 - INFO - Trial 24 completed with value: 0.4451494514942169, params: {'neurons_ratio': 47.93923665068005, 'dropout_rate': 0.13204610515354215, 'activation': 'tanh', 'l1_value': 4.171139851754886e-05, 'l2_value': 0.000146630032805468, 'learning_rate': 8.920965670883876e-05, 'batch_size': 256}
+2024-12-08 23:23:39,854 - INFO - Trial 25: Validation Loss: 0.4329099953174591
+2024-12-08 23:23:39,855 - INFO - Trial 25 completed with value: 0.4329099953174591, params: {'neurons_ratio': 44.9526789328366, 'dropout_rate': 0.16582086095916687, 'activation': 'tanh', 'l1_value': 1.834669904992453e-05, 'l2_value': 7.161425343129035e-05, 'learning_rate': 0.0003767662440991636, 'batch_size': 256}
+2024-12-08 23:26:33,788 - INFO - Trial 26: Validation Loss: 0.45508643984794617
+2024-12-08 23:26:33,788 - INFO - Trial 26 completed with value: 0.45508643984794617, params: {'neurons_ratio': 38.34316712460021, 'dropout_rate': 0.13805876482080626, 'activation': 'tanh', 'l1_value': 0.00022107489096131582, 'l2_value': 0.0010590810310843774, 'learning_rate': 0.0001318388604141908, 'batch_size': 256}
+2024-12-08 23:29:57,433 - INFO - Trial 27: Validation Loss: 0.46040722727775574
+2024-12-08 23:29:57,434 - INFO - Trial 27 completed with value: 0.46040722727775574, params: {'neurons_ratio': 49.38032826463023, 'dropout_rate': 0.2022884621450513, 'activation': 'tanh', 'l1_value': 3.125286605181789e-05, 'l2_value': 0.00020749723618354514, 'learning_rate': 4.453926905398436e-05, 'batch_size': 256}
+2024-12-08 23:32:13,260 - INFO - Trial 28: Validation Loss: 0.45351964235305786
+2024-12-08 23:32:13,260 - INFO - Trial 28 completed with value: 0.45351964235305786, params: {'neurons_ratio': 20.31205369705466, 'dropout_rate': 0.12220443562119787, 'activation': 'sigmoid', 'l1_value': 5.23138301322527e-05, 'l2_value': 8.496461644242309e-05, 'learning_rate': 0.0002690256806917599, 'batch_size': 256}
+2024-12-08 23:35:15,926 - INFO - Trial 29: Validation Loss: 0.44052180647850037
+2024-12-08 23:35:15,926 - INFO - Trial 29 completed with value: 0.44052180647850037, params: {'neurons_ratio': 45.135942248657834, 'dropout_rate': 0.1828574627055976, 'activation': 'relu', 'l1_value': 1.9139071619321114e-05, 'l2_value': 4.323713470776905e-05, 'learning_rate': 0.0013391048607980553, 'batch_size': 256}
+2024-12-08 23:38:23,870 - INFO - Trial 30: Validation Loss: 0.44060561060905457
+2024-12-08 23:38:23,870 - INFO - Trial 30 completed with value: 0.44060561060905457, params: {'neurons_ratio': 47.090467254376875, 'dropout_rate': 0.15185170443548682, 'activation': 'relu', 'l1_value': 0.00013161029682451662, 'l2_value': 4.3953981922726306e-05, 'learning_rate': 0.0003942010935028185, 'batch_size': 256}
+2024-12-08 23:41:29,049 - INFO - Trial 31: Validation Loss: 0.428872674703598
+2024-12-08 23:41:29,049 - INFO - Trial 31 completed with value: 0.428872674703598, params: {'neurons_ratio': 43.78578300848991, 'dropout_rate': 0.16162095546372665, 'activation': 'tanh', 'l1_value': 1.5096322659790151e-05, 'l2_value': 8.120835113966208e-05, 'learning_rate': 0.0004371131521613501, 'batch_size': 256}
+2024-12-08 23:44:34,972 - INFO - Trial 32: Validation Loss: 0.4374667704105377
+2024-12-08 23:44:34,972 - INFO - Trial 32 completed with value: 0.4374667704105377, params: {'neurons_ratio': 43.765086396618706, 'dropout_rate': 0.227971216716054, 'activation': 'tanh', 'l1_value': 1.525959179259662e-05, 'l2_value': 0.0001661641678866783, 'learning_rate': 0.0004726036160355025, 'batch_size': 256}
+2024-12-08 23:47:18,903 - INFO - Trial 33: Validation Loss: 0.4323479235172272
+2024-12-08 23:47:18,904 - INFO - Trial 33 completed with value: 0.4323479235172272, params: {'neurons_ratio': 34.49603674142435, 'dropout_rate': 0.10785894032077625, 'activation': 'tanh', 'l1_value': 2.5795190391611984e-05, 'l2_value': 0.00032892897007837086, 'learning_rate': 0.0002491151586713253, 'batch_size': 256}
+2024-12-08 23:50:16,945 - INFO - Trial 34: Validation Loss: 0.467727392911911
+2024-12-08 23:50:16,946 - INFO - Trial 34 completed with value: 0.467727392911911, params: {'neurons_ratio': 39.414564108581594, 'dropout_rate': 0.1900014881603925, 'activation': 'tanh', 'l1_value': 0.0008461959044955213, 'l2_value': 9.859598824373531e-05, 'learning_rate': 0.00010267111809067907, 'batch_size': 256}
+2024-12-08 23:53:31,323 - INFO - Trial 35: Validation Loss: 0.4442717730998993
+2024-12-08 23:53:31,323 - INFO - Trial 35 completed with value: 0.4442717730998993, params: {'neurons_ratio': 46.945897681374646, 'dropout_rate': 0.1388767484918978, 'activation': 'tanh', 'l1_value': 6.968885949022888e-05, 'l2_value': 5.280542957122545e-05, 'learning_rate': 0.0012369188537304833, 'batch_size': 256}
+2024-12-08 23:56:39,349 - INFO - Trial 36: Validation Loss: 0.4462974965572357
+2024-12-08 23:56:39,350 - INFO - Trial 36 completed with value: 0.4462974965572357, params: {'neurons_ratio': 43.81351826749494, 'dropout_rate': 0.41423566500957243, 'activation': 'tanh', 'l1_value': 1.5138514637494749e-05, 'l2_value': 0.00019818723579038822, 'learning_rate': 0.0005028265832093698, 'batch_size': 256}
+2024-12-09 00:07:09,312 - INFO - Trial 37: Validation Loss: 0.4803507924079895
+2024-12-09 00:07:09,312 - INFO - Trial 37 completed with value: 0.4803507924079895, params: {'neurons_ratio': 49.82371987629913, 'dropout_rate': 0.15367090537794123, 'activation': 'tanh', 'l1_value': 3.792783842650984e-05, 'l2_value': 0.0002708011247937783, 'learning_rate': 0.004971701360570282, 'batch_size': 32}
+2024-12-09 00:10:00,722 - INFO - Trial 38: Validation Loss: 0.43175220489501953
+2024-12-09 00:10:00,722 - INFO - Trial 38 completed with value: 0.43175220489501953, params: {'neurons_ratio': 37.44700214071566, 'dropout_rate': 0.10135317835864849, 'activation': 'tanh', 'l1_value': 1.0066747169493783e-05, 'l2_value': 0.0006862022891887513, 'learning_rate': 0.00017149408448469318, 'batch_size': 256}
+2024-12-09 00:13:14,253 - INFO - Trial 39: Validation Loss: 0.4763981103897095
+2024-12-09 00:13:14,253 - INFO - Trial 39 completed with value: 0.4763981103897095, params: {'neurons_ratio': 47.5536763526153, 'dropout_rate': 0.2088835754748777, 'activation': 'tanh', 'l1_value': 0.0028962095410259665, 'l2_value': 0.00039905957528014297, 'learning_rate': 6.288881283092081e-05, 'batch_size': 256}
+2024-12-09 00:15:48,946 - INFO - Trial 40: Validation Loss: 0.46051010489463806
+2024-12-09 00:15:48,946 - INFO - Trial 40 completed with value: 0.46051010489463806, params: {'neurons_ratio': 33.210601478867005, 'dropout_rate': 0.165152573120193, 'activation': 'relu', 'l1_value': 6.114705731942178e-05, 'l2_value': 0.00010345069118295528, 'learning_rate': 0.003237332374707403, 'batch_size': 256}
+2024-12-09 00:18:36,773 - INFO - Trial 41: Validation Loss: 0.4348283112049103
+2024-12-09 00:18:36,773 - INFO - Trial 41 completed with value: 0.4348283112049103, params: {'neurons_ratio': 36.5053795310981, 'dropout_rate': 0.10463782287718132, 'activation': 'tanh', 'l1_value': 1.3534126235721513e-05, 'l2_value': 0.0009064513782122182, 'learning_rate': 0.0001713502306824716, 'batch_size': 256}
+2024-12-09 00:21:42,694 - INFO - Trial 42: Validation Loss: 0.4313301742076874
+2024-12-09 00:21:42,695 - INFO - Trial 42 completed with value: 0.4313301742076874, params: {'neurons_ratio': 42.60874196415581, 'dropout_rate': 0.12382616550675438, 'activation': 'tanh', 'l1_value': 1.387150436758908e-05, 'l2_value': 0.0005037641151028592, 'learning_rate': 0.0002854726068884309, 'batch_size': 256}
+2024-12-09 00:26:30,529 - INFO - Trial 43: Validation Loss: 0.44379541277885437
+2024-12-09 00:26:30,530 - INFO - Trial 43 completed with value: 0.44379541277885437, params: {'neurons_ratio': 42.76591751207841, 'dropout_rate': 0.12636058636779116, 'activation': 'tanh', 'l1_value': 3.118266008917792e-05, 'l2_value': 0.0020756180886302277, 'learning_rate': 0.00023098399334975286, 'batch_size': 128}
+2024-12-09 00:29:31,087 - INFO - Trial 44: Validation Loss: 0.4360915422439575
+2024-12-09 00:29:31,088 - INFO - Trial 44 completed with value: 0.4360915422439575, params: {'neurons_ratio': 40.14819377855842, 'dropout_rate': 0.18465730487680784, 'activation': 'tanh', 'l1_value': 1.4404388318467921e-05, 'l2_value': 0.00047096086543314613, 'learning_rate': 0.00030950838091184493, 'batch_size': 256}
+2024-12-09 00:44:08,625 - INFO - Trial 45: Validation Loss: 0.45956555008888245
+2024-12-09 00:44:08,625 - INFO - Trial 45 completed with value: 0.45956555008888245, params: {'neurons_ratio': 46.320119250129096, 'dropout_rate': 0.46473820518404263, 'activation': 'tanh', 'l1_value': 2.2573918136637216e-05, 'l2_value': 5.804254809930824e-05, 'learning_rate': 0.00012260875056617314, 'batch_size': 32}
+2024-12-09 00:46:43,458 - INFO - Trial 46: Validation Loss: 0.4918331503868103
+2024-12-09 00:46:43,459 - INFO - Trial 46 completed with value: 0.4918331503868103, params: {'neurons_ratio': 30.308621684310356, 'dropout_rate': 0.15927956901920723, 'activation': 'tanh', 'l1_value': 0.00987266342527687, 'l2_value': 0.00023942621196899067, 'learning_rate': 0.0004971417298715694, 'batch_size': 256}
+2024-12-09 00:51:40,091 - INFO - Trial 47: Validation Loss: 0.4657454490661621
+2024-12-09 00:51:40,092 - INFO - Trial 47 completed with value: 0.4657454490661621, params: {'neurons_ratio': 44.422593958141036, 'dropout_rate': 0.123207195596022, 'activation': 'sigmoid', 'l1_value': 1.3463976214285976e-05, 'l2_value': 0.00011850039212126664, 'learning_rate': 3.6646850635078287e-05, 'batch_size': 128}
+2024-12-09 00:54:43,745 - INFO - Trial 48: Validation Loss: 0.45743507146835327
+2024-12-09 00:54:43,745 - INFO - Trial 48 completed with value: 0.45743507146835327, params: {'neurons_ratio': 42.29438050989675, 'dropout_rate': 0.1782780079252529, 'activation': 'tanh', 'l1_value': 9.454730838984262e-05, 'l2_value': 0.001532208680133956, 'learning_rate': 0.0009267410054358366, 'batch_size': 256}
+2024-12-09 00:57:57,682 - INFO - Trial 49: Validation Loss: 0.4360174536705017
+2024-12-09 00:57:57,683 - INFO - Trial 49 completed with value: 0.4360174536705017, params: {'neurons_ratio': 48.16428517275651, 'dropout_rate': 0.1407770104088152, 'activation': 'tanh', 'l1_value': 3.221434221070179e-05, 'l2_value': 0.0003341785011556769, 'learning_rate': 0.0003282452709386934, 'batch_size': 256}
+2024-12-09 00:57:57,683 - INFO - Optuna study completed.
+2024-12-09 00:57:57,683 - INFO - Best trial: {'neurons_ratio': 45.05584619271666, 'dropout_rate': 0.14854911556954942, 'activation': 'tanh', 'l1_value': 1.0246543604078777e-05, 'l2_value': 0.0001298388649959211, 'learning_rate': 0.000346793455533819, 'batch_size': 256}
+2024-12-09 01:04:08,625 - INFO - Metrics for Output 1:
+2024-12-09 01:04:08,625 - INFO - Accuracy: 0.8357
+2024-12-09 01:04:08,625 - INFO - ROC AUC: 0.8185
+2024-12-09 01:04:08,625 - INFO - F1 Score: 0.7897
+2024-12-09 01:04:08,646 - INFO - Metrics for Output 2:
+2024-12-09 01:04:08,646 - INFO - Accuracy: 0.7711
+2024-12-09 01:04:08,646 - INFO - ROC AUC: 0.8365
+2024-12-09 01:04:08,646 - INFO - F1 Score: 0.7661
+2024-12-09 01:04:08,647 - INFO - Metrics saved to output_files\metrics-07e.json
