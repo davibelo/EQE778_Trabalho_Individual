@@ -112,7 +112,8 @@ rf_base_model = RandomForestClassifier(
     min_samples_split=best_params["min_samples_split"],
     min_samples_leaf=best_params["min_samples_leaf"],
     random_state=42,
-    n_jobs=-1
+    n_jobs=-1,
+    class_weight="balanced"
 )
 
 multi_rf_model = MultiOutputClassifier(rf_base_model)
