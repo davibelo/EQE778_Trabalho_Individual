@@ -1,8 +1,9 @@
 '''
-MODELLING - DEEP LEARNING version e
+MODELLING - DEEP LEARNING version f 
 BINARY LABELS
 Adam Optimizer and balanced Classes
 sigmoid activation in output layer
+learning rate and regularizations not log
 '''
 import os
 import time
@@ -27,7 +28,7 @@ CONFIG = {
         'input_folder': 'input_files',
         'output_folder': 'output_files',
     },
-    'model_id': '07e',
+    'model_id': '07f',
     'training': {
         'patience': 20,
         'epochs_training': 50,
@@ -95,9 +96,9 @@ def create_model(trial):
     neurons_ratio = trial.suggest_float('neurons_ratio', 10, 50)
     dropout_rate = trial.suggest_float('dropout_rate', 0.1, 0.5)
     activation = trial.suggest_categorical('activation', ['relu', 'tanh', 'sigmoid'])
-    l1_value = trial.suggest_float('l1_value', 1e-5, 1e-2, log=True)
-    l2_value = trial.suggest_float('l2_value', 1e-5, 1e-2, log=True)
-    learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2, log=True)
+    l1_value = trial.suggest_float('l1_value', 1e-5, 1e-2)
+    l2_value = trial.suggest_float('l2_value', 1e-5, 1e-2)
+    learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-2)
     batch_size = trial.suggest_categorical('batch_size', [32, 64, 128, 256])
     reg = regularizers.L1L2(l1=l1_value, l2=l2_value)
 

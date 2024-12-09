@@ -110,11 +110,11 @@
 2024-12-09 00:57:57,683 - INFO - Trial 49 completed with value: 0.4360174536705017, params: {'neurons_ratio': 48.16428517275651, 'dropout_rate': 0.1407770104088152, 'activation': 'tanh', 'l1_value': 3.221434221070179e-05, 'l2_value': 0.0003341785011556769, 'learning_rate': 0.0003282452709386934, 'batch_size': 256}
 2024-12-09 00:57:57,683 - INFO - Optuna study completed.
 2024-12-09 00:57:57,683 - INFO - Best trial: {'neurons_ratio': 45.05584619271666, 'dropout_rate': 0.14854911556954942, 'activation': 'tanh', 'l1_value': 1.0246543604078777e-05, 'l2_value': 0.0001298388649959211, 'learning_rate': 0.000346793455533819, 'batch_size': 256}
-2024-12-09 01:04:08,625 - INFO - Metrics for Output 1:
+2024-12-09 01:04:08,625 - INFO - Metrics for Output 0:
 2024-12-09 01:04:08,625 - INFO - Accuracy: 0.8357
 2024-12-09 01:04:08,625 - INFO - ROC AUC: 0.8185
 2024-12-09 01:04:08,625 - INFO - F1 Score: 0.7897
-2024-12-09 01:04:08,646 - INFO - Metrics for Output 2:
+2024-12-09 01:04:08,646 - INFO - Metrics for Output 1:
 2024-12-09 01:04:08,646 - INFO - Accuracy: 0.7711
 2024-12-09 01:04:08,646 - INFO - ROC AUC: 0.8365
 2024-12-09 01:04:08,646 - INFO - F1 Score: 0.7661
