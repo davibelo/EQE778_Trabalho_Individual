@@ -1,8 +1,11 @@
-2025-02-11 15:13:08,805 - INFO - x scaled shape: (81564, 5)
-2025-02-11 15:13:08,806 - INFO - y scaled shape: (81564, 2)
-2025-02-11 15:13:08,811 - INFO - x_train shape: (73407, 5)
-2025-02-11 15:13:08,811 - INFO - y_train shape: (73407, 2)
-2025-02-11 15:13:08,811 - INFO - x_val shape: (5438, 5)
-2025-02-11 15:13:08,811 - INFO - y_val shape: (5438, 2)
-2025-02-11 15:13:08,811 - INFO - x_test shape: (2719, 5)
-2025-02-11 15:13:08,811 - INFO - y_test shape: (2719, 2)
+2025-02-14 12:31:45,125 - INFO - x scaled shape: (81564, 5)
+2025-02-14 12:31:45,126 - INFO - y scaled shape: (81564, 2)
+2025-02-14 12:31:45,130 - INFO - x_train shape: (73407, 5)
+2025-02-14 12:31:45,130 - INFO - y_train shape: (73407, 2)
+2025-02-14 12:31:45,132 - INFO - x_val shape: (5438, 5)
+2025-02-14 12:31:45,132 - INFO - y_val shape: (5438, 2)
+2025-02-14 12:31:45,132 - INFO - x_test shape: (2719, 5)
+2025-02-14 12:31:45,132 - INFO - y_test shape: (2719, 2)
+2025-02-14 12:31:45,437 - WARNING - From C:\Users\davib\miniconda3\envs\ufrj-ml\Lib\site-packages\keras\src\backend\tensorflow\core.py:204: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+2025-02-14 12:32:59,219 - INFO - Test loss: [0.9623622298240662, 0.9178455471992493]

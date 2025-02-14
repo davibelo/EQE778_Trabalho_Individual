@@ -1,5 +1,5 @@
 '''
-MODELLING - MCTB-DRSN trial
+MODELLING - MCTB-DRSN trial - 1D Adaptation
 '''
 import os
 import logging
@@ -56,95 +56,124 @@ logging.info(f"y_val shape: {y_val_scaled.shape}")
 logging.info(f"x_test shape: {x_test_scaled.shape}")
 logging.info(f"y_test shape: {y_test_scaled.shape}")
 
-# Reshape data for CNN input (assuming num_features is a perfect square)
-num_features = x_train_scaled.shape[1]
-H = int(np.sqrt(num_features))
-W = H
-assert H * W == num_features, "Number of features must be a perfect square for reshaping into 2D grid."
+# Modified Masked Convolution for 1D
+@tf.keras.utils.register_keras_serializable()
+class MaskedConv1D(layers.Layer):
+    def __init__(self, filters, kernel_size, **kwargs):
+        super(MaskedConv1D, self).__init__(**kwargs)
+        self.filters = filters
+        self.kernel_size = kernel_size
+        self.conv = layers.Conv1D(filters, kernel_size, padding='same', activation=None)
+        self.mask = tf.Variable(tf.ones((1, 1, filters)), trainable=True)  # Channel-wise scaling
 
-x_train_reshaped = x_train_scaled.reshape(-1, H, W, 1)
-x_val_reshaped = x_val_scaled.reshape(-1, H, W, 1)
-x_test_reshaped = x_test_scaled.reshape(-1, H, W, 1)
-x_all_reshaped = x_scaled.reshape(-1, H, W, 1)
+    def build(self, input_shape):
+        self.conv.build(input_shape)
+        super(MaskedConv1D, self).build(input_shape)
 
-logging.info(f"Reshaped x_train shape: {x_train_reshaped.shape}")
-logging.info(f"Reshaped x_val shape: {x_val_reshaped.shape}")
-logging.info(f"Reshaped x_test shape: {x_test_reshaped.shape}")
+    def call(self, inputs):
+        x = self.conv(inputs)
+        mask = tf.broadcast_to(self.mask, tf.shape(x))
+        return layers.Multiply()([x, mask])
 
-# Define Masked Convolution Layer
-def masked_conv2d(inputs, filters, kernel_size):
-    mask = tf.Variable(tf.ones((kernel_size, kernel_size, inputs.shape[-1], filters)), trainable=True)
-    x = layers.Conv2D(filters, kernel_size, padding='same', activation=None)(inputs)
-    return layers.Multiply()([x, mask])
+# Keep GRN Layer unchanged (works with any dimensionality)
+@tf.keras.utils.register_keras_serializable()
+class GRNLayer(layers.Layer):
+    def call(self, inputs):
+        squared_sum = tf.reduce_sum(tf.square(inputs), axis=-1, keepdims=True)
+        norm_factor = tf.sqrt(squared_sum + 1e-6)
+        return inputs / norm_factor
 
-# Define Global Response Normalization (GRN) Layer
-def grn_layer(inputs):
-    squared_sum = tf.reduce_sum(tf.square(inputs), axis=-1, keepdims=True)
-    norm_factor = tf.sqrt(squared_sum + 1e-6)
-    return layers.Lambda(lambda x: x / norm_factor)(inputs)
+# Modified Residual Block for 1D
+@tf.keras.utils.register_keras_serializable()
+class ResidualBlock1D(layers.Layer):
+    def __init__(self, **kwargs):
+        super(ResidualBlock1D, self).__init__(**kwargs)
+        self.bn1 = layers.BatchNormalization()
+        self.relu = layers.ReLU()
+        self.conv1 = layers.Conv1D(64, 3, padding='same')
+        self.bn2 = layers.BatchNormalization()
+        self.grn = GRNLayer()
+        self.conv2 = layers.Conv1D(64, 3, padding='same')
+        self.gap = layers.GlobalAveragePooling1D()
+        self.dense1 = layers.Dense(64, activation='relu')
+        self.dense2 = layers.Dense(64, activation='sigmoid')
 
-# Define Residual Block with Shrinkage Mechanism
-def res_block(inputs):
-    x = layers.BatchNormalization()(inputs)
-    x = layers.ReLU()(x)
-    x = layers.Conv2D(64, (3, 3), padding='same')(x)
-    x = layers.BatchNormalization()(x)
-    x = grn_layer(x)
-    x = layers.Conv2D(64, (3, 3), padding='same')(x)
-    
-    abs_x = tf.abs(x)
-    gap = layers.GlobalAveragePooling2D()(abs_x)
-    dense = layers.Dense(64, activation='relu')(gap)
-    dense = layers.Dense(64, activation='sigmoid')(dense)
-    dense = tf.expand_dims(tf.expand_dims(dense, 1), 1)  # Reshape for multiplication
-    scale = layers.Multiply()([x, dense])
-    
-    x = layers.Subtract()([x, scale])
-    x = layers.Maximum()([x, scale])
-    x = layers.Multiply()([x, scale])
-    
-    return x
+    def build(self, input_shape):
+        self.conv1.build(input_shape)
+        self.conv2.build(input_shape)
+        super(ResidualBlock1D, self).build(input_shape)
 
-# Define MCTB Block with Channel-wise Transformer Attention
-def mctb_block(inputs):
-    x = masked_conv2d(inputs, 64, 3)
-    x = layers.GlobalAveragePooling2D()(x)
-    x = layers.Dense(64, activation='relu')(x)
-    
-    attn_weights = layers.Dense(64, activation='softmax')(x)
-    x = layers.Multiply()([x, attn_weights])
-    x = layers.LayerNormalization()(x)
-    
-    ff = layers.Dense(64, activation='relu')(x)
-    x = layers.Add()([x, ff])
-    x = layers.LayerNormalization()(x)
-    
-    x = layers.Multiply()([x, inputs])
-    return x
+    def call(self, inputs):
+        x = self.bn1(inputs)
+        x = self.relu(x)
+        x = self.conv1(x)
+        x = self.bn2(x)
+        x = self.grn(x)
+        x = self.conv2(x)
+        
+        abs_x = tf.abs(x)
+        gap = self.gap(abs_x)
+        dense = self.dense1(gap)
+        dense = self.dense2(dense)
+        dense = tf.expand_dims(dense, 1)  # Add sequence dimension
+        return layers.Multiply()([x, dense])
 
-# Define the full model
+# Modified MCTB Block for 1D
+@tf.keras.utils.register_keras_serializable()
+class MCTBBlock1D(layers.Layer):
+    def __init__(self, **kwargs):
+        super(MCTBBlock1D, self).__init__(**kwargs)
+        self.masked_conv = MaskedConv1D(64, 3)
+        self.gap = layers.GlobalAveragePooling1D()
+        self.dense1 = layers.Dense(64, activation='relu')
+        self.dense2 = layers.Dense(64, activation='softmax')
+        self.layer_norm1 = layers.LayerNormalization()
+        self.ff = layers.Dense(64, activation='relu')
+        self.layer_norm2 = layers.LayerNormalization()
+
+    def build(self, input_shape):
+        self.masked_conv.build(input_shape)
+        super(MCTBBlock1D, self).build(input_shape)
+
+    def call(self, inputs):
+        x = self.masked_conv(inputs)
+        x = self.gap(x)
+        x = self.dense1(x)
+        
+        attn_weights = self.dense2(x)
+        x = layers.Multiply()([x, attn_weights])
+        x = self.layer_norm1(x)
+        
+        ff = self.ff(x)
+        x = layers.Add()([x, ff])
+        x = self.layer_norm2(x)
+        
+        return layers.Multiply()([x, inputs])
+
+# Modified Model Builder
 def build_model(input_shape, num_outputs):
     inputs = layers.Input(shape=input_shape)
-    x = layers.Conv2D(64, (3, 3), padding='same', activation='relu')(inputs)
-    x = layers.Conv2D(64, (3, 3), padding='same', activation='relu')(x)
-    x = mctb_block(x)
-    x = res_block(x)
-    x = res_block(x)
+    
+    # Feature extraction
+    x = MaskedConv1D(64, 3)(inputs)
+    x = MCTBBlock1D()(x)
+    x = ResidualBlock1D()(x)
+    
+    # Prediction head
+    x = layers.GlobalAveragePooling1D()(x)
     x = layers.Dropout(0.5)(x)
-    x = layers.GlobalAveragePooling2D()(x)
     outputs = layers.Dense(num_outputs, activation='linear')(x)
     
-    model = models.Model(inputs, outputs)
-    return model
+    return models.Model(inputs, outputs)
 
-# Build the model
-num_outputs = y_train_scaled.shape[1]
-model = build_model(input_shape=(H, W, 1), num_outputs=num_outputs)
-model.summary(print_fn=logging.info)
+# Data reshaping for 1D Conv
+x_train_reshaped = x_train_scaled.reshape(-1, 5, 1)
+x_val_reshaped = x_val_scaled.reshape(-1, 5, 1)
+x_test_reshaped = x_test_scaled.reshape(-1, 5, 1)
 
-# Define the optimizer and compile the model
-opt = tf.keras.optimizers.Adam(learning_rate=0.0005)
-model.compile(loss='mse', optimizer=opt, metrics=['mae'])
+# Build and compile model
+model = build_model((5, 1), 1)
+model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
 # Define early stopping criteria
 early_stopping = tf.keras.callbacks.EarlyStopping(patience=20, restore_best_weights=True)
@@ -171,10 +200,19 @@ loaded_model = tf.keras.models.load_model(os.path.join(OUTPUT_FOLDER, f'model-{M
 
 # Generate predictions
 y_test_pred_scaled = model.predict(x_test_reshaped)
-y_pred_scaled = model.predict(x_all_reshaped)
+
+# Ensure the shapes match before calculating residues
+y_test_scaled = y_test_scaled[:len(y_test_pred_scaled)]
 
 # Calculate residues
 residue_test = y_test_scaled.ravel() - y_test_pred_scaled.ravel()
+
+# Define x_all_reshaped
+x_all_reshaped = x_scaled.reshape(-1, 5, 1)
+
+y_pred_scaled = model.predict(x_all_reshaped)
+
+# Calculate residues
 residue = y_scaled.ravel() - y_pred_scaled.ravel()
 
 # Calculate RMSE
@@ -239,7 +277,7 @@ plt.savefig(f'{FIGURES_FOLDER}/model_{MODEL_ID}_all_data_real_and_pred.png')
 
 # Predicted vs True values - Test Data
 plt.figure()
-reta = np.random.uniform(low=-2, high=2, size=(50,))
+reta = np.random.uniform(low=-2, high=2, size=(50,)) 
 plt.plot(reta,reta, color='black', label='x = y') #plot reta x = y
 plt.scatter(y_test_scaled, y_test_pred_scaled, color='blue', marker='x')
 plt.legend(fontsize=15, loc='best')
